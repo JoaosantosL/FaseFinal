@@ -1,0 +1,114 @@
+[
+    {
+        "title": "Future Nostalgia",
+        "artistName": "Dua Lipa",
+        "coverUrl": "/public/uploads/covers/albums/Dua-Lipa-Levitating.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "After Hours",
+        "artistName": "The Weeknd",
+        "coverUrl": "/public/uploads/covers/albums/The-Weeknd-Blinding-Lights.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Nevermind",
+        "artistName": "Nirvana",
+        "coverUrl": "/public/uploads/covers/albums/Nirvana-Smells-Like-Teen-Spirit.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "A Night at the Opera",
+        "artistName": "Queen",
+        "coverUrl": "/public/uploads/covers/albums/Queen-Bohemian-Rhapsody.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "8 Mile",
+        "artistName": "Eminem",
+        "coverUrl": "/public/uploads/covers/albums/Eminem-Lose-Yourself.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Astroworld",
+        "artistName": "Travis Scott",
+        "coverUrl": "/public/uploads/covers/albums/Travis-Scott-SICKO-MODE.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Kind of Blue",
+        "artistName": "Miles Davis",
+        "coverUrl": "/public/uploads/covers/albums/Miles-Davis-So-What.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Time Out",
+        "artistName": "Dave Brubeck",
+        "coverUrl": "/public/uploads/covers/albums/Dave-Brubeck-Take-Five.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Baroque Favorites",
+        "artistName": "Pachelbel",
+        "coverUrl": "/public/uploads/covers/albums/Canon-in-D-Pachelbel.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Suite bergamasque",
+        "artistName": "Claude Debussy",
+        "coverUrl": "/public/uploads/covers/albums/Debussy-Clair-de-Lune.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Discovery",
+        "artistName": "Daft Punk",
+        "coverUrl": "/public/uploads/covers/albums/Daft-Punk-One-More-Time.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "For Lack of a Better Name",
+        "artistName": "deadmau5",
+        "coverUrl": "/public/uploads/covers/albums/deadmau5-Strobe.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Natty Dread",
+        "artistName": "Bob Marley",
+        "coverUrl": "/public/uploads/covers/albums/Bob-Marley-No-Woman-No-Cry.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Bad to the Bone",
+        "artistName": "Inner Circle",
+        "coverUrl": "/public/uploads/covers/albums/Inner-Circle-Bad-Boys.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Vida",
+        "artistName": "Luis Fonsi",
+        "coverUrl": "/public/uploads/covers/albums/Luis-Fonsi-Despacito.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Sex and Love",
+        "artistName": "Enrique Iglesias",
+        "coverUrl": "/public/uploads/covers/albums/Enrique-Iglesias-Bailando.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    }
+]

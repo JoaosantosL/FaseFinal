@@ -1,0 +1,175 @@
+/**
+ * @file userRoutes.js
+ * @description
+ * Define as rotas privadas relacionadas com o utilizador autenticado:
+ * - Biblioteca pessoal (guardar/remover músicas)
+ * - Gestão de playlists (criar, editar, apagar, listar)
+ *
+ * Todas as rotas são protegidas com:
+ * - Autenticação via JWT (cookie HttpOnly)
+ * - Validação Joi (body e/ou parâmetros)
+ * - Verificação de ownership (checkOwnership)
+ * - Restrição por papel (authorizeRole: user | artist)
+ */
+
+const express = require("express");
+const router = express.Router();
+
+// ─────────────────────────────────────────────────────
+// Importa os controladores
+// ─────────────────────────────────────────────────────
+
+const {
+    getLibrary,
+    addToLibrary,
+    removeFromLibrary,
+    getLikedMusic,
+} = require("../controllers/userController");
+
+const {
+    getPlaylistsByUser,
+    createPlaylist,
+    editPlaylist,
+    deletePlaylist,
+} = require("../controllers/playlistController");
+
+// ─────────────────────────────────────────────────────
+// Middlewares de segurança e validação
+// ─────────────────────────────────────────────────────
+
+const verifyToken = require("../middleware/verifyToken");
+const validate = require("../middleware/validate");
+const authorizeRole = require("../middleware/authorizeRole");
+const checkOwnership = require("../middleware/checkOwnership");
+
+// ─────────────────────────────────────────────────────
+// Schemas de validação com Joi
+// ─────────────────────────────────────────────────────
+
+const { addToLibrarySchema } = require("../validators/library");
+const {
+    createPlaylistSchema,
+    editPlaylistSchema,
+} = require("../validators/playlist");
+const { idSchema } = require("../validators/id");
+
+// ─────────────────────────────────────────────────────
+// Modelos utilizados para validação de ownership
+// ─────────────────────────────────────────────────────
+
+const User = require("../models/User");
+const Playlist = require("../models/Playlist");
+
+// ─────────────────────────────────────────────────────
+// Aplica autenticação global (JWT via cookie) a todas as rotas
+// ─────────────────────────────────────────────────────
+
+router.use(verifyToken);
+
+// ─────────────────────────────────────────────────────
+// Rotas da biblioteca pessoal
+// ─────────────────────────────────────────────────────
+
+/**
+ * @route GET /api/users/:id/library
+ * @desc Devolve a biblioteca do utilizador autenticado
+ * @access Privado (owner)
+ */
+router.get(
+    "/:id/library",
+    validate(idSchema, "params"),
+    checkOwnership(User, "id", "_id"),
+    authorizeRole("user", "artist"),
+    getLibrary
+);
+
+/**
+ * @route POST /api/users/:id/library
+ * @desc Adiciona uma música à biblioteca pessoal
+ * @access Privado (owner)
+ */
+router.post(
+    "/:id/library",
+    validate(addToLibrarySchema), // inclui params e body
+    checkOwnership(User, "id", "_id"),
+    authorizeRole("user", "artist"),
+    addToLibrary
+);
+
+/**
+ * @route DELETE /api/users/:id/library/:musicId
+ * @desc Remove uma música da biblioteca
+ * @access Privado (owner)
+ */
+router.delete(
+    "/:id/library/:musicId",
+    validate(idSchema, "params"),
+    checkOwnership(User, "id", "_id"),
+    authorizeRole("user", "artist"),
+    removeFromLibrary
+);
+
+// ─────────────────────────────────────────────────────
+// Rotas de gestão de playlists privadas
+// ─────────────────────────────────────────────────────
+
+/**
+ * @route GET /api/users/:id/playlists
+ * @desc Devolve todas as playlists do utilizador
+ * @access Privado (owner)
+ */
+router.get(
+    "/:id/playlists",
+    validate(idSchema, "params"),
+    checkOwnership(User, "id", "_id"),
+    getPlaylistsByUser
+);
+
+/**
+ * @route POST /api/users/:id/playlists
+ * @desc Cria uma nova playlist para o utilizador
+ * @access Privado (owner)
+ */
+router.post(
+    "/:id/playlists",
+    validate(createPlaylistSchema),
+    checkOwnership(User, "id", "_id"),
+    authorizeRole("user", "artist"),
+    createPlaylist
+);
+
+/**
+ * @route PATCH /api/users/:id/playlists/:playlistId
+ * @desc Edita nome ou músicas de uma playlist existente
+ * @access Privado (owner)
+ */
+router.patch(
+    "/:id/playlists/:playlistId",
+    validate(editPlaylistSchema),
+    checkOwnership(Playlist, "playlistId", "user"),
+    authorizeRole("user", "artist"),
+    editPlaylist
+);
+
+/**
+ * @route DELETE /api/users/:id/playlists/:playlistId
+ * @desc Apaga logicamente uma playlist (soft-delete)
+ * @access Privado (owner)
+ */
+router.delete(
+    "/:id/playlists/:playlistId",
+    validate(idSchema, "params"),
+    checkOwnership(Playlist, "playlistId", "user"),
+    authorizeRole("user", "artist"),
+    deletePlaylist
+);
+
+/**
+ * @route GET /api/users/me/liked
+ * @desc Devolve a lista de músicas com like do utilizador
+ * @access Privado (JWT obrigatório)
+ */
+router.get("/me/liked", getLikedMusic);
+
+// Exporta router para uso no app principal
+module.exports = router;

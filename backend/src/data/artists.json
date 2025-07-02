@@ -1,0 +1,98 @@
+[
+    {
+        "name": "Dua Lipa",
+        "bio": "Dua Lipa é um(a) artista de destaque no género Pop.",
+        "imageUrl": "/public/uploads/covers/artists/dua-lipa.jpg",
+        "albums": []
+    },
+    {
+        "name": "The Weeknd",
+        "bio": "The Weeknd é um(a) artista de destaque no género Pop.",
+        "imageUrl": "/public/uploads/covers/artists/the-weeknd.jpg",
+        "albums": []
+    },
+    {
+        "name": "Nirvana",
+        "bio": "Nirvana é um(a) artista de destaque no género Rock.",
+        "imageUrl": "/public/uploads/covers/artists/nirvana.jpg",
+        "albums": []
+    },
+    {
+        "name": "Queen",
+        "bio": "Queen é um(a) artista de destaque no género Rock.",
+        "imageUrl": "/public/uploads/covers/artists/queen.jpg",
+        "albums": []
+    },
+    {
+        "name": "Eminem",
+        "bio": "Eminem é um(a) artista de destaque no género Hip-Hop.",
+        "imageUrl": "/public/uploads/covers/artists/eminem.jpg",
+        "albums": []
+    },
+    {
+        "name": "Travis Scott",
+        "bio": "Travis Scott é um(a) artista de destaque no género Hip-Hop.",
+        "imageUrl": "/public/uploads/covers/artists/travis-scott.jpg",
+        "albums": []
+    },
+    {
+        "name": "Miles Davis",
+        "bio": "Miles Davis é um(a) artista de destaque no género Jazz.",
+        "imageUrl": "/public/uploads/covers/artists/miles-davis.jpg",
+        "albums": []
+    },
+    {
+        "name": "Dave Brubeck",
+        "bio": "Dave Brubeck é um(a) artista de destaque no género Jazz.",
+        "imageUrl": "/public/uploads/covers/artists/dave-brubeck.jpg",
+        "albums": []
+    },
+    {
+        "name": "Pachelbel",
+        "bio": "Pachelbel é um(a) artista de destaque no género Classical.",
+        "imageUrl": "/public/uploads/covers/artists/pachelbel.jpg",
+        "albums": []
+    },
+    {
+        "name": "Claude Debussy",
+        "bio": "Claude Debussy é um(a) artista de destaque no género Classical.",
+        "imageUrl": "/public/uploads/covers/artists/claude-debussy.jpg",
+        "albums": []
+    },
+    {
+        "name": "Daft Punk",
+        "bio": "Daft Punk é um(a) artista de destaque no género Electronic.",
+        "imageUrl": "/public/uploads/covers/artists/daft-punk.jpg",
+        "albums": []
+    },
+    {
+        "name": "deadmau5",
+        "bio": "deadmau5 é um(a) artista de destaque no género Electronic.",
+        "imageUrl": "/public/uploads/covers/artists/deadmau5.jpg",
+        "albums": []
+    },
+    {
+        "name": "Bob Marley",
+        "bio": "Bob Marley é um(a) artista de destaque no género Reggae.",
+        "imageUrl": "/public/uploads/covers/artists/bob-marley.jpg",
+        "albums": []
+    },
+    {
+        "name": "Inner Circle",
+        "bio": "Inner Circle é um(a) artista de destaque no género Reggae.",
+        "imageUrl": "/public/uploads/covers/artists/inner-circle.jpg",
+        "albums": []
+    },
+    {
+        "name": "Luis Fonsi",
+        "bio": "Luis Fonsi é um(a) artista de destaque no género Latin.",
+        "imageUrl": "/public/uploads/covers/artists/luis-fonsi.jpg",
+        "albums": []
+    },
+    {
+        "name": "Enrique Iglesias",
+        "bio": "Enrique Iglesias é um(a) artista de destaque no género Latin.",
+        "imageUrl": "/public/uploads/covers/artists/enrique-iglesias.jpg",
+        "albums": []
+    }
+]
