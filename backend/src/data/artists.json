@@ -94,5 +94,11 @@
         "bio": "Enrique Iglesias é um(a) artista de destaque no género Latin.",
         "imageUrl": "/public/uploads/covers/artists/enrique-iglesias.jpg",
         "albums": []
+    },
+    {
+        "name": "VSP AST",
+        "bio": "VSP AST é um(a) artista de destaque no género Indie.",
+        "imageUrl": "/public/uploads/covers/artists/vsp-ast.jpg",
+        "albums": []
     }
 ]

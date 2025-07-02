@@ -110,5 +110,12 @@
         "coverUrl": "/public/uploads/covers/albums/Enrique-Iglesias-Bailando.jpg",
         "releaseDate": "2020-01-01 00:00:00",
         "musics": []
+    },
+    {
+        "title": "Indie Vibes",
+        "artistName": "VSP AST",
+        "coverUrl": "/public/uploads/covers/albums/VSP-AST-Aguarela.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
     }
 ]

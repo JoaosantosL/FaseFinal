@@ -158,5 +158,15 @@
         "audioUrl": "/public/uploads/audio/Enrique-Iglesias-Bailando.mp3",
         "plays": 2,
         "reactions": []
+    },
+    {
+        "title": "Aguarela",
+        "artistName": "VSP AST",
+        "albumTitle": "Indie Vibes",
+        "duration": 155,
+        "coverUrl": "/public/uploads/covers/musics/VSP-AST-Aguarela.jpg",
+        "audioUrl": "/public/uploads/audio/VSP-AST-Aguarela.mp3",
+        "plays": 21,
+        "reactions": []
     }
 ]
