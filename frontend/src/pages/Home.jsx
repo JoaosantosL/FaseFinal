@@ -71,12 +71,13 @@ export default function Home() {
                 })
                 .catch((err) => {
                     console.error("Erro ao obter sugestões personalizadas:", err);
+                    setRecomendadas([]);
                 });
         }
     }, [user]);
 
     // 3️⃣ IDs das sugestões da IA — para excluir da lista global
-    const idsSugestoes = recomendadas.map((m) => m._id);
+    const idsSugestoes = (recomendadas || []).map((m) => m._id);
 
     // 4️⃣ Músicas restantes (exclui as sugeridas), ordenadas por popularidade
     const restantes = musics
@@ -103,6 +104,7 @@ export default function Home() {
                                 {...music}
                                 isInLibrary={libraryIds.includes(music._id)}
                                 allowAddToPlaylist={true}
+                                musicList={recomendadas}
                                 onLibraryChange={(action, musicId) => {
                                     setLibraryIds((prev) =>
                                         action === "add"

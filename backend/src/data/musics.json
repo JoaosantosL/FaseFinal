@@ -163,9 +163,15 @@
         "title": "Aguarela",
         "artistName": "VSP AST",
         "albumTitle": "Indie Vibes",
+<<<<<<< HEAD
         "duration": 155,
         "coverUrl": "/public/uploads/covers/musics/vsp-ast-Aguarela.jpg",
         "audioUrl": "/public/uploads/audio/VSP-AST-Aguarela.mp3",
+=======
+        "duration": 180,
+        "coverUrl": "/public/uploads/covers/musics/VSP-AST-Aguarela.jpg",
+        "audioUrl": "/public/uploads/audio/vsp-ast-aguarela.mp3",
+>>>>>>> 8f59754dfff1f030d62d6dad87b851904d264192
         "plays": 21,
         "reactions": []
     }

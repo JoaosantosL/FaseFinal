@@ -200,24 +200,22 @@ exports.getRecommendationsForUser = async (req, res, next) => {
 
         // Ordena e seleciona top N
         recommendations.sort((a, b) => b.score - a.score);
-        const top = recommendations.slice(0, config.TOP_N);
+        let top = recommendations.slice(0, config.TOP_N);
 
-        if (top.length === 0) return res.status(204).send();
-
+        // Fallback misto ou total
         if (top.length < config.TOP_N) {
-            // Carrega as TOP_N * 2 músicas globais mais tocadas
             const fallbackFromTop = await getTopMusics(config.TOP_N * 2);
-
-            // Filtra as que o utilizador ainda não conhece nem estão já no top
             const fallbackExtras = getFallbackRecommendations(
                 fallbackFromTop,
                 knownMusicIds,
                 top,
                 config.TOP_N
             );
-
-            top.push(...fallbackExtras);
+            top = [...top, ...fallbackExtras];
         }
+
+        // Mesmo com fallback, pode falhar por algum motivo (ex: não há músicas no sistema)
+        if (top.length === 0) return res.status(204).send();
 
         logger.info(`Sugestões finais para ${userId}: ${top.length} músicas`);
         return res.json({ success: true, data: top });
