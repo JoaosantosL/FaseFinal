@@ -1,25 +1,12 @@
-/**
- * @file App.jsx
- * @description
- * Componente principal da aplicação SoundDream.
- * Define as rotas públicas e protegidas, e carrega a Navbar e o MusicPlayer
- * em todas as páginas. Usa o AuthContext para proteger o acesso a páginas
- * reservadas a utilizadores autenticados.
- */
-
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 
-// Biblioteca de toasts para mensagens rápidas no ecrã
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// Componentes comuns
 import Navbar from "./components/Navbar";
 import MusicPlayer from "./components/MusicPlayer";
-
-// Páginas principais da aplicação
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
@@ -33,65 +20,33 @@ import AlbumDetail from "./pages/AlbumDetail";
 import Artists from "./pages/Artists";
 import ArtistDetail from "./pages/ArtistDetail";
 
-/**
- * @component PrivateRoute
- * @description
- * Componente auxiliar que protege páginas privadas.
- * Se o utilizador não estiver autenticado, redireciona para o login.
- * Enquanto a informação da sessão estiver a ser carregada (ex: no refresh),
- * mostra um spinner com feedback visual.
- *
- * @param {Object} props
- * @param {JSX.Element} props.children - O conteúdo protegido (ex: página)
- * @returns {JSX.Element}
- */
 function PrivateRoute({ children }) {
     const { user, isLoading } = useContext(AuthContext);
 
-    // Enquanto a app verifica se há sessão guardada (cookie JWT),
-    // mostra um indicador de carregamento
     if (isLoading) {
         return (
             <div className="d-flex justify-content-center align-items-center p-5">
                 <div className="spinner-border text-light" role="status">
-                    <span className="visually-hidden">
-                        A verificar sessão...
-                    </span>
+                    <span className="visually-hidden">A verificar sessão...</span>
                 </div>
             </div>
         );
     }
 
-    // Se houver utilizador autenticado, permite o acesso à rota
-    // Caso contrário, redireciona para a página de login
     return user ? children : <Navigate to="/login" />;
 }
 
-/**
- * @component App
- * @description
- * Componente principal da aplicação. Contém:
- * - o router com as rotas principais,
- * - os contextos de autenticação e música,
- * - a Navbar visível em todas as páginas,
- * - o leitor de música fixo no fundo,
- * - o sistema de toasts para feedback visual.
- *
- * @returns {JSX.Element}
- */
-export default function App() {
+// Componente auxiliar para permitir uso de useLocation() dentro do BrowserRouter
+function AppContent() {
+    const location = useLocation();
+    const hideSearchBar = location.pathname === "/login" || location.pathname === "/register";
+
     return (
-        <BrowserRouter>
-            {/* Navbar visível em todas as páginas, incluindo login/register */}
+        <>
             <Navbar />
-
-            {/* Barra de pesquisa global, visível em todas as páginas */}
-            <SearchBar />
-
-            {/* Leitor de música global fixo no fundo da aplicação */}
+            {!hideSearchBar && <SearchBar />}
             <MusicPlayer />
 
-            {/* Componente para mostrar mensagens rápidas (toasts) */}
             <ToastContainer
                 position="bottom-right"
                 autoClose={2500}
@@ -99,9 +54,7 @@ export default function App() {
                 newestOnTop
             />
 
-            {/* Definição das rotas da aplicação */}
             <Routes>
-                {/* Rotas privadas: só acessíveis após login */}
                 <Route
                     path="/"
                     element={
@@ -134,7 +87,6 @@ export default function App() {
                         </PrivateRoute>
                     }
                 />
-
                 <Route
                     path="/gostadas"
                     element={
@@ -143,7 +95,6 @@ export default function App() {
                         </PrivateRoute>
                     }
                 />
-
                 <Route
                     path="/albums/:id"
                     element={
@@ -152,17 +103,22 @@ export default function App() {
                         </PrivateRoute>
                     }
                 />
-
-                {/* Rotas públicas: login e registo */}
                 <Route path="/artists" element={<Artists />} />
                 <Route path="/artists/:id" element={<ArtistDetail />} />
                 <Route path="/pesquisa" element={<SearchResults />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-
-                {/* Rota fallback: redireciona tudo o que não existir para login */}
                 <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
+        </>
+    );
+}
+
+// Componente principal com tudo incluído
+export default function App() {
+    return (
+        <BrowserRouter>
+            <AppContent />
         </BrowserRouter>
     );
 }

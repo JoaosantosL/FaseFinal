@@ -3,7 +3,7 @@
 ──────────────────────────────*/
 :root {
     --bg-main: #2e2e2e;
-    --bg-card: #323232;
+    --bg-card: #23adad;
     --text: #FFF8DE;
     --text-muted: #C5D3E8;
     --accent: #D0E8C5;
@@ -24,6 +24,8 @@ body {
     font-family: "Segoe UI", sans-serif;
     margin: 0;
     padding-bottom: 100px;
+    background: linear-gradient(to bottom, #149d9d, #000000);
+
     /* espaço para o player fixo */
 }
 
@@ -151,6 +153,9 @@ textarea:focus {
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
+    background: linear-gradient(to bottom, #00FFFF 0%, #00CCCC 40%, #009999 70%, #000000 100%);
+
+
 }
 
 .music-player .info {
