@@ -41,6 +41,10 @@ const {
     unlikeMusic,
 } = require("../controllers/musicController");
 
+const {
+    getPortugueseMusic,
+} = require("../controllers/portugueseMusicController");
+
 // ─────────────────────────────────────────────────────
 // GET /api/music
 // ─────────────────────────────────────────────────────
@@ -51,6 +55,20 @@ const {
  * @access Privado (requer JWT)
  */
 router.get("/", verifyToken, getAllMusic);
+
+// ─────────────────────────────────────────────────────
+// GET /api/music/portuguese
+// ─────────────────────────────────────────────────────
+/**
+ * @route GET /api/music/portuguese
+ * @description Devolve até 3 músicas de artistas portugueses
+ * @access Público
+ *
+ * Este endpoint filtra músicas com `isPortuguese: true` no artista,
+ * garantindo que só são devolvidas músicas ativas (isDeleted: false).
+ */
+
+router.get("/portuguese", getPortugueseMusic);
 
 // ─────────────────────────────────────────────────────
 // POST /api/music/:id/play
@@ -126,7 +144,7 @@ router.delete(
 
 /**
  * @route POST /api/music/:id/react
- * @description Regista uma reação (❤️ ou 🔥) à música
+ * @description Regista uma reação à música
  * @access Privado (requer JWT)
  *
  * Middlewares aplicados:

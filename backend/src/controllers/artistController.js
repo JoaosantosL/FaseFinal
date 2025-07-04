@@ -25,26 +25,37 @@ const sanitize = require("../utils/sanitize"); // proteção contra XSS
 /**
  * @function getAllArtists
  * @description
- * Devolve a lista de todos os artistas da base de dados.
+ * Devolve a lista de todos os artistas, com os portugueses primeiro.
  *
  * - Usa `.lean()` para melhor performance
- * - Remove os campos "__v" e "albums" com `leanPublic`
- * - Sanitiza o campo `bio` com `sanitize-html`
+ * - Remove "__v" e "albums" com `leanPublic`
+ * - Sanitiza `bio` com `sanitize-html`
+ * - Ordena: artistas portugueses primeiro, depois estrangeiros (ambos por nome)
  *
  * @route GET /api/artists
  * @access Público
  */
 const getAllArtists = catchAsync(async (req, res) => {
-    const artists = await Artist.find()
-        .lean() // devolve objetos simples (POJO)
-        .then(leanPublic(["__v", "albums"])); // remove metadados e campo potencialmente pesado
+    const allArtists = await Artist.find()
+        .lean()
+        .then(leanPublic(["__v", "albums"]));
 
-    // Sanitização defensiva do campo bio (evita injeções de código HTML malicioso)
-    artists.forEach((artist) => {
+    // Sanitização defensiva do campo bio
+    allArtists.forEach((artist) => {
         if (artist.bio) artist.bio = sanitize(artist.bio);
     });
 
-    res.json({ success: true, data: artists });
+    // Separar artistas por nacionalidade
+    const portugueses = allArtists
+        .filter((a) => a.isPortuguese)
+        .sort((a, b) => a.name.localeCompare(b.name));
+
+    const estrangeiros = allArtists
+        .filter((a) => !a.isPortuguese)
+        .sort((a, b) => a.name.localeCompare(b.name));
+
+    // Resposta ordenada
+    res.json({ success: true, data: [...portugueses, ...estrangeiros] });
 });
 
 /**

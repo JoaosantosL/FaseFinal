@@ -10,7 +10,7 @@
  * const user = await getOrFail(User.findById(id).lean(), "Utilizador não encontrado");
  */
 
-const AppError = require("../utils/appError");
+const AppError = require("./appError");
 
 /**
  * Executa a query fornecida (ex: findById, findOne, etc.).

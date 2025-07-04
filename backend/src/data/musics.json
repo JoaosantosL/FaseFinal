@@ -160,19 +160,53 @@
         "reactions": []
     },
     {
-        "title": "Aguarela",
-        "artistName": "VSP AST",
-        "albumTitle": "Indie Vibes",
-<<<<<<< HEAD
-        "duration": 155,
-        "coverUrl": "/public/uploads/covers/musics/vsp-ast-Aguarela.jpg",
-        "audioUrl": "/public/uploads/audio/VSP-AST-Aguarela.mp3",
-=======
-        "duration": 180,
-        "coverUrl": "/public/uploads/covers/musics/VSP-AST-Aguarela.jpg",
-        "audioUrl": "/public/uploads/audio/vsp-ast-aguarela.mp3",
->>>>>>> 8f59754dfff1f030d62d6dad87b851904d264192
-        "plays": 21,
+        "title": "Chuva",
+        "artistName": "Mariza",
+        "albumTitle": "Fado em mim",
+        "duration": 302,
+        "coverUrl": "/public/uploads/covers/musics/Marisa-Fado-em-mim.jpg",
+        "audioUrl": "/public/uploads/audio/Mariza-Chuva.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Visão Noturna",
+        "artistName": "Wet Bed Gang",
+        "albumTitle": "Gorilleyez",
+        "duration": 289,
+        "coverUrl": "/public/uploads/covers/musics/Wet-Bed-Gang-Gorilleyez.jpg",
+        "audioUrl": "/public/uploads/audio/Wet-Bed-Gang-Visao-Noturna.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Contentores",
+        "artistName": "Xutos & Pontapés",
+        "albumTitle": "Circo de Feras",
+        "duration": 235,
+        "coverUrl": "/public/uploads/covers/musics/Xutos-Circo-de-Feras.jpg",
+        "audioUrl": "/public/uploads/audio/Xutos-Contentores.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Andorinhas",
+        "artistName": "Ana Moura",
+        "albumTitle": "Casa Guilhermina",
+        "duration": 198,
+        "coverUrl": "/public/uploads/covers/musics/Ana-Moura-Casa-Guilhermina.jpg",
+        "audioUrl": "/public/uploads/audio/Ana-Moura-Andorinhas.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Re-Tratamento",
+        "artistName": "Da Weasel",
+        "albumTitle": "Re-Definições",
+        "duration": 209,
+        "coverUrl": "/public/uploads/covers/musics/Da-Wasel-Re-Def.jpg",
+        "audioUrl": "/public/uploads/audio/Da-Weasel-Re-Tratamento.mp3",
+        "plays": 0,
         "reactions": []
     }
 ]

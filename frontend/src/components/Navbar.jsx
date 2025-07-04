@@ -89,11 +89,6 @@ export default function Navbar() {
                 {/* Links (mostra/esconde consoante isOpen) */}
                 <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`} id="navbarNav">
                     <ul className="navbar-nav ms-auto align-items-center gap-3 flex-column flex-lg-row text-end text-lg-start">
-                        <li className="nav-item">
-                            <Link className="nav-link" style={{ color: "var(--text)" }} to="/" onClick={() => setIsOpen(false)}>
-                                Home
-                            </Link>
-                        </li>
                         {/* Link para todos os utilizadores */}
                         <li className="nav-item">
                             <Link className="nav-link" style={{ color: "var(--text)" }} to="/artists" onClick={() => setIsOpen(false)}>

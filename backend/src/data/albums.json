@@ -112,10 +112,38 @@
         "musics": []
     },
     {
-        "title": "Indie Vibes",
-        "artistName": "VSP AST",
-        "coverUrl": "/public/uploads/covers/albums/VSP-AST-Aguarela.jpg",
-        "releaseDate": "2020-01-01 00:00:00",
+        "title": "Fado em mim",
+        "artistName": "Mariza",
+        "coverUrl": "/public/uploads/covers/albums/Marisa-Fado-em-mim.jpg",
+        "releaseDate": "2001-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Gorilleyez",
+        "artistName": "Wet Bed Gang",
+        "coverUrl": "/public/uploads/covers/albums/Wet-Bed-Gang-Gorilleyez.jpg",
+        "releaseDate": "2023-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Circo de Feras",
+        "artistName": "Xutos & Pontapés",
+        "coverUrl": "/public/uploads/covers/albums/Xutos-Circo-de-Feras.jpg",
+        "releaseDate": "1987-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Casa Guilhermina",
+        "artistName": "Ana Moura",
+        "coverUrl": "/public/uploads/covers/albums/Ana-Moura-Casa-Guilhermina.jpg",
+        "releaseDate": "2022-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Re-Definições",
+        "artistName": "Da Weasel",
+        "coverUrl": "/public/uploads/covers/albums/Da-Wasel-Re-Def.jpg",
+        "releaseDate": "2004-01-01 00:00:00",
         "musics": []
     }
 ]

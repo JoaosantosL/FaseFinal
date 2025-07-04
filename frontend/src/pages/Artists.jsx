@@ -19,7 +19,7 @@ import ArtistCard from "../components/ArtistCard";
  * @returns {JSX.Element}
  */
 export default function Artists() {
-    const [artists, setArtists] = useState([]);     // Lista de artistas
+    const [artists, setArtists] = useState({ pt: [], outros: [] });     // Lista de artistas
     const [error, setError] = useState(null);       // Mensagem de erro
     const [loading, setLoading] = useState(true);   // Estado de carregamento
 
@@ -27,7 +27,10 @@ export default function Artists() {
     useEffect(() => {
         api.get("/artists")
             .then((res) => {
-                setArtists(res.data.data);
+                const all = res.data.data;
+                const pt = all.filter((a) => a.isPortuguese);
+                const outros = all.filter((a) => !a.isPortuguese);
+                setArtists({ pt, outros });
                 setLoading(false);
             })
             .catch((err) => {
@@ -57,19 +60,44 @@ export default function Artists() {
                 </div>
             )}
 
-            {/* Grelha de artistas */}
-            {!loading && artists.length > 0 && (
-                <div className="row g-4">
-                    {artists.map((artist) => (
-                        <div className="col-sm-6 col-md-4 col-lg-3" key={artist._id}>
-                            <ArtistCard
-                                _id={artist._id}
-                                name={artist.name}
-                                imageUrl={artist.imageUrl}
-                            />
-                        </div>
-                    ))}
-                </div>
+            {/* Secção: Artistas Portugueses */}
+            {artists.pt.length > 0 && (
+                <>
+                    <h3 className="mb-3 mt-5 fw-semibold" style={{ color: "var(--text)" }}>
+                        Artistas Portugueses
+                    </h3>
+                    <div className="row g-4">
+                        {artists.pt.map((artist) => (
+                            <div className="col-sm-6 col-md-4 col-lg-3" key={artist._id}>
+                                <ArtistCard
+                                    _id={artist._id}
+                                    name={artist.name}
+                                    imageUrl={artist.imageUrl}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </>
+            )}
+
+            {/* Secção: Artistas Internacionais */}
+            {artists.outros.length > 0 && (
+                <>
+                    <h3 className="mb-3 mt-5 fw-semibold" style={{ color: "var(--text)" }}>
+                        Artistas Internacionais
+                    </h3>
+                    <div className="row g-4">
+                        {artists.outros.map((artist) => (
+                            <div className="col-sm-6 col-md-4 col-lg-3" key={artist._id}>
+                                <ArtistCard
+                                    _id={artist._id}
+                                    name={artist.name}
+                                    imageUrl={artist.imageUrl}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </>
             )}
 
             {/* Caso não haja artistas */}

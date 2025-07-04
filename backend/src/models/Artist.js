@@ -35,6 +35,13 @@ const artistSchema = new mongoose.Schema(
         },
 
         /**
+         * Indica se o artista é português (destaque nacional).
+         */
+        isPortuguese: {
+            type: Boolean,
+            default: false,
+        },
+        /**
          * URL da imagem de perfil.
          * Pode ser um link externo (CDN) ou caminho local (relativo).
          */

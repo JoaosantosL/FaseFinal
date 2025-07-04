@@ -31,10 +31,11 @@ export default function Home() {
     const [playlists, setPlaylists] = useState([]);     // Playlists do utilizador
     const [libraryIds, setLibraryIds] = useState([]);   // IDs das músicas na biblioteca
     const [error, setError] = useState(null);           // Mensagem de erro, se existir
+    const [musicasPortuguesas, setMusicasPortuguesas] = useState([]);  // Músicas portuguesas
 
     // Carrega dados ao montar o componente
     useEffect(() => {
-        // 1️⃣ Pedir todas as músicas disponíveis
+        // Pedir todas as músicas disponíveis
         api.get("/music")
             .then((res) => {
                 const ordenadas = res.data.data.sort((a, b) => b.plays - a.plays);
@@ -45,7 +46,7 @@ export default function Home() {
                 setError("Erro ao carregar músicas.");
             });
 
-        // 2️⃣ Se o utilizador estiver autenticado, carregar dados pessoais
+        // Se o utilizador estiver autenticado, carregar dados pessoais
         if (user) {
             // Biblioteca pessoal
             api.get(`/users/${user._id}/library`)
@@ -74,19 +75,35 @@ export default function Home() {
                     setRecomendadas([]);
                 });
         }
+
+        // Músicas portuguesas em destaque (sempre públicas)
+        api.get("/music/portuguese")
+            .then((res) => {
+                const resultado = res.data?.data;
+                console.log("Músicas portuguesas recebidas:", res.data);
+                if (Array.isArray(resultado)) {
+                    setMusicasPortuguesas(resultado);
+                } else {
+                    setMusicasPortuguesas([]);
+                }
+            })
+            .catch((err) => {
+                console.warn("Sem músicas portuguesas ou erro:", err);
+                setMusicasPortuguesas([]); // ignora falhas
+            });
     }, [user]);
 
-    // 3️⃣ IDs das sugestões da IA — para excluir da lista global
+    // IDs das sugestões da IA — para excluir da lista global
     const idsSugestoes = (recomendadas || []).map((m) => m._id);
 
-    // 4️⃣ Músicas restantes (exclui as sugeridas), ordenadas por popularidade
+    // Músicas restantes (exclui as sugeridas), ordenadas por popularidade
     const restantes = musics
         .filter((m) => !idsSugestoes.includes(m._id))
         .sort((a, b) => b.plays - a.plays);
 
     return (
         <div className="container py-5">
-            {/* 1️⃣ Secção: Sugestões Personalizadas */}
+            {/* Secção: Sugestões Personalizadas */}
             <h2 className="mb-3 fw-semibold" style={{ color: "var(--text)" }}>
                 As nossas sugestões
             </h2>
@@ -118,7 +135,35 @@ export default function Home() {
                 )}
             </div>
 
-            {/* 2️⃣ Secção: Playlists Pessoais */}
+            {/* Secção: Músicas Portuguesas em Destaque */}
+            {Array.isArray(musicasPortuguesas) && musicasPortuguesas.length > 0 && (
+                <>
+                    <h3 className="mb-3 fw-semibold" style={{ color: "var(--text)" }}>
+                        Música Portuguesa em Destaque
+                    </h3>
+                    <div className="row g-4 mb-5">
+                        {musicasPortuguesas.map((music) => (
+                            <div className="col-sm-6 col-md-4" key={music._id}>
+                                <MusicCard
+                                    {...music}
+                                    isInLibrary={libraryIds.includes(music._id)}
+                                    allowAddToPlaylist={true}
+                                    musicList={musicasPortuguesas}
+                                    onLibraryChange={(action, musicId) => {
+                                        setLibraryIds((prev) =>
+                                            action === "add"
+                                                ? [...prev, musicId]
+                                                : prev.filter((id) => id !== musicId)
+                                        );
+                                    }}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </>
+            )}
+
+            {/* Secção: Playlists Pessoais */}
             {user && (
                 <div className="mb-5 d-flex flex-wrap gap-3">
                     {playlists.length === 0 ? (
@@ -137,7 +182,7 @@ export default function Home() {
                 </div>
             )}
 
-            {/* 3️⃣ Mensagens de erro ou carregamento */}
+            {/*  Mensagens de erro ou carregamento */}
             {error && (
                 <div className="alert alert-danger text-center fw-medium shadow-sm">
                     {error}
@@ -150,7 +195,7 @@ export default function Home() {
                 </div>
             )}
 
-            {/* 4️⃣ Secção: Todas as músicas (exceto as sugeridas) */}
+            {/* Secção: Todas as músicas (exceto as sugeridas) */}
             <div className="row g-4">
                 {restantes.map((music) => (
                     <div className="col-sm-6 col-md-4" key={music._id}>
@@ -170,7 +215,7 @@ export default function Home() {
                 ))}
             </div>
 
-            {/* 5️⃣ Rodapé */}
+            {/* Rodapé */}
             <footer className="text-center mt-5 text-muted small">
                 <hr className="text-secondary" />
                 <span className="d-block muted">SoundDream © {new Date().getFullYear()}</span>
