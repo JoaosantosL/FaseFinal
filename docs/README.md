@@ -1,9 +1,19 @@
-# SoundDream - Documentação Técnica
-*Última atualização: 02/07/2025*
+# SoundDream — Documentação Técnica Completa
+*Última atualização: 05/07/2025*
+
+---
 
 ## Introdução
 
-O **SoundDream** é uma aplicação de música que permite aos utilizadores ouvir músicas, criar playlists, gerir favoritos, subscrever planos e muito mais. O projeto está dividido em frontend (React) e backend (Node.js + Express + MongoDB).
+O **SoundDream** é uma aplicação web de streaming de música, desenvolvida para proporcionar uma experiência moderna e responsiva. Permite ouvir músicas, criar playlists, gerir favoritos, subscrever planos, pesquisar conteúdos e muito mais. O projeto é composto por um backend robusto em Node.js/Express/MongoDB e um frontend em React.
+
+---
+
+## Visão Geral do Projeto
+
+- **Frontend:** React, Context API, Axios, React Router, CSS customizado, responsivo e mobile-first.
+- **Backend:** Node.js, Express, MongoDB, JWT, CSRF, Rate Limiting, Upload de ficheiros, Logging.
+- **Funcionalidades:** Autenticação segura, gestão de biblioteca, playlists, favoritos, pesquisa, subscrições, uploads, histórico, proteção de rotas e API RESTful.
 
 ---
 
@@ -186,6 +196,33 @@ Exemplo de endpoints principais (ver cada ficheiro em `src/routes/` para detalhe
 *(Ver rotas específicas para mais detalhes.)*
 
 ---
+
+## Segurança
+
+- **Autenticação:** JWT para autenticação de utilizadores.
+- **Autorização:** Verificação de permissões em rotas sensíveis.
+- **CSRF:** Proteção contra CSRF em formulários.
+- **Rate Limiting:** Limitação de requisições para prevenir abusos.
+
+---
+
+## Boas Práticas e Convenções
+
+- **Estrutura de Pastas:** Manter a estrutura de pastas organizada e modular.
+- **Nomenclatura:** Usar nomes descritivos e consistentes para variáveis, funções e arquivos.
+- **Comentários:** Comentar código complexo e manter um estilo de codificação consistente.
+- **Documentação:** Manter a documentação atualizada e clara.
+
+---
+
+## Testes e Logging
+
+- **Testes:** Testes unitários e de integração com Jest e Supertest.
+- **Logging:** Logs de erro e informação com Winston, armazenados em ficheiros.
+
+---
+
+## Licença
 
 Projeto privado, desenvolvido no âmbito do projeto final do curso.
 
