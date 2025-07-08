@@ -1,0 +1,117 @@
+.planos {
+  padding: 100px 0;
+  background-color: var(--bg-main);
+}
+
+.planos h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 60px;
+  color: var(--text);
+}
+
+.planos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.plano {
+  background-color: var(--bg-card);
+  padding: 40px 30px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border);
+}
+
+.plano:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+  border-color: var(--accent);
+}
+
+.plano.destaque {
+  border: 2px solid var(--accent);
+}
+
+.plano-badge {
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  background-color: var(--accent);
+  color: var(--dark);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.plano h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+.plano-preco {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: var(--accent);
+}
+
+.plano-beneficios {
+  list-style: none;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.plano-beneficios li {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+}
+
+.plano-beneficios li:hover {
+  color: var(--text);
+}
+
+.plano-beneficios svg {
+  margin-right: 10px;
+  color: var(--accent);
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--dark);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text);
+  border: 1px solid var(--text);
+}
+
+.btn-outline:hover {
+  background-color: var(--text);
+  color: var(--bg-main);
+  transform: translateY(-2px);
+}

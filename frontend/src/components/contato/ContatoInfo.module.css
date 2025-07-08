@@ -1,0 +1,61 @@
+.contatoInfo {
+  text-align: left;
+  padding: 30px;
+  color: var(--text-muted);
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 5px 15px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.contatoInfo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.2);
+  border-color: var(--accent);
+}
+
+.contatoInfo h3 {
+  font-size: 24px;
+  margin-bottom: 25px;
+  color: var(--text);
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.contatoInfo h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.contatoInfo:hover h3::after {
+  width: 80px;
+}
+
+.contatoInfo p {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.contatoInfo:hover p {
+  color: var(--text);
+}
+
+.contatoInfo svg {
+  color: var(--accent);
+  transition: transform 0.3s ease;
+}
+
+.contatoInfo:hover svg {
+  transform: scale(1.2);
+}

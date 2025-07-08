@@ -121,7 +121,7 @@ export default function Login() {
 
             {/* Mensagem para quem ainda não tem conta */}
             <div className="text-center muted small mt-4">
-                Ainda não tens conta? Subscreve.
+                Ainda não tens conta? Regista-te gratuitamente.
             </div>
         </div>
     );

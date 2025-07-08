@@ -2,27 +2,31 @@
   VARIÁVEIS GLOBAIS (modo escuro)
 ──────────────────────────────*/
 :root {
-    --primary: #00ffffd2;
-    --primary-dark: #5d5d5e;
-    --light: #FFFFFF;
-    --dark: rgb(11, 23, 54);
-    --gray: #5d5d5e;
-    --light-gray: #B3B3B3;
-    --text-light: #ecf0f1;
-    --bg-dark: #1a1a1a;
-    
-    --bg-main: #1a1a1a;
-    --bg-card: #2a2a2a;
-    --text: #ecf0f1;
-    --text-muted: #B3B3B3;
-    --accent: #00ffffd2;
-    --accent-hover: #00c8c8;
-    --border: #5d5d5e;
-    --danger: #ff5555;
-    --success: #00cc66;
-    --warning: #ffcc00;
-    --shadow: rgba(0, 0, 0, 0.3);
+  --primary: #00ffffd2;
+  --primary-dark: #5d5d5e;
+  --light: #FFFFFF;
+  --dark: rgb(11, 23, 54);
+  --gray: #5d5d5e;
+  --light-gray: #B3B3B3;
+  --text-light: #ecf0f1;
+  --bg-dark: #1a1a1a;
+  
+  --bg-main: #1a1a1a;
+  --bg-card: #2a2a2a;
+  --text: #ecf0f1;
+  --text-muted: #B3B3B3;
+  --accent: #00ffffd2;
+  --accent-hover: #00c8c8;
+  --border: #5d5d5e;
+  --danger: #ff5555;
+  --success: #00cc66;
+  --warning: #ffcc00;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --max-content-width: 1200px;
+  --page-padding: 20px;
 }
+
+
 
 /*───────────────────────
   BASE DA APLICAÇÃO
@@ -275,7 +279,7 @@ input:focus, textarea:focus, select:focus {
 
 .music-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0px 15px rgba(0, 255, 255, 0.2);
+    box-shadow: 0 8px 15px rgba(0, 255, 255, 0.2);
 }
 
 .cover-container {
@@ -1054,3 +1058,4 @@ a:hover {
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
 }
+

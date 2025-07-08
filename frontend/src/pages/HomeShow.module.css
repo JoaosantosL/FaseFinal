@@ -1,0 +1,23 @@
+.home {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.carousel-section {
+  padding: 60px 0;
+  background: linear-gradient(to bottom, var(--accent) 10%, var(--bg-main) 100%);
+}
+
+.carousel-section .container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Garante que nenhum elemento cause overflow horizontal */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}

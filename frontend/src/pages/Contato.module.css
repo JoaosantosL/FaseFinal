@@ -1,0 +1,25 @@
+.contato {
+  padding: 80px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--bg-main);
+  color: var(--text);
+}
+
+.contatoGrid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 40px;
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .contatoGrid {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
+}

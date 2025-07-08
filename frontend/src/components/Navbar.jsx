@@ -143,7 +143,7 @@ export default function Navbar() {
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" style={{ color: "var(--text)" }} to="/register" onClick={() => setIsOpen(false)}>
-                                        Subscrever
+                                        Registar
                                     </Link>
                                 </li>
                             </>

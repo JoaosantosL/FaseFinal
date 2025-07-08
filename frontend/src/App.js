@@ -7,7 +7,7 @@
  * reservadas a utilizadores autenticados.
  */
 
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "./context/AuthContext";
 
@@ -39,6 +39,10 @@ import Profile from "./pages/Profile";
 import ArtistProfile from "./pages/ArtistProfile";
 import ChatbotToggleButton from "./components/ChatbotToggleButton";
 import ArtistChatbot from "./components/ArtistChatbot";
+
+import HomeShow from "./pages/HomeShow";
+import Contato from "./pages/Contato";
+import Faq from "./pages/Faq";
 
 /**
  * @component PrivateRoute
@@ -75,29 +79,31 @@ function PrivateRoute({ children }) {
 }
 
 /**
- * @component App
+ * @component AppWrapper
  * @description
- * Componente principal da aplicação. Contém:
- * - o router com as rotas principais,
- * - os contextos de autenticação e música,
- * - a Navbar visível em todas as páginas,
- * - o leitor de música fixo no fundo,
- * - o sistema de toasts para feedback visual.
+ * Componente que contém a lógica para mostrar ou esconder componentes globais
+ * com base na rota atual (ex: ocultar Navbar no /homeShow).
  *
  * @returns {JSX.Element}
  */
-export default function App() {
+function AppWrapper() {
+    const location = useLocation();
     const [showChatbot, setShowChatbot] = useState(false);
+
+    // Determina se os componentes globais devem ser escondidos nesta rota
+    const hideGlobals = ["/homeShow", "/contato", "/faq", "/HOMESHOW", "/CONTATO", "/FAQ"].includes(location.pathname);
+
+
     return (
-        <BrowserRouter>
+        <>
             {/* Navbar visível em todas as páginas, incluindo login/register */}
-            <Navbar />
+            {!hideGlobals && <Navbar />}
 
             {/* Barra de pesquisa global, visível em todas as páginas */}
-            <SearchBar />
+            {!hideGlobals && <SearchBar />}
 
             {/* Leitor de música global fixo no fundo da aplicação */}
-            <MusicPlayer />
+            {!hideGlobals && <MusicPlayer />}
 
             {/* Componente para mostrar mensagens rápidas (toasts) */}
             <ToastContainer
@@ -195,20 +201,47 @@ export default function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
 
+                <Route path="/homeShow" element={<HomeShow />} />
+                <Route path="/contato" element={<Contato />} />
+                <Route path="/faq" element={<Faq />} />
+
                 {/* Rota fallback: redireciona tudo o que não existir para login */}
                 <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
+
             {/* Botão flutuante para abrir o chatbot */}
-            <ChatbotToggleButton
-                onClick={() => setShowChatbot((prev) => !prev)}
-            />
+            {!hideGlobals && (
+                <ChatbotToggleButton
+                    onClick={() => setShowChatbot((prev) => !prev)}
+                />
+            )}
 
             {/* Popup com o chatbot */}
-            {showChatbot && (
+            {!hideGlobals && showChatbot && (
                 <div className="chatbot-popup chatbot-popup-wrapper">
                     <ArtistChatbot onClose={() => setShowChatbot(false)} />
                 </div>
             )}
+        </>
+    );
+}
+
+/**
+ * @component App
+ * @description
+ * Componente principal da aplicação. Contém:
+ * - o router com as rotas principais,
+ * - os contextos de autenticação e música,
+ * - a Navbar visível em todas as páginas,
+ * - o leitor de música fixo no fundo,
+ * - o sistema de toasts para feedback visual.
+ *
+ * @returns {JSX.Element}
+ */
+export default function App() {
+    return (
+        <BrowserRouter>
+            <AppWrapper />
         </BrowserRouter>
     );
 }
