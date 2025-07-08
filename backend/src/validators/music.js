@@ -13,6 +13,33 @@
  */
 
 const Joi = require("joi");
+const sanitize = require("../utils/sanitize");
+
+/**
+ * Valida os dados textuais da criação de uma nova música.
+ * Os ficheiros (audio + cover) são tratados pelo multer.
+ *
+ * Campos obrigatórios:
+ * - title: string entre 2 e 100 caracteres
+ * - duration: número positivo (segundos)
+ * - album: opcional (ObjectId)
+ */
+const createMusicSchema = Joi.object({
+    title: Joi.string().min(2).max(100).required().messages({
+        "string.base": "O título deve ser texto",
+        "string.empty": "O título é obrigatório",
+        "string.min": "O título deve ter pelo menos 2 caracteres",
+        "any.required": "O título é obrigatório",
+    }),
+
+    album: Joi.string().hex().length(24).optional().messages({
+        "string.length": "ID do álbum inválido",
+    }),
+}).custom((value) => {
+    // Sanitiza o campo title
+    if (value.title) value.title = sanitize(value.title);
+    return value;
+});
 
 /**
  * Schema de validação usado para registar uma reação a uma música.
@@ -41,4 +68,4 @@ const reactionSchema = Joi.object({
     }),
 });
 
-module.exports = { reactionSchema };
+module.exports = { reactionSchema, createMusicSchema };

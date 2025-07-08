@@ -63,17 +63,31 @@ const getCookieOptions = () => {
 // ─────────────────────────────────────────────────────────────
 
 /**
- * Regista um novo utilizador.
- * - Verifica se email/username já existem
+ * Regista um novo utilizador (normal ou artista).
+ * - Se `role === "artist"`, cria também um perfil Artist e liga via `linkedArtist`
+ * - Verifica duplicação
  * - Hasheia a password
  * - Gera JWT e envia via cookie
  *
  * @route POST /api/auth/register
  * @access Público
  */
+const Artist = require("../models/Artist"); // Importar modelo Artist
+
+
 const register = catchAsync(async (req, res) => {
-    const username = sanitize(req.body.username); // Limpa o campo para evitar XSS
-    const { email, password, role } = req.body;
+    const username = sanitize(req.body.username);
+    const email = req.body.email;
+    const password = req.body.password;
+    const role = req.body.role || "base";
+
+    // Apenas se for premium
+    const artistName = req.body.artistName
+        ? sanitize(req.body.artistName)
+        : null;
+
+    // Novo campo opcional: se o artista é português
+    const isPortuguese = req.body.isPortuguese === true;
 
     // Verifica duplicação de email ou username
     const exists = await User.findOne({ $or: [{ email }, { username }] });
@@ -81,19 +95,35 @@ const register = catchAsync(async (req, res) => {
         throw new AppError("Email ou username já em uso", 409);
     }
 
-    // Hasheia a password para não guardar em texto plano
+    // Hasheia a password
     const passwordHash = await bcrypt.hash(password, 10);
 
-    // Cria novo utilizador na base de dados
-    const user = await User.create({ username, email, passwordHash, role });
+    // Se for premium, cria o documento Artist com o nome e nacionalidade
+    let linkedArtistId = null;
+    if (role === "premium") {
+        const artist = await Artist.create({
+            name: artistName,
+            isPortuguese,
+            isPublic: false,
+        });
+        linkedArtistId = artist._id;
+    }
 
-    // Gera token JWT e envia no cookie
+    // Criação do utilizador
+    const user = await User.create({
+        username,
+        email,
+        passwordHash,
+        role,
+        linkedArtist: linkedArtistId,
+    });
+
+    // Geração de JWT e envio no cookie
     const token = generateToken(user._id);
     res.cookie("token", token, getCookieOptions());
 
-    logger.info(`Novo registo: ${email}`);
+    logger.info(`Novo registo: ${email} (${role})`);
 
-    // Resposta com dados visíveis (sem password!)
     res.status(201).json({
         success: true,
         data: {
@@ -101,9 +131,12 @@ const register = catchAsync(async (req, res) => {
             username: user.username,
             email: user.email,
             role: user.role,
+            linkedArtist: user.linkedArtist,
         },
     });
 });
+
+
 
 // ─────────────────────────────────────────────────────────────
 // LOGIN
@@ -138,6 +171,7 @@ const login = catchAsync(async (req, res) => {
             username: user.username,
             email: user.email,
             role: user.role,
+            linkedArtist: user.linkedArtist,
         },
     });
 });

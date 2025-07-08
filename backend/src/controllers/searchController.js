@@ -23,23 +23,16 @@ const logger = require("../utils/logger");
 
 /**
  * @function globalSearch
- * @description Pesquisa global por músicas, artistas e álbuns.
- *
- * - Prioridade: artista → álbum → título da música
- * - Usa regex case-insensitive
- * - Resposta estruturada com campo `context`
- * - Sanitiza input para evitar abusos
+ * @description
+ * Pesquisa global por artistas, álbuns ou músicas.
+ * Aplica filtros para ignorar artistas privados.
  *
  * @route GET /api/search?q=...
  * @access Público
- *
- * @param {Request} req - Express request (espera query.q)
- * @param {Response} res - Express response
- * @param {Function} next - Função next para tratamento de erros
  */
 const globalSearch = async (req, res, next) => {
     try {
-        // Extrai e sanitiza o termo de pesquisa
+        // 1. Extrai e sanitiza o termo de pesquisa
         const rawQuery = req.query.q?.trim();
         const query = sanitize(rawQuery);
 
@@ -52,14 +45,22 @@ const globalSearch = async (req, res, next) => {
 
         const regex = new RegExp(query, "i");
 
-        // Verifica se corresponde a um artista
-        const artista = await Artist.findOne({ name: regex }).lean();
+        // 2. Pesquisa direta por artista público
+        const artista = await Artist.findOne({
+            name: regex,
+            isPublic: true, // apenas artistas públicos
+        }).lean();
+
         if (artista) {
+            // Carrega álbuns e músicas do artista
             const [albums, musics] = await Promise.all([
                 Album.find({ artist: artista._id })
                     .select("title coverUrl")
                     .lean(),
-                Music.find({ artist: artista._id, isDeleted: false })
+                Music.find({
+                    artist: artista._id,
+                    isDeleted: false,
+                })
                     .select("title coverUrl audioUrl artist album")
                     .populate("artist", "name")
                     .populate("album", "title")
@@ -75,9 +76,19 @@ const globalSearch = async (req, res, next) => {
             });
         }
 
-        // Verifica se corresponde a um álbum
+        // 3. Pesquisa por título de álbum (mas verifica se o artista é público)
         const album = await Album.findOne({ title: regex }).lean();
         if (album) {
+            // Confirma se o artista associado ao álbum é público
+            const artistaDoAlbum = await Artist.findOne({
+                _id: album.artist,
+                isPublic: true,
+            }).lean();
+
+            if (!artistaDoAlbum) {
+                return res.status(204).send(); // artista privado → esconder resultados
+            }
+
             const musics = await Music.find({
                 album: album._id,
                 isDeleted: false,
@@ -95,12 +106,18 @@ const globalSearch = async (req, res, next) => {
             });
         }
 
-        // Caso contrário, pesquisa por título de música
-        const musics = await Music.find({ title: regex, isDeleted: false })
+        // 4. Pesquisa por título de música (filtra artista privado após populate)
+        const musicsRaw = await Music.find({
+            title: regex,
+            isDeleted: false,
+        })
             .select("title coverUrl audioUrl artist album")
-            .populate("artist", "name")
+            .populate("artist", "name isPublic")
             .populate("album", "title")
             .lean();
+
+        // Ignora músicas de artistas não públicos
+        const musics = musicsRaw.filter((m) => m.artist?.isPublic);
 
         return res.json({
             success: true,
@@ -116,5 +133,4 @@ const globalSearch = async (req, res, next) => {
     }
 };
 
-// Exportação para uso no router
 module.exports = { globalSearch };

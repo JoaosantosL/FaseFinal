@@ -9,7 +9,7 @@
  * - Autenticação via JWT (cookie HttpOnly)
  * - Validação Joi (body e/ou parâmetros)
  * - Verificação de ownership (checkOwnership)
- * - Restrição por papel (authorizeRole: user | artist)
+ * - Restrição por papel (authorizeRole: base | premium)
  */
 
 const express = require("express");
@@ -24,6 +24,10 @@ const {
     addToLibrary,
     removeFromLibrary,
     getLikedMusic,
+    getUserProfile,
+    updateUsername,
+    getUserStats,
+    getRecentlyPlayed,
 } = require("../controllers/userController");
 
 const {
@@ -52,6 +56,7 @@ const {
     editPlaylistSchema,
 } = require("../validators/playlist");
 const { idSchema } = require("../validators/id");
+const { usernameSchema } = require("../validators/user");
 
 // ─────────────────────────────────────────────────────
 // Modelos utilizados para validação de ownership
@@ -79,7 +84,7 @@ router.get(
     "/:id/library",
     validate(idSchema, "params"),
     checkOwnership(User, "id", "_id"),
-    authorizeRole("user", "artist"),
+    authorizeRole("base", "premium"),
     getLibrary
 );
 
@@ -92,7 +97,7 @@ router.post(
     "/:id/library",
     validate(addToLibrarySchema), // inclui params e body
     checkOwnership(User, "id", "_id"),
-    authorizeRole("user", "artist"),
+    authorizeRole("base", "premium"),
     addToLibrary
 );
 
@@ -105,7 +110,7 @@ router.delete(
     "/:id/library/:musicId",
     validate(idSchema, "params"),
     checkOwnership(User, "id", "_id"),
-    authorizeRole("user", "artist"),
+    authorizeRole("base", "premium"),
     removeFromLibrary
 );
 
@@ -134,7 +139,7 @@ router.post(
     "/:id/playlists",
     validate(createPlaylistSchema),
     checkOwnership(User, "id", "_id"),
-    authorizeRole("user", "artist"),
+    authorizeRole("base", "premium"),
     createPlaylist
 );
 
@@ -147,7 +152,7 @@ router.patch(
     "/:id/playlists/:playlistId",
     validate(editPlaylistSchema),
     checkOwnership(Playlist, "playlistId", "user"),
-    authorizeRole("user", "artist"),
+    authorizeRole("base", "premium"),
     editPlaylist
 );
 
@@ -160,7 +165,7 @@ router.delete(
     "/:id/playlists/:playlistId",
     validate(idSchema, "params"),
     checkOwnership(Playlist, "playlistId", "user"),
-    authorizeRole("user", "artist"),
+    authorizeRole("base", "premium"),
     deletePlaylist
 );
 
@@ -170,6 +175,40 @@ router.delete(
  * @access Privado (JWT obrigatório)
  */
 router.get("/me/liked", getLikedMusic);
+
+/**
+ * @route GET /api/users/me/profile
+ * @desc Devolve perfil completo do utilizador (User + Artist)
+ * @access Privado (JWT obrigatório)
+ */
+router.get("/me/profile", getUserProfile);
+
+/**
+ * @route PATCH /api/users/:id
+ * @desc Atualiza o username do utilizador
+ * @access Privado (owner)
+ */
+router.patch(
+    "/:id/username",
+    validate(usernameSchema, "body"),
+    checkOwnership(User, "id", "_id"),
+    authorizeRole("base", "premium"),
+    updateUsername
+);
+
+/**
+ * @route GET /api/users/me/stats
+ * @desc Devolve estatísticas de uso do utilizador autenticado
+ * @access Privado (JWT obrigatório)
+ */
+router.get("/me/stats", getUserStats);
+
+/**
+ * @route GET /api/users/me/recent
+ * @desc Devolve as músicas recentemente ouvidas pelo utilizador
+ * @access Privado (JWT obrigatório)
+ */
+router.get("/me/recent", getRecentlyPlayed);
 
 // Exporta router para uso no app principal
 module.exports = router;

@@ -26,29 +26,36 @@ const getOrFail = require("../utils/getOrFail");
 /**
  * @function getPlaylistsByUser
  * @description
- * Devolve todas as playlists de um utilizador (que não estejam eliminadas).
- * Aplica `populate` nas músicas e remove campos internos com `leanPublic`.
+ * Devolve todas as playlists de um utilizador (ativas),
+ * excluindo músicas de artistas privados.
  *
  * @route GET /api/users/:id/playlists
  * @access Privado (com verificação de ownership)
- *
- * @param {Request} req - Pedido Express
- * @param {Response} res - Resposta Express
  */
 const getPlaylistsByUser = catchAsync(async (req, res) => {
     const playlists = await Playlist.find({
         user: req.params.id,
-        isDeleted: false, // apenas playlists ativas
+        isDeleted: false,
     })
         .populate({
             path: "musics",
-            match: { isDeleted: false }, // ignora músicas eliminadas
-            select: "-__v -reactions", // evita dados pesados e internos
+            match: { isDeleted: false }, // só músicas não apagadas
+            select: "-__v -reactions",
+            populate: {
+                path: "artist",
+                select: "isPublic", // para filtrar músicas de artistas privados
+            },
         })
         .lean()
-        .then(leanPublic(["__v", "reactions"])); // limpa campos adicionais
+        .then(leanPublic(["__v", "reactions"]));
 
-    res.json({ success: true, data: playlists });
+    // Filtra músicas de artistas privados dentro de cada playlist
+    const playlistsFiltradas = playlists.map((pl) => ({
+        ...pl,
+        musics: pl.musics.filter((m) => m.artist?.isPublic),
+    }));
+
+    res.json({ success: true, data: playlistsFiltradas });
 });
 
 /**
@@ -83,13 +90,10 @@ const createPlaylist = catchAsync(async (req, res) => {
  * @function editPlaylist
  * @description
  * Atualiza o nome, lista de músicas ou adiciona/remove uma música individualmente.
- * Permite múltiplos modos de edição num só pedido.
+ * Impede adicionar músicas de artistas privados.
  *
  * @route PATCH /api/users/:id/playlists/:playlistId
  * @access Privado
- *
- * @param {Request} req - Pedido com campos opcionais: name, musics, musicId, remove
- * @param {Response} res - Resposta com playlist atualizada
  */
 const editPlaylist = catchAsync(async (req, res) => {
     const { name, musics, musicId, remove } = req.body;
@@ -102,14 +106,28 @@ const editPlaylist = catchAsync(async (req, res) => {
         "Playlist não encontrada"
     );
 
-    // Atualiza o nome se for fornecido
+    // Atualiza o nome (com sanitização)
     if (name) {
         playlist.name = sanitize(name);
     }
 
-    // Substitui todas as músicas se for fornecido um array
+    // Substitui todas as músicas, validando os artistas
     if (Array.isArray(musics)) {
-        playlist.musics = musics;
+        const Music = require("../models/Music");
+
+        const validMusics = await Music.find({
+            _id: { $in: musics },
+            isDeleted: false,
+        })
+            .populate("artist", "isPublic")
+            .select("_id")
+            .lean();
+
+        // Filtra músicas com artistas públicos
+        const filtered = validMusics.filter((m) => m.artist?.isPublic);
+
+        // Guarda os IDs das músicas válidas
+        playlist.musics = filtered.map((m) => m._id);
     }
 
     // Adiciona ou remove uma música individual
@@ -122,6 +140,19 @@ const editPlaylist = catchAsync(async (req, res) => {
             );
         } else {
             if (!alreadyIn) {
+                // Verifica se o artista é público
+                const Music = require("../models/Music");
+                const music = await Music.findById(musicId)
+                    .populate("artist", "isPublic")
+                    .lean();
+
+                if (!music || !music.artist?.isPublic || music.isDeleted) {
+                    return res.status(400).json({
+                        success: false,
+                        error: "Não é possível adicionar esta música.",
+                    });
+                }
+
                 playlist.musics.push(musicId);
             }
         }

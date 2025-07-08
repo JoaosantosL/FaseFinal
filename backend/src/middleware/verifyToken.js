@@ -47,7 +47,7 @@ const verifyToken = async (req, res, next) => {
 
         // 3. Procura o utilizador correspondente ao ID guardado no token
         const user = await User.findById(decoded.id).select(
-            "username email role"
+            "username email role createdAt linkedArtist"
         );
 
         // Se não existir (foi apagado ou inválido), bloqueia
