@@ -30,7 +30,7 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
 
-    // Role: base, pro ou artist
+    // Role: user ou artist
     const [role, setRole] = useState("base");
 
     // Campos adicionais para artistas
@@ -55,7 +55,7 @@ export default function Register() {
                     email,
                     password,
                     role,
-                    ...(role === "artist" && {
+                    ...(role === "premium" && {
                         artistName,
                         isPortuguese,
                     }),
@@ -134,54 +134,27 @@ export default function Register() {
                     />
                 </div>
 
-                {/* Seleção de Plano */}
-                <div className="mb-4">
-                    <label className="form-label text-light">Tipo de Conta</label>
-                    <div className="d-flex flex-column gap-2">
-                        <div className="form-check">
-                            <input
-                                className="form-check-input"
-                                type="radio"
-                                name="accountType"
-                                id="baseAccount"
-                                checked={role === "base"}
-                                onChange={() => setRole("base")}
-                            />
-                            <label className="form-check-label text-light" htmlFor="baseAccount">
-                                <strong>Base</strong> - Acesso básico gratuito
-                            </label>
-                        </div>
-                        <div className="form-check">
-                            <input
-                                className="form-check-input"
-                                type="radio"
-                                name="accountType"
-                                id="proAccount"
-                                checked={role === "pro"}
-                                onChange={() => setRole("pro")}
-                            />
-                            <label className="form-check-label text-light" htmlFor="proAccount">
-                                <strong>Pro</strong> - Acesso completo (assinar depois)
-                            </label>
-                        </div>
-                        <div className="form-check">
-                            <input
-                                className="form-check-input"
-                                type="radio"
-                                name="accountType"
-                                id="artistAccount"
-                                checked={role === "artist"}
-                                onChange={() => setRole("artist")}
-                            />
-                            <label className="form-check-label text-light" htmlFor="artistAccount">
-                                <strong>Artista</strong> - Para criadores de conteúdo
-                            </label>
-                        </div>
-                    </div>
+                {/* Toggle: artista */}
+                <div className="form-check form-switch mb-3">
+                    <input
+                        className="form-check-input"
+                        type="checkbox"
+                        role="switch"
+                        id="artistToggle"
+                        checked={role === "premium"}
+                        onChange={() => {
+                            setRole(role === "base" ? "premium" : "base");
+                            setArtistName("");
+                            setIsPortuguese(false);
+                        }}
+                    />
+                    <label className="form-check-label text-light" htmlFor="artistToggle">
+                        Registar como artista
+                    </label>
                 </div>
 
                 {/* Nome artístico (se artista) */}
-                {role === "artist" && (
+                {role === "premium" && (
                     <>
                         <div className="mb-3">
                             <label className="form-label text-light">Nome artístico</label>
@@ -213,14 +186,14 @@ export default function Register() {
 
                 <button
                     type="submit"
-                    className="btn btn-primary d-flex align-items-center gap-2 w-100 justify-content-center"
+                    className="btn btn-primary d-flex align-items-center gap-2"
                 >
                     Criar Conta
                 </button>
             </form>
 
             <div className="text-center muted small mt-4">
-                Já tens conta? <a href="/login" className="text-accent">Inicia sessão agora</a>.
+                Já tens conta? Inicia sessão agora.
             </div>
         </div>
     );

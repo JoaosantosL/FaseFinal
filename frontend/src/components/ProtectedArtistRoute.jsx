@@ -23,7 +23,7 @@ export default function ProtectedArtistRoute({ children }) {
     if (!user) return <Navigate to="/login" />;
 
     // Autenticado mas não é artista
-    if (user.role !== "artist") return <Navigate to="/" />;
+    if (user.role !== "premium") return <Navigate to="/" />;
 
     return children;
 }

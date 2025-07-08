@@ -188,7 +188,7 @@ export default function App() {
                     }
                 />
 
-                {/* Rotas públicas: login e registo e outros */}
+                {/* Rotas públicas: login e registo */}
                 <Route path="/artists" element={<Artists />} />
                 <Route path="/artists/:id" element={<ArtistDetail />} />
                 <Route path="/pesquisa" element={<SearchResults />} />

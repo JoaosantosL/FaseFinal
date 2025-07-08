@@ -12,7 +12,7 @@ export default function ArtistProfile() {
     const { user } = useContext(AuthContext);
 
     // Redireciona se o utilizador não for artista
-    if (!user || user.role !== "artist") {
+    if (!user || user.role !== "premium") {
         return <Navigate to="/" />;
     }
 
