@@ -84,7 +84,7 @@ router.get(
     "/:id/library",
     validate(idSchema, "params"),
     checkOwnership(User, "id", "_id"),
-    authorizeRole("user", "artist"),
+    authorizeRole("base", "pro", "artist"),
     getLibrary
 );
 
@@ -97,7 +97,7 @@ router.post(
     "/:id/library",
     validate(addToLibrarySchema), // inclui params e body
     checkOwnership(User, "id", "_id"),
-    authorizeRole("user", "artist"),
+    authorizeRole("base", "pro", "artist"),
     addToLibrary
 );
 
@@ -110,7 +110,7 @@ router.delete(
     "/:id/library/:musicId",
     validate(idSchema, "params"),
     checkOwnership(User, "id", "_id"),
-    authorizeRole("user", "artist"),
+    authorizeRole("base", "pro", "artist"),
     removeFromLibrary
 );
 
@@ -139,7 +139,7 @@ router.post(
     "/:id/playlists",
     validate(createPlaylistSchema),
     checkOwnership(User, "id", "_id"),
-    authorizeRole("user", "artist"),
+    authorizeRole("base", "pro", "artist"),
     createPlaylist
 );
 
@@ -152,7 +152,7 @@ router.patch(
     "/:id/playlists/:playlistId",
     validate(editPlaylistSchema),
     checkOwnership(Playlist, "playlistId", "user"),
-    authorizeRole("user", "artist"),
+    authorizeRole("base", "pro", "artist"),
     editPlaylist
 );
 
@@ -165,7 +165,7 @@ router.delete(
     "/:id/playlists/:playlistId",
     validate(idSchema, "params"),
     checkOwnership(Playlist, "playlistId", "user"),
-    authorizeRole("user", "artist"),
+    authorizeRole("base", "pro", "artist"),
     deletePlaylist
 );
 
@@ -192,7 +192,7 @@ router.patch(
     "/:id/username",
     validate(usernameSchema, "body"),
     checkOwnership(User, "id", "_id"),
-    authorizeRole("user", "artist"),
+    authorizeRole("base", "pro", "artist"),
     updateUsername
 );
 
