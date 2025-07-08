@@ -149,7 +149,7 @@ export default function Register() {
                         }}
                     />
                     <label className="form-check-label text-light" htmlFor="artistToggle">
-                        Registar como artista
+                        Subscrever como artista
                     </label>
                 </div>
 
@@ -188,7 +188,7 @@ export default function Register() {
                     type="submit"
                     className="btn btn-primary d-flex align-items-center gap-2"
                 >
-                    Criar Conta
+                    Subscrever
                 </button>
             </form>
 
