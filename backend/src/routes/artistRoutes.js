@@ -71,7 +71,7 @@ router.get("/artists", getAllArtists);
 router.get(
     "/artists/me",
     verifyToken,
-    authorizeRole("artist"),
+    authorizeRole("premium"),
     getOwnArtistProfile
 );
 
@@ -112,7 +112,7 @@ router.get("/albums/:id", validate(idSchema, "params"), getAlbumById);
 router.patch(
     "/artists/:id",
     verifyToken,
-    authorizeRole("artist"),
+    authorizeRole("premium"),
     validate(idSchema, "params"),
     validate(updateArtistSchema, "body"),
     checkArtistOwnership,
@@ -127,7 +127,7 @@ router.patch(
 router.patch(
     "/artists/:id/image",
     verifyToken,
-    authorizeRole("artist"),
+    authorizeRole("premium"),
     validate(idSchema, "params"),
     checkArtistOwnership,
     uploadArtistImage,
@@ -142,7 +142,7 @@ router.patch(
 router.post(
     "/artists/:id/albums",
     verifyToken,
-    authorizeRole("artist"),
+    authorizeRole("premium"),
     validate(idSchema, "params"),
     validate(createAlbumSchema, "body"),
     checkArtistOwnership,
@@ -158,7 +158,7 @@ router.post(
 router.post(
     "/artists/:id/musics",
     verifyToken,
-    authorizeRole("artist"),
+    authorizeRole("premium"),
     validate(createMusicSchema, "body"),
     checkArtistOwnership,
     uploadMusicFiles,

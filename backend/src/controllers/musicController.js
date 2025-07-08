@@ -41,18 +41,11 @@ const { broadcast } = require("../sockets/socketManager");
  */
 const getAllMusic = catchAsync(async (req, res) => {
     const userId = req.user._id.toString();
-    const userRole = req.user.role;
 
-    // Filtro para músicas não exclusivas ou usuários pro/artista
-    const filter = { isDeleted: false };
-    if (userRole === "base") {
-        filter.isExclusive = false;
-    }
-
-    const musicListRaw = await Music.find(filter)
+    const musicListRaw = await Music.find({ isDeleted: false })
         .populate({
             path: "artist",
-            select: "name isPublic",
+            select: "name isPublic", // vamos verificar se é público
         })
         .populate("album", "title")
         .lean()
@@ -335,7 +328,6 @@ const createMusic = catchAsync(async (req, res) => {
         duration,
         coverUrl,
         audioUrl,
-        isExclusive: req.body.isExclusive || false, // novo campo
     });
 
     // Atualiza o álbum se existir

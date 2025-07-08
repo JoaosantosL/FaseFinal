@@ -9,7 +9,7 @@
  * - Autenticação via JWT (cookie HttpOnly)
  * - Validação Joi (body e/ou parâmetros)
  * - Verificação de ownership (checkOwnership)
- * - Restrição por papel (authorizeRole: user | artist)
+ * - Restrição por papel (authorizeRole: base | premium)
  */
 
 const express = require("express");
@@ -84,7 +84,7 @@ router.get(
     "/:id/library",
     validate(idSchema, "params"),
     checkOwnership(User, "id", "_id"),
-    authorizeRole("base", "pro", "artist"),
+    authorizeRole("base", "premium"),
     getLibrary
 );
 
@@ -97,7 +97,7 @@ router.post(
     "/:id/library",
     validate(addToLibrarySchema), // inclui params e body
     checkOwnership(User, "id", "_id"),
-    authorizeRole("base", "pro", "artist"),
+    authorizeRole("base", "premium"),
     addToLibrary
 );
 
@@ -110,7 +110,7 @@ router.delete(
     "/:id/library/:musicId",
     validate(idSchema, "params"),
     checkOwnership(User, "id", "_id"),
-    authorizeRole("base", "pro", "artist"),
+    authorizeRole("base", "premium"),
     removeFromLibrary
 );
 
@@ -139,7 +139,7 @@ router.post(
     "/:id/playlists",
     validate(createPlaylistSchema),
     checkOwnership(User, "id", "_id"),
-    authorizeRole("base", "pro", "artist"),
+    authorizeRole("base", "premium"),
     createPlaylist
 );
 
@@ -152,7 +152,7 @@ router.patch(
     "/:id/playlists/:playlistId",
     validate(editPlaylistSchema),
     checkOwnership(Playlist, "playlistId", "user"),
-    authorizeRole("base", "pro", "artist"),
+    authorizeRole("base", "premium"),
     editPlaylist
 );
 
@@ -165,7 +165,7 @@ router.delete(
     "/:id/playlists/:playlistId",
     validate(idSchema, "params"),
     checkOwnership(Playlist, "playlistId", "user"),
-    authorizeRole("base", "pro", "artist"),
+    authorizeRole("base", "premium"),
     deletePlaylist
 );
 
@@ -192,7 +192,7 @@ router.patch(
     "/:id/username",
     validate(usernameSchema, "body"),
     checkOwnership(User, "id", "_id"),
-    authorizeRole("base", "pro", "artist"),
+    authorizeRole("base", "premium"),
     updateUsername
 );
 

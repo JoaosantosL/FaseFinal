@@ -11,8 +11,8 @@ const Joi = require("joi");
  * - `username`: texto entre 3 e 30 caracteres (obrigatório)
  * - `email`: email com formato válido (obrigatório)
  * - `password`: pelo menos 6 caracteres (obrigatório)
- * - `role`: opcional — "user" ou "artist"
- * - `artistName`: obrigatório se `role === "artist"`
+ * - `role`: opcional — "base" ou "premium"
+ * - `artistName`: obrigatório se `role === "premium"`
  *
  * @type {Joi.ObjectSchema}
  */
@@ -35,16 +35,16 @@ const registerSchema = Joi.object({
             "any.required": "A password é obrigatória",
         }),
 
-        role: Joi.string().valid("base", "pro", "artist").optional().messages({
-            "any.only": "O tipo de utilizador deve ser 'user' ou 'artist'",
+        role: Joi.string().valid("base", "premium").optional().messages({
+            "any.only": "O tipo de utilizador deve ser 'base' ou 'premium'",
         }),
 
         artistName: Joi.when("role", {
-            is: "artist",
+            is: "premium",
             then: Joi.string().min(2).max(100).required().messages({
                 "string.min":
                     "O nome artístico deve ter pelo menos 2 caracteres",
-                "any.required": "O nome artístico é obrigatório para artistas",
+                "any.required": "O nome artístico é obrigatório para premium",
             }),
             otherwise: Joi.forbidden(),
         }),

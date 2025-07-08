@@ -1,22 +1,17 @@
-
 [
     {
-        "username": "user1",
-        "email": "user1@example.com",
-        "password": "123456",
-        "role": "base"
+        "username": "Ana",
+        "email": "ana@email.com",
+        "password": "123456"
     },
     {
-        "username": "pro_user",
-        "email": "pro@example.com",
-        "password": "123456",
-        "role": "pro"
+        "username": "Bruno",
+        "email": "bruno@email.com",
+        "password": "123456"
     },
     {
-        "username": "artist1",
-        "email": "artist1@example.com",
-        "password": "123456",
-        "role": "artist",
-        "artistName": "Nome do Artista"
+        "username": "Carlos",
+        "email": "carlos@email.com",
+        "password": "123456"
     }
 ]

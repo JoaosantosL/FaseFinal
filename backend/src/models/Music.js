@@ -127,11 +127,6 @@ const musicSchema = new mongoose.Schema(
             },
         ],
 
-        isExclusive: {
-            type: Boolean,
-            default: false,
-        },
-
         // ───────────── Soft-delete ──────────────
 
         /**

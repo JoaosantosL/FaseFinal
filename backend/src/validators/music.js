@@ -35,7 +35,6 @@ const createMusicSchema = Joi.object({
     album: Joi.string().hex().length(24).optional().messages({
         "string.length": "ID do álbum inválido",
     }),
-    isExclusive: Joi.boolean().optional(), 
 }).custom((value) => {
     // Sanitiza o campo title
     if (value.title) value.title = sanitize(value.title);

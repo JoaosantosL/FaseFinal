@@ -7,8 +7,8 @@
  * - Dados de autenticação (username, email, passwordHash)
  * - Biblioteca pessoal (`library`)
  * - Reproduções pessoais com estatísticas (`personalPlays`)
- * - Papel na aplicação: "user" ou "artist"
- * - Se for artista, pode estar associado a um perfil público (`linkedArtist`)
+ * - Papel na aplicação: "base" ou "premium"
+ * - Se for premium, pode estar associado a um perfil público (`linkedArtist`)
  *
  * Utiliza timestamps automáticos (createdAt, updatedAt).
  */
@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema(
         },
         role: {
             type: String,
-            enum: ["base", "pro", "artist"], 
+            enum: ["base", "premium"],
             default: "base",
         },
         library: [
@@ -63,7 +63,7 @@ const userSchema = new mongoose.Schema(
         ],
 
         /**
-         * Se o utilizador for artista, este campo liga-o ao seu perfil público.
+         * Se o utilizador for premium, este campo liga-o ao seu perfil público.
          * Ex: user "ritasilva" → Artist "Rita Silva"
          */
         linkedArtist: {

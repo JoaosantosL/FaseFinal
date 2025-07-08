@@ -122,12 +122,12 @@ async function seedDatabase() {
                 username: u.username,
                 email: u.email,
                 passwordHash: await bcrypt.hash(u.password, salt),
-                role: u.role,
+                role: "base",
                 library: [],
                 personalPlays: [],
-                linkedArtist: u.role === "artist" ? artistMap[u.artistName] : null
             }))
         );
+
         await User.insertMany(usersHashed);
         console.log(
             `${usersHashed.length} utilizadores inseridos (senha: 123456)`

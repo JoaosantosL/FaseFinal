@@ -22,7 +22,6 @@ const catchAsync = require("../utils/catchAsync"); // Wrapper para tratar erros 
 const sanitize = require("../utils/sanitize"); // Limpeza de campos para prevenir XSS
 const AppError = require("../utils/appError"); // Classe de erro personalizada para erros HTTP
 const logger = require("../utils/logger"); // Logger para registos de eventos
-const { registerSchema } = require("../validators/auth");
 
 // ─────────────────────────────────────────────────────────────
 // Auxiliar: gera um JWT com o ID do utilizador autenticado
@@ -75,75 +74,69 @@ const getCookieOptions = () => {
  */
 const Artist = require("../models/Artist"); // Importar modelo Artist
 
-const register = catchAsync(async (req, res, next) => {
-    const { username, email, password, role, artistName, isPortuguese } = req.body;
 
-    // 1. Verificar se o email já existe
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-        return next(new AppError('Email já está em uso', 400));
+const register = catchAsync(async (req, res) => {
+    const username = sanitize(req.body.username);
+    const email = req.body.email;
+    const password = req.body.password;
+    const role = req.body.role || "base";
+
+    // Apenas se for premium
+    const artistName = req.body.artistName
+        ? sanitize(req.body.artistName)
+        : null;
+
+    // Novo campo opcional: se o artista é português
+    const isPortuguese = req.body.isPortuguese === true;
+
+    // Verifica duplicação de email ou username
+    const exists = await User.findOne({ $or: [{ email }, { username }] });
+    if (exists) {
+        throw new AppError("Email ou username já em uso", 409);
     }
 
-    // 2. Criar o usuário base
-    const newUser = await User.create({
-        username: sanitize(username),
-        email: sanitize(email),
-        passwordHash: password, // Será hasheado pelo pre-save hook
-        role: role || 'base'
+    // Hasheia a password
+    const passwordHash = await bcrypt.hash(password, 10);
+
+    // Se for premium, cria o documento Artist com o nome e nacionalidade
+    let linkedArtistId = null;
+    if (role === "premium") {
+        const artist = await Artist.create({
+            name: artistName,
+            isPortuguese,
+            isPublic: false,
+        });
+        linkedArtistId = artist._id;
+    }
+
+    // Criação do utilizador
+    const user = await User.create({
+        username,
+        email,
+        passwordHash,
+        role,
+        linkedArtist: linkedArtistId,
     });
 
-    let artistProfile = null;
-    
-    // 3. Se for artista, criar registro na coleção Artist
-    if (role === 'artist') {
-        if (!artistName) {
-            return next(new AppError('Nome artístico é obrigatório para artistas', 400));
-        }
+    // Geração de JWT e envio no cookie
+    const token = generateToken(user._id);
+    res.cookie("token", token, getCookieOptions());
 
-        artistProfile = await Artist.create({
-            name: sanitize(artistName),
-            isPortuguese: isPortuguese || false,
-            // Campos padrão para novo artista
-            isPublic: false,
-            bio: `Artista ${artistName} na plataforma SoundDream`
-        });
-
-        // Atualizar o usuário com a referência ao artista
-        newUser.linkedArtist = artistProfile._id;
-        await newUser.save();
-    }
-
-    // 4. Gerar token JWT
-    const token = generateToken(newUser._id);
-
-    // 5. Configurar cookie seguro
-    res.cookie('token', token, getCookieOptions());
-
-    // 6. Preparar resposta
-    const responseData = {
-        user: {
-            _id: newUser._id,
-            username: newUser.username,
-            email: newUser.email,
-            role: newUser.role,
-            createdAt: newUser.createdAt,
-            linkedArtist: newUser.linkedArtist || null
-        }
-    };
-
-    if (artistProfile) {
-        responseData.artist = {
-            _id: artistProfile._id,
-            name: artistProfile.name,
-            isPortuguese: artistProfile.isPortuguese
-        };
-    }
+    logger.info(`Novo registo: ${email} (${role})`);
 
     res.status(201).json({
         success: true,
-        data: responseData
+        data: {
+            _id: user._id,
+            username: user.username,
+            email: user.email,
+            role: user.role,
+            linkedArtist: user.linkedArtist,
+        },
     });
 });
+
+
 
 // ─────────────────────────────────────────────────────────────
 // LOGIN
