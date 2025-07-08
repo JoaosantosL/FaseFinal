@@ -139,6 +139,9 @@ export default function MusicCard({
                 headers: { "X-CSRF-Token": token },
             });
             toast.success("Música removida da biblioteca!");
+            // Atualiza a interface instantaneamente (se função foi passada)
+            if (onRemove) onRemove();
+
             if (onLibraryChange) onLibraryChange("remove", _id);
         } catch (err) {
             toast.error("Erro ao remover da biblioteca.");

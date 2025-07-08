@@ -3,7 +3,7 @@
  * @description
  * Página de registo de novos utilizadores na aplicação SoundDream.
  * Envia os dados para `POST /api/auth/register`, com token CSRF no header.
- * Em caso de sucesso:
+ * Se o registo for bem-sucedido:
  *  - Atualiza o AuthContext (`setUser`)
  *  - Redireciona automaticamente para a homepage autenticada `/`
  */
@@ -11,7 +11,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import api from "../services/axios"; // Axios já configurado com withCredentials
+import api from "../services/axios";
 
 /**
  * @component Register
@@ -21,44 +21,52 @@ import api from "../services/axios"; // Axios já configurado com withCredential
  * @returns {JSX.Element}
  */
 export default function Register() {
-    const { setUser } = useContext(AuthContext); // Função para atualizar o estado global com o utilizador autenticado
-    const navigate = useNavigate();              // Permite redirecionar para outra rota (pós-registo)
+    const { setUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    // Estados controlados dos campos de input
-    const [username, setUsername] = useState(""); // Nome de utilizador
-    const [email, setEmail] = useState("");       // Email de login
-    const [password, setPassword] = useState(""); // Password
-    const [error, setError] = useState(null);     // Mensagem de erro, caso falhe
+    // Campos base
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState(null);
+
+    // Role: base, pro ou artist
+    const [role, setRole] = useState("base");
+
+    // Campos adicionais para artistas
+    const [artistName, setArtistName] = useState("");
+    const [isPortuguese, setIsPortuguese] = useState(false);
 
     /**
      * @function handleSubmit
-     * Envia os dados para o backend com proteção CSRF e trata o resultado.
-     *
-     * @param {React.FormEvent} e - Evento de submissão do formulário
+     * Envia os dados do formulário com proteção CSRF.
      */
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Impede recarregamento da página
+        e.preventDefault();
 
         try {
-            // 1. Obtemos o token CSRF
             const { data } = await api.get("/csrf-token");
 
-            // 2. Enviamos o pedido de registo
+            // Payload condicional com campos de artista se role === "artist"
             await api.post(
                 "/auth/register",
-                { username, email, password },
                 {
-                    headers: {
-                        "X-CSRF-Token": data.csrfToken,
-                    },
+                    username,
+                    email,
+                    password,
+                    role,
+                    ...(role === "artist" && {
+                        artistName,
+                        isPortuguese,
+                    }),
+                },
+                {
+                    headers: { "X-CSRF-Token": data.csrfToken },
                 }
             );
 
-            // 3. Guardamos o utilizador no contexto global
             const me = await api.get("/auth/me");
             setUser(me.data.data);
-
-            // 4. Redirecionamos para a homepage
             navigate("/");
         } catch (err) {
             console.error("Erro no registo:", err);
@@ -68,19 +76,16 @@ export default function Register() {
 
     return (
         <div className="container py-5" style={{ maxWidth: "500px" }}>
-            {/* Título da página */}
             <h2 className="text-center mb-4" style={{ color: "var(--text)" }}>
                 Criar Conta
             </h2>
 
-            {/* Alerta visual para erros */}
             {error && (
                 <div className="alert alert-danger text-center fw-medium shadow-sm">
                     {error}
                 </div>
             )}
 
-            {/* Formulário controlado */}
             <form
                 onSubmit={handleSubmit}
                 className="p-4 rounded shadow"
@@ -89,7 +94,7 @@ export default function Register() {
                     border: "1px solid var(--hover)",
                 }}
             >
-                {/* Campo: Nome de utilizador */}
+                {/* Nome de utilizador */}
                 <div className="mb-3">
                     <label className="form-label text-light">Nome de utilizador</label>
                     <input
@@ -102,7 +107,7 @@ export default function Register() {
                     />
                 </div>
 
-                {/* Campo: Email */}
+                {/* Email */}
                 <div className="mb-3">
                     <label className="form-label text-light">Email</label>
                     <input
@@ -115,7 +120,7 @@ export default function Register() {
                     />
                 </div>
 
-                {/* Campo: Password */}
+                {/* Password */}
                 <div className="mb-4">
                     <label className="form-label text-light">Password</label>
                     <input
@@ -129,15 +134,93 @@ export default function Register() {
                     />
                 </div>
 
-                {/* Botão de submissão */}
-                <button type="submit" className="btn btn-success w-100 shadow-sm">
+                {/* Seleção de Plano */}
+                <div className="mb-4">
+                    <label className="form-label text-light">Tipo de Conta</label>
+                    <div className="d-flex flex-column gap-2">
+                        <div className="form-check">
+                            <input
+                                className="form-check-input"
+                                type="radio"
+                                name="accountType"
+                                id="baseAccount"
+                                checked={role === "base"}
+                                onChange={() => setRole("base")}
+                            />
+                            <label className="form-check-label text-light" htmlFor="baseAccount">
+                                <strong>Base</strong> - Acesso básico gratuito
+                            </label>
+                        </div>
+                        <div className="form-check">
+                            <input
+                                className="form-check-input"
+                                type="radio"
+                                name="accountType"
+                                id="proAccount"
+                                checked={role === "pro"}
+                                onChange={() => setRole("pro")}
+                            />
+                            <label className="form-check-label text-light" htmlFor="proAccount">
+                                <strong>Pro</strong> - Acesso completo (assinar depois)
+                            </label>
+                        </div>
+                        <div className="form-check">
+                            <input
+                                className="form-check-input"
+                                type="radio"
+                                name="accountType"
+                                id="artistAccount"
+                                checked={role === "artist"}
+                                onChange={() => setRole("artist")}
+                            />
+                            <label className="form-check-label text-light" htmlFor="artistAccount">
+                                <strong>Artista</strong> - Para criadores de conteúdo
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Nome artístico (se artista) */}
+                {role === "artist" && (
+                    <>
+                        <div className="mb-3">
+                            <label className="form-label text-light">Nome artístico</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="ex: João Silva"
+                                value={artistName}
+                                onChange={(e) => setArtistName(e.target.value)}
+                                required
+                            />
+                        </div>
+
+                        {/* Checkbox: artista português */}
+                        <div className="form-check mb-3">
+                            <input
+                                className="form-check-input"
+                                type="checkbox"
+                                id="isPortuguese"
+                                checked={isPortuguese}
+                                onChange={(e) => setIsPortuguese(e.target.checked)}
+                            />
+                            <label className="form-check-label text-light" htmlFor="isPortuguese">
+                                És um artista português?
+                            </label>
+                        </div>
+                    </>
+                )}
+
+                <button
+                    type="submit"
+                    className="btn btn-primary d-flex align-items-center gap-2 w-100 justify-content-center"
+                >
                     Criar Conta
                 </button>
             </form>
 
-            {/* Link para login */}
             <div className="text-center muted small mt-4">
-                Já tens conta? Inicia sessão agora.
+                Já tens conta? <a href="/login" className="text-accent">Inicia sessão agora</a>.
             </div>
         </div>
     );

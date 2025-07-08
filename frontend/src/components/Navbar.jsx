@@ -112,8 +112,15 @@ export default function Navbar() {
                                         Favoritas
                                     </Link>
                                 </li>
-                                <li className="nav-item small fst-italic" style={{ color: "var(--text)" }}>
-                                    Olá, <span className="fw-semibold">{user.username}</span>
+                                <li className="nav-item">
+                                    <Link
+                                        className="nav-link text-light"
+                                        to="/profile"
+                                        onClick={() => setIsOpen(false)}
+                                        style={{ fontStyle: "italic", fontWeight: "500" }}
+                                    >
+                                        Olá, {user.username}
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
                                     <button

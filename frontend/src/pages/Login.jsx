@@ -114,7 +114,7 @@ export default function Login() {
                 </div>
 
                 {/* Botão de login */}
-                <button type="submit" className="btn btn-success w-100 shadow-sm">
+                <button type="submit" className="btn btn-primary d-flex align-items-center gap-2">
                     Entrar
                 </button>
             </form>

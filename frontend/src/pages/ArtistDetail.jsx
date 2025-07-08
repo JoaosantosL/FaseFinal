@@ -2,7 +2,8 @@
  * @file ArtistDetail.jsx
  * @description
  * Página que apresenta os detalhes de um artista e os seus álbuns.
- * Mostra imagem, nome, bio e uma grelha de cartões de álbum.
+ * Mostra imagem, nome, bio, percurso, influências e factos.
+ * Também apresenta os álbuns do artista como cartões.
  */
 
 import { useEffect, useState } from "react";
@@ -18,12 +19,12 @@ import AlbumCard from "../components/AlbumCard";
  * @returns {JSX.Element}
  */
 export default function ArtistDetail() {
-    const { id } = useParams();               // ID do artista (URL param)
-    const [artist, setArtist] = useState(null); // Dados completos do artista
+    const { id } = useParams();               // ID do artista na URL
+    const [artist, setArtist] = useState(null); // Dados do artista
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Vai buscar os dados do artista ao montar o componente
+    // Carrega os dados do artista ao montar o componente
     useEffect(() => {
         if (!id) return;
 
@@ -41,7 +42,7 @@ export default function ArtistDetail() {
             .finally(() => setLoading(false));
     }, [id]);
 
-    // Carregamento ou erro
+    // Estado: a carregar
     if (loading) {
         return (
             <div className="container py-5">
@@ -50,39 +51,97 @@ export default function ArtistDetail() {
         );
     }
 
+    // Estado: erro ou artista não encontrado
     if (error || !artist) {
         return (
             <div className="container py-5">
-                <div className="alert alert-danger text-center">{error || "Artista não encontrado."}</div>
+                <div className="alert alert-danger text-center">
+                    {error || "Artista não encontrado."}
+                </div>
             </div>
         );
     }
 
     return (
         <div className="container py-5">
-            {/* Topo: Imagem, Nome, Bio */}
-            <div className="d-flex flex-column flex-md-row align-items-center gap-4 mb-4">
-                <img
-                    src={`${process.env.REACT_APP_BACKEND_URL}${artist.imageUrl}`}
-                    alt={`Imagem de ${artist.name}`}
-                    className="rounded shadow"
-                    style={{ width: "160px", height: "160px", objectFit: "cover" }}
-                />
+            {/* Nome do artista */}
+            <h2 className="fw-bold mb-4" style={{ color: "var(--text)" }}>
+                {artist.name}
+            </h2>
 
-                <div>
-                    <h2 className="fw-semibold" style={{ color: "var(--text)" }}>
-                        {artist.name}
-                    </h2>
+            {/* Linha com imagem + perfil */}
+            <div className="d-flex flex-column flex-md-row gap-4 align-items-start">
+                {/* Esquerda: imagem */}
+                <div style={{ flexShrink: 0 }}>
+                    <img
+                        src={`${process.env.REACT_APP_BACKEND_URL}${artist.imageUrl}`}
+                        alt={`Imagem de ${artist.name}`}
+                        className="shadow"
+                        style={{
+                            width: "260px",
+                            height: "260px",
+                            objectFit: "cover",
+                        }}
+                    />
+                </div>
+
+                {/* Direita: dados artísticos */}
+                <div className="flex-grow-1">
                     {artist.bio && (
-                        <p className="muted mt-2" style={{ maxWidth: "600px" }}>
-                            {artist.bio}
-                        </p>
+                        <div className="mb-4">
+                            <h6 className="fw-semibold" style={{ color: "var(--text)" }}>
+                                Biografia
+                            </h6>
+                            <p className="muted mb-4">{artist.bio}</p>
+                        </div>
+                    )}
+
+                    {artist.percurso && (
+                        <div className="mb-4">
+                            <h6 className="fw-semibold" style={{ color: "var(--text)" }}>
+                                Percurso artístico
+                            </h6>
+                            <p className="muted mb-0">{artist.percurso}</p>
+                        </div>
+                    )}
+
+                    {artist.influences?.length > 0 && (
+                        <div className="mb-4">
+                            <h6 className="fw-semibold" style={{ color: "var(--text)" }}>
+                                Influências musicais
+                            </h6>
+                            <div className="d-flex flex-wrap gap-2">
+                                {artist.influences.map((i, idx) => (
+                                    <span
+                                        key={idx}
+                                        className="badge rounded-pill bg-secondary-subtle text-dark px-3 py-1"
+                                    >
+                                        {i}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {artist.facts?.length > 0 && (
+                        <div>
+                            <h6 className="fw-semibold" style={{ color: "var(--text)" }}>
+                                Factos e curiosidades
+                            </h6>
+                            <ul className="ps-3 mb-0">
+                                {artist.facts.map((f, idx) => (
+                                    <li key={idx} className="muted small">
+                                        {f}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     )}
                 </div>
             </div>
 
             {/* Secção de álbuns */}
-            <h4 className="fw-medium mb-3" style={{ color: "var(--text)" }}>
+            <h4 className="fw-medium mt-5 mb-3" style={{ color: "var(--text)" }}>
                 Álbuns
             </h4>
 

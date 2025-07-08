@@ -9,6 +9,8 @@
  */
 
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { FaPlus } from "react-icons/fa";
 import api from "../services/axios";
 import MusicCard from "../components/MusicCard";
 import { AuthContext } from "../context/AuthContext";
@@ -103,6 +105,33 @@ export default function Home() {
 
     return (
         <div className="container py-5">
+
+            {user && (
+                <div className="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-2">
+                    <div className="d-flex flex-wrap align-items-center gap-2">
+                        <span className="fw-semibold text-light">Playlists:</span>
+                        {playlists.length === 0 ? (
+                            <span className="muted">nenhuma ainda</span>
+                        ) : (
+                            playlists.map((pl) => (
+                                <Link
+                                    key={pl._id}
+                                    to={`/playlists/${pl._id}`}
+                                    className="btn btn-sm btn-outline-light"
+                                >
+                                    {pl.name}
+                                </Link>
+                            ))
+                        )}
+                    </div>
+                    <Link
+                        to="/chatbot-playlist"
+                        className="btn btn-primary d-flex align-items-center gap-2"
+                    >
+                        <FaPlus /> Usar assistente para criar playlist
+                    </Link>
+                </div>
+            )}
             {/* Secção: Sugestões Personalizadas */}
             <h2 className="mb-3 fw-semibold" style={{ color: "var(--text)" }}>
                 As nossas sugestões
@@ -115,7 +144,7 @@ export default function Home() {
                         </p>
                     </div>
                 ) : (
-                    recomendadas.map((music) => (
+                    recomendadas.slice(0, 3).map((music) => (
                         <div className="col-sm-6 col-md-4" key={music._id}>
                             <MusicCard
                                 {...music}
@@ -163,25 +192,6 @@ export default function Home() {
                 </>
             )}
 
-            {/* Secção: Playlists Pessoais */}
-            {user && (
-                <div className="mb-5 d-flex flex-wrap gap-3">
-                    {playlists.length === 0 ? (
-                        <span className="muted">Nenhuma playlist criada ainda.</span>
-                    ) : (
-                        playlists.map((pl) => (
-                            <a
-                                key={pl._id}
-                                href={`/playlists/${pl._id}`}
-                                className="btn btn-sm btn-outline-light"
-                            >
-                                {pl.name}
-                            </a>
-                        ))
-                    )}
-                </div>
-            )}
-
             {/*  Mensagens de erro ou carregamento */}
             {error && (
                 <div className="alert alert-danger text-center fw-medium shadow-sm">
@@ -196,6 +206,9 @@ export default function Home() {
             )}
 
             {/* Secção: Todas as músicas (exceto as sugeridas) */}
+            <h3 className="mb-3 fw-semibold" style={{ color: "var(--text)" }}>
+                Restante Biblioteca
+            </h3>
             <div className="row g-4">
                 {restantes.map((music) => (
                     <div className="col-sm-6 col-md-4" key={music._id}>

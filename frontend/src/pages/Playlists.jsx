@@ -79,9 +79,15 @@ export default function Playlists() {
         if (!newName || newName.trim() === currentName) return;
 
         try {
-            await api.patch(`/users/${user._id}/playlists/${playlistId}`, {
-                name: newName.trim(),
-            });
+            const token = await getCsrfToken();
+
+            await api.patch(
+                `/users/${user._id}/playlists/${playlistId}`,
+                { name: newName.trim() },
+                {
+                    headers: { "csrf-token": token },
+                }
+            );
 
             setPlaylists((prev) =>
                 prev.map((pl) =>
@@ -105,7 +111,12 @@ export default function Playlists() {
         if (!confirmDelete) return;
 
         try {
-            await api.delete(`/users/${user._id}/playlists/${playlistId}`);
+            const token = await getCsrfToken();
+
+            await api.delete(`/users/${user._id}/playlists/${playlistId}`, {
+                headers: { "csrf-token": token },
+            });
+
             setPlaylists((prev) => prev.filter((pl) => pl._id !== playlistId));
         } catch (err) {
             console.error("Erro ao apagar playlist:", err);
@@ -116,16 +127,24 @@ export default function Playlists() {
     return (
         <div className="container py-5">
             {/* Cabeçalho com título e botão para criar nova playlist */}
-            <div className="d-flex justify-content-between align-items-center mb-4">
-                <h2 className="fw-semibold text-center flex-grow-1" style={{ color: "var(--text)" }}>
+            <div className="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+                <h2 className="fw-semibold m-0" style={{ color: "var(--text)" }}>
                     As Minhas Playlists
                 </h2>
-                <button
-                    className="btn btn-primary d-flex align-items-center gap-2"
-                    onClick={handleCreatePlaylist}
-                >
-                    <FaPlus /> Criar Nova
-                </button>
+                <div className="d-flex flex-wrap gap-2">
+                    <button
+                        className="btn btn-primary d-flex align-items-center gap-2"
+                        onClick={handleCreatePlaylist}
+                    >
+                        <FaPlus /> Criar nova vazia
+                    </button>
+                    <Link
+                        to="/chatbot-playlist"
+                        className="btn btn-primary d-flex align-items-center gap-2"
+                    >
+                        <FaPlus /> Usar assistente para criar playlist
+                    </Link>
+                </div>
             </div>
 
             {/* Alerta de erro caso não consiga carregar playlists */}
