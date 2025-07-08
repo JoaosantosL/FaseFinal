@@ -163,7 +163,7 @@ export default function Profile() {
                     </div>
 
                     {/* Link para perfil de artista, se aplicável */}
-                    {user.role === "artist" && (
+                    {user.role === "premium" && (
                         <div className="mt-5">
                             <h4 className="mb-3">Perfil Artístico</h4>
                             <p className="mb-2">

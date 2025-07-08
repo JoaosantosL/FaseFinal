@@ -2,17 +2,26 @@
   VARIÁVEIS GLOBAIS (modo escuro)
 ──────────────────────────────*/
 :root {
-    --bg-main: #2e2e2e;
-    --bg-card: #323232;
-    --text: #FFF8DE;
-    --text-muted: #C5D3E8;
-    --accent: #D0E8C5;
-    --accent-hover: #b5d4aa;
-    --border: #777777;
-    --danger: #e74c3c;
-    --success: #2ecc71;
-    --warning: #f1c40f;
-    --shadow: rgba(0, 0, 0, 0.2);
+    --primary: #00ffffd2;
+    --primary-dark: #5d5d5e;
+    --light: #FFFFFF;
+    --dark: rgb(11, 23, 54);
+    --gray: #5d5d5e;
+    --light-gray: #B3B3B3;
+    --text-light: #ecf0f1;
+    --bg-dark: #1a1a1a;
+    
+    --bg-main: #1a1a1a;
+    --bg-card: #2a2a2a;
+    --text: #ecf0f1;
+    --text-muted: #B3B3B3;
+    --accent: #00ffffd2;
+    --accent-hover: #00c8c8;
+    --border: #5d5d5e;
+    --danger: #ff5555;
+    --success: #00cc66;
+    --warning: #ffcc00;
+    --shadow: rgba(0, 0, 0, 0.3);
 }
 
 /*───────────────────────
@@ -24,13 +33,9 @@ body {
     font-family: "Segoe UI", sans-serif;
     margin: 0;
     padding-bottom: 100px;
-    /* espaço para o player fixo */
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
     font-weight: 600;
     color: var(--text);
 }
@@ -46,18 +51,20 @@ h4 {
     font-weight: 500;
     border-radius: 6px;
     box-shadow: 0 2px 4px var(--shadow);
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .btn-primary {
     background-color: var(--accent);
     border-color: var(--accent);
-    color: #333;
+    color: var(--dark);
 }
 
 .btn-primary:hover {
     background-color: var(--accent-hover);
     border-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 200, 200, 0.3);
 }
 
 .btn-success {
@@ -66,10 +73,22 @@ h4 {
     color: white;
 }
 
+.btn-success:hover {
+    background-color: #00b359;
+    border-color: #00b359;
+    transform: translateY(-2px);
+}
+
 .btn-danger {
     background-color: var(--danger);
     border-color: var(--danger);
     color: white;
+}
+
+.btn-danger:hover {
+    background-color: #ff3333;
+    border-color: #ff3333;
+    transform: translateY(-2px);
 }
 
 .btn-play {
@@ -79,30 +98,33 @@ h4 {
     border: 1px solid var(--text);
     background-color: transparent;
     color: var(--text);
+    transition: all 0.3s ease;
 }
 
 .btn-play:hover {
     background-color: var(--accent);
     border-color: var(--accent-hover);
-    color: white;
+    color: var(--dark);
+    transform: scale(1.05);
 }
 
 /*───────────────────────
   INPUTS E TEXTAREAS
 ───────────────────────*/
-input,
-textarea {
-    background-color: #6a6a6a;
+input, textarea, select {
+    background-color: var(--bg-card);
     color: var(--text);
     border: 1px solid var(--border);
     border-radius: 5px;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
 }
 
-input:focus,
-textarea:focus {
+input:focus, textarea:focus, select:focus {
     border-color: var(--accent);
     outline: none;
-    box-shadow: 0 0 0 2px #d0e8c533;
+    box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.2);
+    background-color: var(--bg-card);
 }
 
 /*───────────────────────
@@ -112,16 +134,22 @@ textarea:focus {
     border-radius: 8px;
     font-weight: 500;
     box-shadow: 0 2px 4px var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.alert:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow);
 }
 
 .alert-danger {
-    background-color: #ff4d4f10;
+    background-color: rgba(255, 85, 85, 0.1);
     color: var(--danger);
     border: 1px solid var(--danger);
 }
 
 .alert-success {
-    background-color: #27ae6010;
+    background-color: rgba(0, 204, 102, 0.1);
     color: var(--success);
     border: 1px solid var(--success);
 }
@@ -165,6 +193,11 @@ textarea:focus {
     object-fit: cover;
     border-radius: 6px;
     border: 1px solid var(--border);
+    transition: transform 0.3s ease;
+}
+
+.music-player .info img:hover {
+    transform: scale(1.05);
 }
 
 .music-player .meta .title {
@@ -194,18 +227,23 @@ textarea:focus {
     border-radius: 5px;
     position: relative;
     cursor: pointer;
+    transition: height 0.2s ease;
+}
+
+.music-player .progress-bar:hover {
+    height: 8px;
 }
 
 .music-player .progress {
     height: 100%;
     background-color: var(--accent);
     border-radius: 5px;
-    transition: width 0.2s ease;
+    transition: width 0.2s ease, background-color 0.3s ease;
 }
 
 .player-button {
     background-color: var(--accent);
-    color: white;
+    color: var(--dark);
     border: none;
     border-radius: 50%;
     width: 48px;
@@ -214,21 +252,30 @@ textarea:focus {
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 6px var(--shadow);
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .player-button:hover {
     background-color: var(--accent-hover);
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 /*───────────────────────
   MUSIC CARD
 ───────────────────────*/
 .music-card {
-    background-color: var(--bg-main);
+    background-color: var(--bg-card);
     overflow: hidden;
     position: relative;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px var(--shadow);
+}
+
+.music-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 255, 255, 0.2);
 }
 
 .cover-container {
@@ -242,11 +289,16 @@ textarea:focus {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.music-card:hover .cover-image {
+    transform: scale(1.05);
 }
 
 .play {
     background-color: var(--accent);
-    color: white;
+    color: var(--dark);
 }
 
 .btn-group-vertical {
@@ -272,8 +324,8 @@ textarea:focus {
 
 .tooltip-text {
     visibility: hidden;
-    background-color: #333;
-    color: #fff;
+    background-color: var(--dark);
+    color: var(--text-light);
     text-align: center;
     font-size: 12px;
     border-radius: 6px;
@@ -303,32 +355,34 @@ textarea:focus {
 
 .Toastify__toast {
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    color: var(--dark);
     padding: 12px 16px;
+    transition: all 0.3s ease;
 }
 
 .Toastify__toast--success {
-    background-color: var(--accent);
-    color: var(--border);
+    background-color: var(--success);
+    color: white;
     border-left: 6px solid var(--accent-hover);
 }
 
 .Toastify__toast--error {
-    background-color: #FFF8DE;
-    color: #7c3d1f;
-    border-left: 6px solid #e74c3c;
+    background-color: var(--danger);
+    color: white;
+    border-left: 6px solid #cc0000;
 }
 
 .Toastify__toast--info {
-    background-color: #C5D3E8;
-    color: #1f2b50;
-    border-left: 6px solid #3498db;
+    background-color: var(--accent);
+    color: var(--dark);
+    border-left: 6px solid var(--primary-dark);
 }
 
 .Toastify__close-button {
     color: inherit;
-    opacity: 0.5;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
 }
 
 .Toastify__close-button:hover {
@@ -336,16 +390,22 @@ textarea:focus {
 }
 
 .Toastify__progress-bar {
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.3);
 }
 
 /*───────────────────────
   BADGES E MODAIS
 ───────────────────────*/
 .badge-counter {
-    background-color: var(--text);
-    color: var(--bg-main);
+    background-color: var(--accent);
+    color: var(--dark);
     font-size: 0.7rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.badge-counter:hover {
+    transform: scale(1.1);
 }
 
 .modal-backdrop {
@@ -354,7 +414,7 @@ textarea:focus {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 1050;
     display: flex;
     align-items: center;
@@ -365,10 +425,16 @@ textarea:focus {
     background-color: var(--bg-card);
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 12px var(--shadow);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     max-width: 400px;
     width: 100%;
     color: var(--text);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.modal-content:hover {
+    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
 }
 
 /*───────────────────────
@@ -377,6 +443,11 @@ textarea:focus {
 
 .navbar-toggler-icon {
     filter: invert(90%);
+    transition: transform 0.3s ease;
+}
+
+.navbar-toggler:hover .navbar-toggler-icon {
+    transform: rotate(90deg);
 }
 
 @media (max-width: 991.98px) {
@@ -398,40 +469,43 @@ textarea:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--bg-main);
-    /* fundo escuro */
+    background-color: var(--bg-card);
     color: var(--text);
-    /* ícone claro */
     font-size: 16px;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
     padding: 0;
     cursor: pointer;
+    box-shadow: 0 2px 4px var(--shadow);
 }
 
 .btn-circle:hover,
 .btn-circle.active {
-    background-color: var(--text);
-    /* fundo claro */
-    color: var(--bg-main);
-    /* ícone escuro */
-    transform: scale(1.05);
+    background-color: var(--accent);
+    color: var(--dark);
+    transform: scale(1.1) rotate(10deg);
 }
 
 /* Botão Play mantém cor especial */
 .btn-circle.play {
     background-color: var(--accent);
-    color: white;
+    color: var(--dark);
 }
 
 .btn-circle.play:hover {
     background-color: var(--accent-hover);
-    color: white;
+    color: var(--dark);
+    transform: scale(1.15);
 }
 
 /* Garante que ícones SVG mantêm tamanho */
 .btn-circle svg {
     width: 18px;
     height: 18px;
+    transition: transform 0.3s ease;
+}
+
+.btn-circle:hover svg {
+    transform: scale(1.2);
 }
 
 .music-list-item {
@@ -442,12 +516,15 @@ textarea:focus {
     padding: 0.75rem 1rem;
     background-color: var(--bg-card);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease;
     list-style: none;
+    border-radius: 6px;
+    margin-bottom: 4px;
 }
 
 .music-list-item:hover {
-    background-color: var(--hover);
+    background-color: var(--primary-dark);
+    transform: translateX(5px);
 }
 
 /* Thumbnail */
@@ -456,6 +533,12 @@ textarea:focus {
     height: 64px;
     object-fit: cover;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.music-list-item:hover .cover {
+    transform: scale(1.05);
 }
 
 /* Info */
@@ -474,10 +557,15 @@ textarea:focus {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: color 0.3s ease;
+}
+
+.music-list-item:hover .info .title {
+    color: var(--accent);
 }
 
 .music-list-item .info .sub {
-    color: #aaa;
+    color: var(--text-muted);
     font-size: 0.85rem;
     white-space: nowrap;
     overflow: hidden;
@@ -503,24 +591,19 @@ textarea:focus {
     background-color: var(--bg-card);
     color: var(--text);
     font-size: 14px;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .music-list-item .actions .btn-circle:hover {
-    background-color: var(--text);
-    /* fundo claro */
-    color: var(--bg-main);
-    /* ícone escuro */
-    transform: scale(1.05);
+    background-color: var(--accent);
+    color: var(--dark);
+    transform: scale(1.2);
 }
 
 /* Like ativo */
 .music-list-item .actions .btn-circle.active {
-    background-color: var(--text);
-    /* fundo claro */
-    color: var(--bg-main);
-    /* ícone escuro */
-    color: var(--bg-card);
+    background-color: var(--accent);
+    color: var(--dark);
 }
 
 /* Botões sobre a capa da música */
@@ -535,16 +618,26 @@ textarea:focus {
     align-items: center;
     gap: 0.5rem;
     z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.music-card:hover .overlay-buttons {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
 }
 
 .album-link {
     color: var(--accent);
-    text-decoration: underline;
+    text-decoration: none;
     font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 1px dotted transparent;
 }
 
 .album-link:hover {
     color: var(--accent-hover);
+    border-bottom-color: var(--accent-hover);
 }
 
 .hover-scale {
@@ -557,7 +650,6 @@ textarea:focus {
 
 .chatbot-container {
     max-width: 500px;
-    /* igual à SearchBar */
     margin: 0 auto;
     padding: 2rem 1rem;
 }
@@ -583,6 +675,11 @@ textarea:focus {
     width: fit-content;
     box-shadow: 0 2px 4px var(--shadow);
     animation: fadeIn 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.bubble:hover {
+    transform: scale(1.02);
 }
 
 .question-bubble {
@@ -593,7 +690,7 @@ textarea:focus {
 
 .answer-bubble {
     background-color: var(--accent);
-    color: #222;
+    color: var(--dark);
     align-self: flex-end;
 }
 
@@ -606,18 +703,19 @@ textarea:focus {
 
 .chat-input {
     margin-top: 0.5rem;
-    background-color: #6a6a6a;
+    background-color: var(--bg-card);
     border: 1px solid var(--border);
     color: var(--text);
     width: 100%;
     border-radius: 8px;
     padding: 0.6rem 1rem;
+    transition: all 0.3s ease;
 }
 
 .chat-input:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 2px #d0e8c533;
+    box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.2);
 }
 
 @keyframes fadeIn {
@@ -625,7 +723,6 @@ textarea:focus {
         opacity: 0;
         transform: translateY(6px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -645,6 +742,12 @@ textarea:focus {
     flex-direction: column;
     gap: 1rem;
     box-shadow: 0 2px 4px var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.stats-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 255, 255, 0.1);
 }
 
 .stat-item {
@@ -656,6 +759,11 @@ textarea:focus {
     font-weight: 500;
     border-bottom: 1px solid var(--border);
     padding-bottom: 0.6rem;
+    transition: color 0.3s ease;
+}
+
+.stat-item:hover {
+    color: var(--accent);
 }
 
 .stat-item:last-child {
@@ -665,6 +773,11 @@ textarea:focus {
 
 .stat-item .label {
     color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.stat-item:hover .label {
+    color: var(--accent);
 }
 
 .stat-item .value {
@@ -674,23 +787,19 @@ textarea:focus {
 /* Switch personalizado (versão Bootstrap 5) */
 .form-check-input:checked {
     background-color: var(--accent);
-    /* Verde personalizado */
     border-color: var(--accent);
 }
 
-/* Opcional: aumentar contraste no foco */
 .form-check-input:focus {
-    box-shadow: 0 0 0 0.2rem rgba(46, 204, 113, 0.25);
-    /* sombra verde translúcida */
+    box-shadow: 0 0 0 0.25rem rgba(0, 255, 255, 0.25);
 }
 
 .chatbot-toggle-button {
     position: fixed;
     bottom: 100px;
-    /* Acima do player global */
     right: 24px;
-    background-color: #4E4F50;
-    color: #E2DED0;
+    background-color: var(--accent);
+    color: var(--dark);
     border: none;
     border-radius: 50%;
     width: 48px;
@@ -700,18 +809,18 @@ textarea:focus {
     justify-content: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .chatbot-toggle-button:hover {
-    background-color: #42525f;
+    background-color: var(--accent-hover);
+    transform: scale(1.1) rotate(15deg);
     cursor: pointer;
 }
 
 .chatbot-popup-wrapper {
     position: fixed;
     bottom: 80px;
-    /* acima do player */
     right: 20px;
     z-index: 1050;
     background: transparent;
@@ -722,16 +831,22 @@ textarea:focus {
 .chatbot-popup {
     position: fixed;
     bottom: 160px;
-    /* acima do botão + player */
     right: 24px;
     width: 320px;
     height: 420px;
-    background: #fff;
+    background: var(--bg-card);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     z-index: 1001;
     display: flex;
     flex-direction: column;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.chatbot-popup:hover {
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.2);
 }
 
 /* Fundo do chat */
@@ -747,14 +862,15 @@ textarea:focus {
 
 /* Cabeçalho do chat */
 .chatbot-header {
-    background-color: var(--bg-main);
+    background-color: var(--bg-card);
     padding: 0.75rem 1rem;
     font-weight: bold;
     font-size: 1.1rem;
-    border-bottom: 1px solid #555;
+    border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: var(--text);
 }
 
 /* Área de mensagens */
@@ -765,6 +881,7 @@ textarea:focus {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    background-color: var(--bg-main);
 }
 
 /* Bolhas de conversa */
@@ -775,18 +892,23 @@ textarea:focus {
     word-wrap: break-word;
     font-size: 0.95rem;
     line-height: 1.4;
+    transition: all 0.3s ease;
+}
+
+.bubble:hover {
+    transform: scale(1.02);
 }
 
 .bot-message {
-    background-color: #444;
-    color: #f5f5f5;
+    background-color: var(--bg-card);
+    color: var(--text);
     align-self: flex-start;
     border-top-left-radius: 0;
 }
 
 .user-message {
-    background-color: #cdeac0;
-    color: #333;
+    background-color: var(--accent);
+    color: var(--dark);
     align-self: flex-end;
     border-top-right-radius: 0;
 }
@@ -795,48 +917,140 @@ textarea:focus {
 .chatbot-input {
     display: flex;
     padding: 0.5rem 1rem;
-    border-top: 1px solid #555;
-    background-color: var(--bg-main);
+    border-top: 1px solid var(--border);
+    background-color: var(--bg-card);
+    gap: 0.5rem;
 }
 
 .chatbot-input textarea {
     flex: 1;
-    border: none;
+    border: 1px solid var(--border);
     outline: none;
     padding: 0.5rem;
     border-radius: 0.5rem;
+    background-color: var(--bg-main);
+    color: var(--text);
+    resize: none;
+    transition: all 0.3s ease;
+}
+
+.chatbot-input textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.2);
 }
 
 .chatbot-input button {
-    background-color: #cdeac0;
+    background-color: var(--accent);
     border: none;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     font-weight: bold;
-    color: #333;
+    color: var(--dark);
+    transition: all 0.3s ease;
 }
 
-.chatbot-footer form {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: nowrap;
-}
-
-.chatbot-footer input[type="text"] {
-    flex: 1 1 auto;
-    min-width: 0;
-}
-
-.chatbot-footer button {
-    white-space: nowrap;
+.chatbot-input button:hover {
+    background-color: var(--accent-hover);
+    transform: scale(1.05);
 }
 
 .ok-button {
     font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.ok-button:hover {
+    transform: translateY(-2px);
 }
 
 .auto-expand {
     line-height: 1.5;
     overflow-y: hidden;
     transition: height 0.2s ease;
+}
+
+/* Efeitos de hover adicionais para elementos interativos */
+a {
+    color: var(--accent);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-hover);
+    text-decoration: none;
+}
+
+/* Efeito de brilho para elementos ativos */
+.glow-effect {
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    }
+    to {
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+    }
+}
+
+/* Efeito de onda ao clicar */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+}
+
+.ripple:active:after {
+    transform: scale(0, 0);
+    opacity: 0.3;
+    transition: 0s;
+}
+
+/* Efeito de flutuação sutil */
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Efeito de rotação */
+.rotate:hover {
+    animation: rotate 0.5s ease-in-out;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Efeito de pulsação para notificações */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
