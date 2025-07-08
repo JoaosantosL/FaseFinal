@@ -10,6 +10,16 @@
         "reactions": []
     },
     {
+        "title": "Aguarela",
+        "artistName": "VSP-AST",
+        "albumTitle": "As melhores do VSP-AST",
+        "duration": 632,
+        "coverUrl": "/public/uploads/covers/albums/VSP_AST_Aguarela.jpg",
+        "audioUrl": "/public/uploads/audio/aguarelavsp.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
         "title": "Blinding Lights",
         "artistName": "The Weeknd",
         "albumTitle": "After Hours",
@@ -137,6 +147,16 @@
         "coverUrl": "/public/uploads/covers/musics/Inner-Circle-Bad-Boys.jpg",
         "audioUrl": "/public/uploads/audio/Inner-Circle-Bad-Boys.mp3",
         "plays": 5,
+        "reactions": []
+    },
+     {
+        "title": "Set de Verão",
+        "artistName": "DJ Joãozinho",
+        "albumTitle": "Anima-te vida",
+        "duration": 632,
+        "coverUrl": "/public/uploads/covers/albums/djjoaozinhocoveralbum.jpg",
+        "audioUrl": "/public/uploads/audio/joaozinhoset.mp3",
+        "plays": 0,
         "reactions": []
     },
     {
@@ -326,16 +346,6 @@
         "duration": 270,
         "coverUrl": "/public/uploads/covers/albums/Salvador-Sobral-BPM.jpg",
         "audioUrl": "/public/uploads/audio/Salvador-Sobral-Fui-Ver-Meu-Amor.mp3",
-        "plays": 0,
-        "reactions": []
-    },
-    {
-        "title": "Set de Verão",
-        "artistName": "DJ Joãozinho",
-        "albumTitle": "Anima-te vida",
-        "duration": 632,
-        "coverUrl": "/public/uploads/covers/albums/djjoaozinhocoveralbum.jpg",
-        "audioUrl": "/public/uploads/audio/joaozinhoset.mp3",
         "plays": 0,
         "reactions": []
     }

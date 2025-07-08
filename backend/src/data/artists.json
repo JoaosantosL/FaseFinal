@@ -418,5 +418,20 @@
             "Inovador"
         ],
         "extraInfo": "Jovem DJ em ascensão, promete agitar as pistas de dança com a sua música."
+    },
+    {
+        "name" : "VSP-AST",
+        "bio": "VSP-AST é um projeto musical português que combina elementos de pop, eletrónica e música tradicional.",
+        "imageUrl": "/public/uploads/covers/artists/Vsp_Ast.jpg",
+        "isPortuguese": true,
+        "isPublic": true,
+        "percurso": "Formado em 2020, o VSP-AST rapidamente ganhou notoriedade com o seu estilo único e inovador.",
+        "influences": ["Pop", "Indie", "Melancólico"],
+        "facts": [
+            "Mistura géneros musicais de forma criativa",
+            "Utiliza instrumentos tradicionais em produções modernas",
+            "Tem colaborado com vários artistas emergentes"
+        ],
+        "extraInfo": "O VSP-AST está na vanguarda da música portuguesa contemporânea, desafiando convenções e explorando novas sonoridades."
     }
 ]
