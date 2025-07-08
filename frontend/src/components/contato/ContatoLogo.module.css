@@ -1,0 +1,40 @@
+.logoBox {
+  width: 350px;
+  height: 450px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 5px 15px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.logoBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.3);
+  border-color: var(--accent);
+}
+
+.logoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 20px;
+  transition: transform 0.5s ease;
+}
+
+.logoBox:hover .logoImage {
+  transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+  .logoBox {
+    width: 100%;
+    max-width: 350px;
+    height: 300px;
+    margin: 0 auto;
+  }
+}

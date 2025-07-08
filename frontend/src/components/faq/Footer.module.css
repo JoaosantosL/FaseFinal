@@ -1,0 +1,24 @@
+.footer {
+  background-color: var(--bg-card);
+  padding: 20px;
+  text-align: center;
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  position: relative;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.ciano {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Remove o efeito de blur e gradiente anterior */
+.footer::before {
+  content: none;
+}

@@ -1,0 +1,51 @@
+.hero {
+  padding: 150px 20px 100px; /* Alterado */
+  background: linear-gradient(to bottom, var(--accent) 10%, var(--bg-main) 100%);
+}
+
+.hero .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 0 20px; /* Adicionado */
+}
+
+.hero-content {
+  max-width: 500px;
+  text-align: left;
+  height: 100%;
+}
+
+.hero-content h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.hero-content h2 span {
+  color: var(--dark);
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: var(--text-muted);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.hero-banner img {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.hero-banner:hover img {
+  transform: scale(1.05);
+}

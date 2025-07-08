@@ -1,0 +1,142 @@
+.header {
+  background-color: var(--bg-card);
+  padding: 15px 20px;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border);
+  box-sizing: border-box; /* Importante para mobile */
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  position: relative;
+}
+
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  color: var(--accent);
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav {
+  display: flex;
+  transition: all 0.3s ease;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav ul li {
+  margin-left: 30px;
+  position: relative;
+}
+
+.nav ul li a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav ul li a:hover {
+  color: var(--accent);
+}
+
+.nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav ul li a:hover::after {
+  width: 100%;
+}
+
+.menu-mobile {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.menu-mobile:hover {
+  color: var(--accent);
+}
+
+
+
+/* Estilos para mobile */
+@media (max-width: 768px) {
+  .menu-mobile {
+    display: block;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: var(--bg-card);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav.active {
+    right: 0;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav ul li {
+    margin: 15px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav ul li a {
+    display: block;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .nav ul li a::after {
+    display: none;
+  }
+}

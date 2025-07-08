@@ -1,0 +1,70 @@
+.sobre {
+  padding: 100px 20px; /* Alterado */
+  background-color: var(--bg-card);
+}
+
+.sobre .container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 0 20px; /* Adicionado */
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+}
+
+.sobre-image {
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.sobre-image:hover {
+  transform: scale(1.02);
+}
+
+.sobre-image img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.sobre-content {
+  flex: 1;
+  text-align: left;
+}
+
+.sobre-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+.sobre-content p {
+  margin-bottom: 30px;
+  color: var(--text-muted);
+}
+
+.sobre-list {
+  list-style: none;
+}
+
+.sobre-list li {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.sobre-list li:hover {
+  color: var(--accent);
+  transform: translateX(5px);
+}
+
+.sobre-list svg {
+  color: var(--accent);
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.sobre-list li:hover svg {
+  transform: scale(1.2);
+}
