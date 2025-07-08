@@ -8,7 +8,7 @@
  */
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "./context/AuthContext";
 
 // Biblioteca de toasts para mensagens rápidas no ecrã
@@ -18,6 +18,8 @@ import "react-toastify/dist/ReactToastify.css";
 // Componentes comuns
 import Navbar from "./components/Navbar";
 import MusicPlayer from "./components/MusicPlayer";
+
+import ProtectedArtistRoute from "./components/ProtectedArtistRoute";
 
 // Páginas principais da aplicação
 import Login from "./pages/Login";
@@ -32,6 +34,11 @@ import SearchResults from "./pages/SearchResults";
 import AlbumDetail from "./pages/AlbumDetail";
 import Artists from "./pages/Artists";
 import ArtistDetail from "./pages/ArtistDetail";
+import ChatbotPlaylist from "./pages/ChatbotPlaylist";
+import Profile from "./pages/Profile";
+import ArtistProfile from "./pages/ArtistProfile";
+import ChatbotToggleButton from "./components/ChatbotToggleButton";
+import ArtistChatbot from "./components/ArtistChatbot";
 
 /**
  * @component PrivateRoute
@@ -80,6 +87,7 @@ function PrivateRoute({ children }) {
  * @returns {JSX.Element}
  */
 export default function App() {
+    const [showChatbot, setShowChatbot] = useState(false);
     return (
         <BrowserRouter>
             {/* Navbar visível em todas as páginas, incluindo login/register */}
@@ -153,7 +161,34 @@ export default function App() {
                     }
                 />
 
-                {/* Rotas públicas: login e registo */}
+                <Route
+                    path="/chatbot-playlist"
+                    element={
+                        <PrivateRoute>
+                            <ChatbotPlaylist />
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/profile"
+                    element={
+                        <PrivateRoute>
+                            <Profile />
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/artist-profile"
+                    element={
+                        <ProtectedArtistRoute>
+                            <ArtistProfile />
+                        </ProtectedArtistRoute>
+                    }
+                />
+
+                {/* Rotas públicas: login e registo e outros */}
                 <Route path="/artists" element={<Artists />} />
                 <Route path="/artists/:id" element={<ArtistDetail />} />
                 <Route path="/pesquisa" element={<SearchResults />} />
@@ -163,6 +198,17 @@ export default function App() {
                 {/* Rota fallback: redireciona tudo o que não existir para login */}
                 <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
+            {/* Botão flutuante para abrir o chatbot */}
+            <ChatbotToggleButton
+                onClick={() => setShowChatbot((prev) => !prev)}
+            />
+
+            {/* Popup com o chatbot */}
+            {showChatbot && (
+                <div className="chatbot-popup chatbot-popup-wrapper">
+                    <ArtistChatbot onClose={() => setShowChatbot(false)} />
+                </div>
+            )}
         </BrowserRouter>
     );
 }
