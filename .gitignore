@@ -8,7 +8,7 @@ fase02 pro git/node_modules/
 # Ignore build output
 dist/
 build/
-
+public/
 # Ignore system files
 .DS_Store
 Thumbs.db
