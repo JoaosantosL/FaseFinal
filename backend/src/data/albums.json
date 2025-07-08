@@ -187,5 +187,12 @@
         "coverUrl": "/public/uploads/covers/albums/Salvador-Sobral-BPM.jpg",
         "releaseDate": "2021-05-28 00:00:00",
         "musics": []
+    },
+    {
+        "title" : "Anima-te vida",
+        "artist": "DJ Joãozinho",
+        "coverUrl": "/public/uploads/covers/albums/djjoaozinhocoveralbum.jpg",
+        "releaseDate": "2025-06-22 00:00:00",
+        "musics": []
     }
 ]

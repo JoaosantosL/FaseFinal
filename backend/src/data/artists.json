@@ -403,5 +403,20 @@
             "Defensor ativo de causas ambientais e sociais"
         ],
         "extraInfo": "Salvador é conhecido pela sua autenticidade, improvisação e fusão de estilos musicais. Prefere pequenas salas e concertos intimistas, onde privilegia a comunicação com o público.\n\n🎟️ Próximos concertos:\n• 8 Novembro 2025 — Casa da Música, Porto\n• 16 Novembro 2025 — Teatro Municipal de Faro"
+    },
+    {
+        "name": "DJ Joãozinho",
+        "bio": "DJ Joãozinho é um DJ e produtor musical português, conhecido pela sua energia contagiante e pelas suas misturas inovadoras.",
+        "imageUrl": "/public/uploads/covers/artists/djjoaozinho.jpg",
+        "isPortuguese": true,
+        "isPublic": true,
+        "percurso": "Estreia no mundo da música em 2025, e ganha grande revelância com os seus remixes de músicas.",
+        "influences": ["Pop", "Techno", "Música Portuguesa"],
+        "facts": [
+            "Animado",
+            "Criativo",
+            "Inovador"
+        ],
+        "extraInfo": "Jovem DJ em ascensão, promete agitar as pistas de dança com a sua música."
     }
 ]

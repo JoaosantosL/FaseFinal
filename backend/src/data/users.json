@@ -5,13 +5,33 @@
         "password": "123456"
     },
     {
-        "username": "Bruno",
-        "email": "bruno@email.com",
+        "username": "Nuno",
+        "email": "nuno@email.com",
         "password": "123456"
     },
     {
-        "username": "Carlos",
-        "email": "carlos@email.com",
+        "username": "João",
+        "email": "joao@email.com",
+        "password": "123456"
+    },
+    {
+        "username": "Moitas",
+        "email": "moitas@email.com",
+        "password": "123456"
+    },
+    {
+        "username": "Kaike",
+        "email": "kaike@email.com",
+        "password": "123456"
+    },
+    {
+        "username": "Apresentacao",
+        "email": "apresentacao@email.com",
+        "password": "123456"
+    },
+    {
+        "username": "Admin",
+        "email": "admin@email.com",
         "password": "123456"
     }
 ]

@@ -275,7 +275,7 @@ input:focus, textarea:focus, select:focus {
 
 .music-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0px 15px rgba(0, 255, 255, 0.2);
 }
 
 .cover-container {

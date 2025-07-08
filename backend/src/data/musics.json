@@ -328,5 +328,15 @@
         "audioUrl": "/public/uploads/audio/Salvador-Sobral-Fui-Ver-Meu-Amor.mp3",
         "plays": 0,
         "reactions": []
+    },
+    {
+        "title": "Set de Verão",
+        "artistName": "DJ Joãozinho",
+        "albumTitle": "Anima-te vida",
+        "duration": 632,
+        "coverUrl": "/public/uploads/covers/albums/djjoaozinhocoveralbum.jpg",
+        "audioUrl": "/public/uploads/audio/joaozinhoset.mp3",
+        "plays": 0,
+        "reactions": []
     }
 ]
