@@ -1,0 +1,22 @@
+
+[
+    {
+        "username": "user1",
+        "email": "user1@example.com",
+        "password": "123456",
+        "role": "base"
+    },
+    {
+        "username": "pro_user",
+        "email": "pro@example.com",
+        "password": "123456",
+        "role": "pro"
+    },
+    {
+        "username": "artist1",
+        "email": "artist1@example.com",
+        "password": "123456",
+        "role": "artist",
+        "artistName": "Nome do Artista"
+    }
+]

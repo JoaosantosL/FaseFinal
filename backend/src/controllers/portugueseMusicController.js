@@ -38,7 +38,12 @@ exports.getPortugueseMusic = async (req, res, next) => {
             { $unwind: "$artist" },
 
             // Apenas artistas portugueses
-            { $match: { "artist.isPortuguese": true } },
+            {
+                $match: {
+                    "artist.isPortuguese": true,
+                    "artist.isPublic": true,
+                },
+            },
 
             // Junta álbum (opcional)
             {

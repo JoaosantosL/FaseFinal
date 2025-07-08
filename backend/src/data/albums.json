@@ -145,5 +145,47 @@
         "coverUrl": "/public/uploads/covers/albums/Da-Wasel-Re-Def.jpg",
         "releaseDate": "2004-01-01 00:00:00",
         "musics": []
+    },
+    {
+        "title": "25",
+        "artist": "Adele",
+        "coverUrl": "/public/uploads/covers/albums/Adele-25.jpg",
+        "releaseDate": "2015-11-20 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Continuum",
+        "artist": "John Mayer",
+        "coverUrl": "/public/uploads/covers/albums/John-Mayer-Continuum.jpg",
+        "releaseDate": "2006-09-12 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Happier Than Ever",
+        "artist": "Billie Eilish",
+        "coverUrl": "/public/uploads/covers/albums/Billie-Happier.jpg",
+        "releaseDate": "2021-07-30 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "True",
+        "artist": "Avicii",
+        "coverUrl": "/public/uploads/covers/albums/Avicii-True.jpg",
+        "releaseDate": "2013-09-13 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Portuguesa",
+        "artist": "Carminho",
+        "coverUrl": "/public/uploads/covers/albums/Carminho-Portuguesa.jpg",
+        "releaseDate": "2023-03-10 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "BPM",
+        "artist": "Salvador Sobral",
+        "coverUrl": "/public/uploads/covers/albums/Salvador-Sobral-BPM.jpg",
+        "releaseDate": "2021-05-28 00:00:00",
+        "musics": []
     }
 ]

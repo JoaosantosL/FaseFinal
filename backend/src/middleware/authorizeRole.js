@@ -28,15 +28,11 @@ const AppError = require("../utils/appError");
  */
 function authorizeRole(...roles) {
     return (req, res, next) => {
-        // Verifica se o papel do utilizador está na lista autorizada
         if (!roles.includes(req.user.role)) {
-            // Se não estiver autorizado, lança erro 403 (Forbidden)
             return next(
                 new AppError("Não autorizado a aceder a esta rota", 403)
             );
         }
-
-        // Se estiver autorizado, passa para o controlador seguinte
         next();
     };
 }

@@ -1,14 +1,3 @@
-/**
- * @file auth.js
- * @description
- * Define os schemas de validação Joi para autenticação de utilizadores:
- * - Registo (`registerSchema`)
- * - Login (`loginSchema`)
- *
- * Estes schemas são usados no middleware `validate(schema, "body")` para garantir
- * que os dados enviados pelos utilizadores estão corretos antes de serem processados.
- */
-
 const Joi = require("joi");
 
 // ─────────────────────────────────────────────────────
@@ -22,9 +11,8 @@ const Joi = require("joi");
  * - `username`: texto entre 3 e 30 caracteres (obrigatório)
  * - `email`: email com formato válido (obrigatório)
  * - `password`: pelo menos 6 caracteres (obrigatório)
- * - `role`: opcional — "user" ou "artist" (para diferenciar funções)
- *
- * Cada campo inclui mensagens de erro personalizadas para melhor feedback.
+ * - `role`: opcional — "user" ou "artist"
+ * - `artistName`: obrigatório se `role === "artist"`
  *
  * @type {Joi.ObjectSchema}
  */
@@ -47,7 +35,19 @@ const registerSchema = Joi.object({
             "any.required": "A password é obrigatória",
         }),
 
-        role: Joi.string().valid("user", "artist").optional(),
+        role: Joi.string().valid("base", "pro", "artist").optional().messages({
+            "any.only": "O tipo de utilizador deve ser 'user' ou 'artist'",
+        }),
+
+        artistName: Joi.when("role", {
+            is: "artist",
+            then: Joi.string().min(2).max(100).required().messages({
+                "string.min":
+                    "O nome artístico deve ter pelo menos 2 caracteres",
+                "any.required": "O nome artístico é obrigatório para artistas",
+            }),
+            otherwise: Joi.forbidden(),
+        }),
     }),
 });
 
@@ -61,8 +61,6 @@ const registerSchema = Joi.object({
  * Verifica apenas dois campos:
  * - `email`: deve ter formato válido
  * - `password`: deve existir
- *
- * Nota: não é necessário validar o `role` aqui, pois ele é usado apenas no registo.
  *
  * @type {Joi.ObjectSchema}
  */
@@ -79,7 +77,6 @@ const loginSchema = Joi.object({
     }),
 });
 
-// Exporta os dois schemas para uso no middleware `validate`
 module.exports = {
     registerSchema,
     loginSchema,

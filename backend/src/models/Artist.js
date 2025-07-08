@@ -6,70 +6,90 @@
  * Cada artista:
  * - tem um nome e uma biografia
  * - pode ter uma imagem de perfil
- * - pode estar associado a vários álbuns (relação 1:N)
+ * - pode estar associado a vários álbuns
+ * - pode incluir dados biográficos avançados para o chatbot
  */
 
 const mongoose = require("mongoose");
 
-// ─────────────────────────────────────────────────────
-// Definição do schema do artista
-// ─────────────────────────────────────────────────────
 const artistSchema = new mongoose.Schema(
     {
-        /**
-         * Nome artístico (ex: "Adele", "Coldplay").
-         * Campo obrigatório. O `trim` remove espaços antes/depois do nome.
-         */
         name: {
             type: String,
             required: true,
             trim: true,
         },
-
-        /**
-         * Biografia (campo opcional).
-         * Pode conter HTML, por isso é sanitizado no controlador para evitar XSS.
-         */
         bio: {
             type: String,
         },
-
-        /**
-         * Indica se o artista é português (destaque nacional).
-         */
         isPortuguese: {
             type: Boolean,
             default: false,
         },
-        /**
-         * URL da imagem de perfil.
-         * Pode ser um link externo (CDN) ou caminho local (relativo).
-         */
         imageUrl: {
             type: String,
         },
-
-        /**
-         * Lista de álbuns associados a este artista.
-         * Cada entrada é o ID de um documento da coleção "Album".
-         * Usado com `.populate("albums")` no controlador.
-         */
         albums: [
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Album",
             },
         ],
+
+        /**
+         * Texto livre com o percurso artístico do artista.
+         * Pode incluir formação, prémios, colaborações, etc.
+         */
+        percurso: {
+            type: String,
+        },
+
+        /**
+         * Lista de influências musicais (strings curtas, ex: "Fado", "Jazz", "Eletrónica").
+         */
+        influences: [
+            {
+                type: String,
+                trim: true,
+                maxlength: 100,
+            },
+        ],
+
+        /**
+         * Indica se o perfil do artista é público ou privado.
+         * - Público: visível para todos os utilizadores
+         * - Privado: apenas visível para o próprio user artista
+         */
+        isPublic: {
+            type: Boolean,
+            default: false, // Começa como privado
+        },
+
+        /**
+         * Factos ou curiosidades sobre o artista.
+         * Ex: "Vencedor do Festival da Canção 2022", "Colaborou com Rui Veloso".
+         */
+        facts: [
+            {
+                type: String,
+                trim: true,
+                maxlength: 300,
+            },
+        ],
+
+        /**
+         * Informação adicional invisível no perfil,
+         * usada apenas para alimentar a IA com mais contexto.
+         */
+        extraInfo: {
+            type: String,
+            trim: true,
+            maxlength: 3000,
+        },
     },
     {
-        // Ativa timestamps automáticos:
-        // - createdAt: quando foi criado
-        // - updatedAt: última atualização
         timestamps: true,
     }
 );
 
-// ─────────────────────────────────────────────────────
-// Exporta o modelo Artist com base no schema definido
-// ─────────────────────────────────────────────────────
 module.exports = mongoose.model("Artist", artistSchema);

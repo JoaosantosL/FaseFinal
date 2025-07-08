@@ -13,6 +13,7 @@
  * - `verifyToken` (JWT via cookie) → para reações
  * - `validate` com Joi → validação de parâmetros e corpo
  * - `playLimiter` / `reactionLimiter` → previne abuso (rate-limit por IP)
+ * - `checkMusicAccess` → controle de acesso a músicas exclusivas
  */
 
 const express = require("express");
@@ -26,6 +27,7 @@ const verifyToken = require("../middleware/verifyToken"); // JWT via cookie
 const validate = require("../middleware/validate"); // Validação com Joi
 const playLimiter = require("../middleware/playLimiter"); // Limita plays por IP
 const reactionLimiter = require("../middleware/reactionLimiter"); // Limita reações por IP
+const checkMusicAccess = require("../middleware/checkMusicAccess"); // Controle de acesso a músicas exclusivas
 
 // Schemas Joi usados para validar os parâmetros e o corpo
 const { idSchema } = require("../validators/id");
@@ -53,6 +55,8 @@ const {
  * @route GET /api/music
  * @description Devolve a lista de todas as músicas disponíveis
  * @access Privado (requer JWT)
+ * 
+ * Filtra automaticamente músicas exclusivas para usuários 'base'
  */
 router.get("/", verifyToken, getAllMusic);
 
@@ -66,8 +70,8 @@ router.get("/", verifyToken, getAllMusic);
  *
  * Este endpoint filtra músicas com `isPortuguese: true` no artista,
  * garantindo que só são devolvidas músicas ativas (isDeleted: false).
+ * Usuários não autenticados só veem músicas não exclusivas.
  */
-
 router.get("/portuguese", getPortugueseMusic);
 
 // ─────────────────────────────────────────────────────
@@ -82,12 +86,14 @@ router.get("/portuguese", getPortugueseMusic);
  * Middlewares aplicados:
  * - `verifyToken` (opcional: se o user estiver autenticado, guarda também na estatística pessoal)
  * - `validate(idSchema)` → garante que o ID da música é válido
+ * - `checkMusicAccess` → verifica acesso a músicas exclusivas
  * - `playLimiter` → evita spam (ex: 50 chamadas por minuto)
  */
 router.post(
     "/:id/play",
     verifyToken,
     validate(idSchema, "params"),
+    checkMusicAccess,
     playLimiter,
     registerPlay
 );
@@ -101,9 +107,18 @@ router.post(
  * @description Devolve os detalhes completos de uma música
  * @access Privado (requer JWT)
  *
- * Exemplo: título, artista, álbum, URL da capa e do áudio
+ * Middlewares aplicados:
+ * - `verifyToken` → obriga autenticação
+ * - `validate(idSchema)` → valida o ID da música
+ * - `checkMusicAccess` → verifica acesso a músicas exclusivas
  */
-router.get("/:id", verifyToken, validate(idSchema, "params"), getMusicById);
+router.get(
+    "/:id", 
+    verifyToken, 
+    validate(idSchema, "params"), 
+    checkMusicAccess,
+    getMusicById
+);
 
 // ─────────────────────────────────────────────────────
 // POST /api/music/:id/like
@@ -116,8 +131,15 @@ router.get("/:id", verifyToken, validate(idSchema, "params"), getMusicById);
  * Middlewares aplicados:
  * - `verifyToken` → obriga autenticação
  * - `validate(idSchema, "params")` → valida o ID da música no URL
+ * - `checkMusicAccess` → verifica acesso a músicas exclusivas
  */
-router.post("/:id/like", verifyToken, validate(idSchema, "params"), likeMusic);
+router.post(
+    "/:id/like", 
+    verifyToken, 
+    validate(idSchema, "params"),
+    checkMusicAccess,
+    likeMusic
+);
 
 // ─────────────────────────────────────────────────────
 // DELETE /api/music/:id/like
@@ -130,11 +152,13 @@ router.post("/:id/like", verifyToken, validate(idSchema, "params"), likeMusic);
  * Middlewares aplicados:
  * - `verifyToken` → obriga autenticação
  * - `validate(idSchema, "params")` → valida o ID da música no URL
+ * - `checkMusicAccess` → verifica acesso a músicas exclusivas
  */
 router.delete(
     "/:id/like",
     verifyToken,
     validate(idSchema, "params"),
+    checkMusicAccess,
     unlikeMusic
 );
 
@@ -149,14 +173,16 @@ router.delete(
  *
  * Middlewares aplicados:
  * - `verifyToken` → obriga autenticação
- * - `reactionLimiter` → limita 20 reações por minuto por IP
  * - `validate(reactionSchema)` → valida o campo reaction no body
+ * - `checkMusicAccess` → verifica acesso a músicas exclusivas
+ * - `reactionLimiter` → limita 20 reações por minuto por IP
  */
 router.post(
     "/:id/react",
     verifyToken,
-    reactionLimiter,
     validate(reactionSchema),
+    checkMusicAccess,
+    reactionLimiter,
     reactToMusic
 );
 

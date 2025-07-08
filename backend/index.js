@@ -18,7 +18,7 @@ const logger = require("./src/utils/logger"); // Logger Winston personalizado
 const { initWebSocket } = require("./src/sockets/socketManager"); // Inicializa WebSocket
 
 // ─────────────────────────────────────────────────────
-// 1️⃣ Verificação das variáveis de ambiente obrigatórias (.env)
+//  Verificação das variáveis de ambiente obrigatórias (.env)
 // ─────────────────────────────────────────────────────
 
 const requiredEnvs = [

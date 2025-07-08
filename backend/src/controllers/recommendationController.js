@@ -129,37 +129,44 @@ exports.getRecommendationsForUser = async (req, res, next) => {
     try {
         const userId = req.user._id.toString();
 
-        // Perfil de interações + conjunto de músicas conhecidas
+        // 1. Perfil com pesos (likes, biblioteca, plays)
         const { profile, knownMusicIds } = await getUserMusicProfile(userId);
 
+        // 2. Fallback direto → sem interações
         if (knownMusicIds.size === 0) {
-            const fallback = await getTopMusics(config.TOP_N);
+            const fallback = await getTopMusics(config.TOP_N * 3);
             logger.info(`Fallback direto: sem interações para user ${userId}`);
             return res.json({ success: true, data: fallback });
         }
 
-        // Músicas candidatas
-        const allMusics = await Music.find({ isDeleted: false })
+        // 3. Candidatas populadas com artista público
+        const allMusicsRaw = await Music.find({ isDeleted: false })
             .sort({ plays: -1 })
             .limit(config.CANDIDATE_LIMIT)
             .select("title artist album coverUrl plays audioUrl likes")
-            .populate("artist", "name")
+            .populate({
+                path: "artist",
+                match: { isPublic: true }, // Apenas artistas públicos
+                select: "name",
+            })
             .populate("album", "title")
             .lean();
 
-        // Garantir que os likes das músicas do perfil também estão presentes
+        const allMusics = allMusicsRaw.filter((m) => m.artist); // remove músicas de artistas privados
+
+        // 4. Músicas do perfil (para obter os likes usados na matriz)
         const profileMusics = await Music.find({
             _id: { $in: [...knownMusicIds] },
         })
             .select("likes")
             .lean();
 
-        // Carrega todos os utilizadores com sinais colaborativos
+        // 5. Todos os utilizadores com dados colaborativos
         const users = await User.find({})
             .select("library personalPlays")
             .lean();
 
-        // Matriz de interações: musicId → set de utilizadores
+        // 6. Matriz de interações musicId → Set<userIds>
         const musicUserMap = buildMusicUserMapExpanded(
             [...allMusics, ...profileMusics],
             users
@@ -167,6 +174,7 @@ exports.getRecommendationsForUser = async (req, res, next) => {
 
         const recommendations = [];
 
+        // 7. Scoring das candidatas
         for (const music of allMusics) {
             const musicId = music._id.toString();
             if (knownMusicIds.has(musicId)) continue;
@@ -187,9 +195,10 @@ exports.getRecommendationsForUser = async (req, res, next) => {
                     coverUrl: music.coverUrl,
                     plays: music.plays || 0,
                     audioUrl: music.audioUrl,
-                    artist: music.artist
-                        ? { _id: music.artist._id, name: music.artist.name }
-                        : { name: "Desconhecido" },
+                    artist: {
+                        _id: music.artist._id,
+                        name: music.artist.name,
+                    },
                     album: music.album
                         ? { _id: music.album._id, title: music.album.title }
                         : null,
@@ -198,26 +207,23 @@ exports.getRecommendationsForUser = async (req, res, next) => {
             }
         }
 
-        // Ordena e seleciona top N
+        // 8. Ordenar e completar com fallback se necessário
         recommendations.sort((a, b) => b.score - a.score);
-        const top = recommendations.slice(0, config.TOP_N);
-
-        if (top.length === 0) return res.status(204).send();
+        let top = recommendations.slice(0, config.TOP_N);
 
         if (top.length < config.TOP_N) {
-            // Carrega as TOP_N * 2 músicas globais mais tocadas
-            const fallbackFromTop = await getTopMusics(config.TOP_N * 2);
-
-            // Filtra as que o utilizador ainda não conhece nem estão já no top
+            const fallbackFromTop = await getTopMusics(config.TOP_N * 5);
             const fallbackExtras = getFallbackRecommendations(
                 fallbackFromTop,
                 knownMusicIds,
                 top,
                 config.TOP_N
             );
-
-            top.push(...fallbackExtras);
+            top = [...top, ...fallbackExtras];
         }
+
+        // 9. Caso raro: nenhuma música
+        if (top.length === 0) return res.status(204).send();
 
         logger.info(`Sugestões finais para ${userId}: ${top.length} músicas`);
         return res.json({ success: true, data: top });
@@ -250,31 +256,81 @@ function cosineSimilarity(setA, setB) {
 }
 
 /**
- * Fallback puro: top músicas mais tocadas
- * Se o utilizador não tiver interações, retorna as músicas mais populares.
- * @param {number} limit - Número máximo de músicas a retornar (default: config.TOP_N)
- * @returns {Promise<Array>} - Lista de músicas populares com detalhes
- * @throws {Error} - Se ocorrer um erro ao consultar a base de dados
+ * @function getTopMusics
+ * @description
+ * Busca as músicas mais populares cujos artistas são públicos,
+ * garantindo devolver sempre o número `limit` solicitado.
+ *
+ * Para isso, busca as músicas ordenadas por número de reproduções em lotes,
+ * filtra as músicas de artistas privados e pára assim que obtiver `limit` músicas públicas.
+ *
+ * @param {number} limit - Quantidade de músicas públicas a devolver (padrão: config.TOP_N)
+ * @returns {Promise<Array>} - Lista de músicas públicas ordenadas por plays
+ *
+ * Limitações de eficiência da função getTopMusics com batch e skip
+ *
+ * Apesar da função garantir sempre devolver o número exato de músicas públicas solicitadas, ela utiliza um padrão que pode ser ineficiente em bases de dados grandes:
+ *	•	A função usa um loop com múltiplas queries, onde a cada iteração faz um find() com .skip() e .limit() para buscar lotes de músicas ordenadas por popularidade.
+ *	•	O problema está no uso do .skip(), que para coleções grandes causa custo linear crescente.
+ * Isto significa que, para um valor alto de skip, o MongoDB precisa varrer e ignorar muitos documentos antes de devolver o resultado, tornando a consulta cada vez mais lenta.
+ *	•	Além disso, o loop continua a buscar lotes até preencher o número pedido de músicas públicas, podendo precisar consultar muitos documentos se houver muitos artistas privados no meio, piorando ainda mais a performance.
+ *	•	Em resumo, essa abordagem não escala bem para bases de dados muito grandes, porque o custo da operação .skip() cresce conforme aumenta o número de documentos ignorados, o que pode causar latência elevada e uso excessivo de recursos.
+ *
+ * Alternativas recomendadas para melhor eficiência
+ *	•	Utilizar um campo indexado e filtros que excluam os artistas privados já na query principal, para evitar necessidade de filtrar depois.
+ *	•	Usar um cursor com filtros e limites, evitando o .skip() excessivo.
+ *	•	Pré-calcular ou manter uma lista atualizada das músicas públicas populares para consultas rápidas (cache ou coleção auxiliar).
+ *	•	Se necessário, usar paginação baseada em _id (range queries) em vez de .skip() para melhorar a performance.
  */
 async function getTopMusics(limit = config.TOP_N) {
-    const top = await Music.find({ isDeleted: false })
-        .sort({ plays: -1 })
-        .limit(limit)
-        .select("title artist album coverUrl plays audioUrl")
-        .populate("artist", "name")
-        .populate("album", "title")
-        .lean();
+    const results = []; // Armazena as músicas públicas válidas encontradas
+    let skip = 0; // Controla o número de músicas já "puladas" na query
+    const batchSize = 10; // Quantidade de músicas a buscar por batch (ajustável)
 
-    return top.map((m) => ({
-        _id: m._id,
-        title: m.title,
-        coverUrl: m.coverUrl,
-        plays: m.plays || 0,
-        audioUrl: m.audioUrl,
-        artist: m.artist
-            ? { _id: m.artist._id, name: m.artist.name }
-            : { name: "Desconhecido" },
-        album: m.album ? { _id: m.album._id, title: m.album.title } : null,
-        score: 0,
-    }));
+    while (results.length < limit) {
+        // Busca um lote de músicas ordenadas por número de reproduções (plays)
+        const batch = await Music.find({ isDeleted: false })
+            .sort({ plays: -1 }) // Ordena da mais tocada para menos tocada
+            .skip(skip) // Pula as músicas já lidas nas queries anteriores
+            .limit(batchSize) // Limita o lote à batchSize para não buscar tudo de uma vez
+            .populate({
+                path: "artist",
+                select: "name isPublic", // Obtém só o nome e se o artista é público
+            })
+            .populate("album", "title") // Popula título do álbum
+            .lean(); // Para melhorar performance e retornar objetos puros JS
+
+        // Se o batch vier vazio, significa que já não há mais músicas para ler
+        if (batch.length === 0) break;
+
+        // Itera as músicas do batch para filtrar apenas as de artistas públicos
+        for (const music of batch) {
+            if (music.artist?.isPublic) {
+                // Adiciona a música ao resultado final, com os dados necessários
+                results.push({
+                    _id: music._id,
+                    title: music.title,
+                    coverUrl: music.coverUrl,
+                    plays: music.plays || 0,
+                    audioUrl: music.audioUrl,
+                    artist: {
+                        _id: music.artist._id,
+                        name: music.artist.name,
+                    },
+                    album: music.album
+                        ? { _id: music.album._id, title: music.album.title }
+                        : null,
+                    score: 0, // Campo score para manter a estrutura consistente
+                });
+
+                // Se já temos músicas suficientes, paramos o loop
+                if (results.length === limit) break;
+            }
+        }
+
+        // Atualiza o skip para ler o próximo lote na próxima iteração
+        skip += batchSize;
+    }
+
+    return results;
 }

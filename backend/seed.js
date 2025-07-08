@@ -1,18 +1,25 @@
 /**
  * @file seed.js
  * @description
- * Seed progressivo: insere artistas → álbuns → músicas.
- * Usa IDs gerados automaticamente pelo MongoDB e associações por nome/título.
+ * Seed completo: limpa tudo (artistas, álbuns, músicas, utilizadores, playlists)
+ * e insere dados musicais + utilizadores definidos em ficheiro JSON externo.
  */
 
 const mongoose = require("mongoose");
 const fs = require("fs");
 const path = require("path");
 require("dotenv").config();
+const bcrypt = require("bcrypt");
 
 const Artist = require("./src/models/Artist");
 const Album = require("./src/models/Album");
 const Music = require("./src/models/Music");
+const User = require("./src/models/User");
+const Playlist = require("./src/models/Playlist");
+
+// ─────────────────────────────────────────────
+// Lê dados dos ficheiros JSON
+// ─────────────────────────────────────────────
 
 const artistsData = JSON.parse(
     fs.readFileSync(path.join(__dirname, "/src/data/artists.json"))
@@ -23,20 +30,28 @@ const albumsData = JSON.parse(
 const musicsData = JSON.parse(
     fs.readFileSync(path.join(__dirname, "/src/data/musics.json"))
 );
+const usersData = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "/src/data/users.json"))
+);
 
 async function seedDatabase() {
     try {
         await mongoose.connect(process.env.DB_URI);
         console.log("Ligado à base de dados MongoDB");
 
+        // ─────────────── Limpeza ───────────────
         await Promise.all([
             Artist.deleteMany(),
             Album.deleteMany(),
             Music.deleteMany(),
+            User.deleteMany(),
+            Playlist.deleteMany(),
         ]);
-        console.log("Coleções limpas");
+        console.log(
+            "Coleções limpas: artistas, álbuns, músicas, utilizadores, playlists"
+        );
 
-        // 1️⃣ Inserir artistas
+        // ───────────── Inserir Artistas ─────────────
         const insertedArtists = await Artist.insertMany(artistsData);
         const artistMap = {};
         insertedArtists.forEach((artist) => {
@@ -44,19 +59,15 @@ async function seedDatabase() {
         });
         console.log(`${insertedArtists.length} artistas inseridos`);
 
-        // 2️⃣ Inserir álbuns
+        // ───────────── Inserir Álbuns ─────────────
         const enrichedAlbums = albumsData.map((album) => {
             const artistId =
                 artistMap[album.artistName] || artistMap[album.artist];
             if (!artistId)
                 throw new Error(
-                    "Artista não encontrado para o álbum: " + album.title
+                    "Artista não encontrado para álbum: " + album.title
                 );
-            return {
-                ...album,
-                artist: artistId,
-                musics: [],
-            };
+            return { ...album, artist: artistId, musics: [] };
         });
 
         const insertedAlbums = await Album.insertMany(enrichedAlbums);
@@ -66,17 +77,16 @@ async function seedDatabase() {
         });
         console.log(`${insertedAlbums.length} álbuns inseridos`);
 
-        // 3️⃣ Inserir músicas
+        // ───────────── Inserir Músicas ─────────────
         const enrichedMusics = musicsData.map((music) => {
             const artistId =
                 artistMap[music.artistName] || artistMap[music.artist];
             const albumId = albumMap[music.albumTitle] || albumMap[music.album];
-            if (!artistId || !albumId) {
+            if (!artistId || !albumId)
                 throw new Error(
-                    "Artista ou álbum não encontrado para a música: " +
+                    "Artista ou álbum não encontrado para música: " +
                         music.title
                 );
-            }
             return {
                 ...music,
                 artist: artistId,
@@ -87,19 +97,41 @@ async function seedDatabase() {
         const insertedMusics = await Music.insertMany(enrichedMusics);
         console.log(`${insertedMusics.length} músicas inseridas`);
 
-        // 4️⃣ Atualizar álbuns com IDs das músicas
+        // ───────────── Atualizar Álbuns ─────────────
         for (const music of insertedMusics) {
             await Album.findByIdAndUpdate(music.album, {
                 $push: { musics: music._id },
             });
         }
 
-        // 5️⃣ Atualizar artistas com IDs dos álbuns
+        // ───────────── Atualizar Artistas ─────────────
         for (const album of insertedAlbums) {
             await Artist.findByIdAndUpdate(album.artist, {
                 $push: { albums: album._id },
             });
         }
+
+        // ───────────── Inserir Utilizadores ─────────────
+        const usersRaw = JSON.parse(
+            fs.readFileSync(path.join(__dirname, "/src/data/users.json"))
+        );
+
+        const salt = await bcrypt.genSalt(10);
+        const usersHashed = await Promise.all(
+            usersRaw.map(async (u) => ({
+                username: u.username,
+                email: u.email,
+                passwordHash: await bcrypt.hash(u.password, salt),
+                role: u.role,
+                library: [],
+                personalPlays: [],
+                linkedArtist: u.role === "artist" ? artistMap[u.artistName] : null
+            }))
+        );
+        await User.insertMany(usersHashed);
+        console.log(
+            `${usersHashed.length} utilizadores inseridos (senha: 123456)`
+        );
 
         console.log("Seed concluído com sucesso!");
         process.exit(0);

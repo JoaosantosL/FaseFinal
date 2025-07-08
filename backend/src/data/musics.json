@@ -208,5 +208,125 @@
         "audioUrl": "/public/uploads/audio/Da-Weasel-Re-Tratamento.mp3",
         "plays": 0,
         "reactions": []
+    },
+    {
+        "title": "Hello",
+        "artistName": "Adele",
+        "albumTitle": "25",
+        "duration": 295,
+        "coverUrl": "/public/uploads/covers/albums/Adele-25.jpg",
+        "audioUrl": "/public/uploads/audio/Adele-Hello.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "When We Were Young",
+        "artistName": "Adele",
+        "albumTitle": "25",
+        "duration": 342,
+        "coverUrl": "/public/uploads/covers/albums/Adele-25.jpg",
+        "audioUrl": "/public/uploads/audio/Adele-When-We-Were-Young.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Gravity",
+        "artistName": "John Mayer",
+        "albumTitle": "Continuum",
+        "duration": 239,
+        "coverUrl": "/public/uploads/covers/albums/John-Mayer-Continuum.jpg",
+        "audioUrl": "/public/uploads/audio/John-Mayer-Gravity.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Slow Dancing in a Burning Room",
+        "artistName": "John Mayer",
+        "albumTitle": "Continuum",
+        "duration": 240,
+        "coverUrl": "/public/uploads/covers/albums/John-Mayer-Continuum.jpg",
+        "audioUrl": "/public/uploads/audio/John-Mayer-Slow-Dancing.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Happier Than Ever",
+        "artistName": "Billie Eilish",
+        "albumTitle": "Happier Than Ever",
+        "duration": 315,
+        "coverUrl": "/public/uploads/covers/albums/Billie-Happier.jpg",
+        "audioUrl": "/public/uploads/audio/Billie-Eilish-Happier-Than-Ever.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "NDA",
+        "artistName": "Billie Eilish",
+        "albumTitle": "Happier Than Ever",
+        "duration": 216,
+        "coverUrl": "/public/uploads/covers/albums/Billie-Happier.jpg",
+        "audioUrl": "/public/uploads/audio/Billie-Eilish-NDA.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Wake Me Up",
+        "artistName": "Avicii",
+        "albumTitle": "True",
+        "duration": 272,
+        "coverUrl": "/public/uploads/covers/albums/Avicii-True.jpg",
+        "audioUrl": "/public/uploads/audio/Avicii-Wake-Me-Up.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Hey Brother",
+        "artistName": "Avicii",
+        "albumTitle": "True",
+        "duration": 263,
+        "coverUrl": "/public/uploads/covers/albums/Avicii-True.jpg",
+        "audioUrl": "/public/uploads/audio/Avicii-Hey-Brother.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "O Quarto (fado)",
+        "artistName": "Carminho",
+        "albumTitle": "Portuguesa",
+        "duration": 200,
+        "coverUrl": "/public/uploads/covers/albums/Carminho-Portuguesa.jpg",
+        "audioUrl": "/public/uploads/audio/CARMINHO-O-quarto.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "A Mulher Vento",
+        "artistName": "Carminho",
+        "albumTitle": "Portuguesa",
+        "duration": 208,
+        "coverUrl": "/public/uploads/covers/albums/Carminho-Portuguesa.jpg",
+        "audioUrl": "/public/uploads/audio/Carminho-A-Mulher-Vento.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Sangue do Meu Sangue",
+        "artistName": "Salvador Sobral",
+        "albumTitle": "BPM",
+        "duration": 263,
+        "coverUrl": "/public/uploads/covers/albums/Salvador-Sobral-BPM.jpg",
+        "audioUrl": "/public/uploads/audio/Salvador-Sobral-Sangue-Do-Meu-sangue.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Fui Ver Meu Amor",
+        "artistName": "Salvador Sobral",
+        "albumTitle": "BPM",
+        "duration": 270,
+        "coverUrl": "/public/uploads/covers/albums/Salvador-Sobral-BPM.jpg",
+        "audioUrl": "/public/uploads/audio/Salvador-Sobral-Fui-Ver-Meu-Amor.mp3",
+        "plays": 0,
+        "reactions": []
     }
 ]

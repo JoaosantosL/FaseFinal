@@ -24,6 +24,10 @@ const {
     addToLibrary,
     removeFromLibrary,
     getLikedMusic,
+    getUserProfile,
+    updateUsername,
+    getUserStats,
+    getRecentlyPlayed,
 } = require("../controllers/userController");
 
 const {
@@ -52,6 +56,7 @@ const {
     editPlaylistSchema,
 } = require("../validators/playlist");
 const { idSchema } = require("../validators/id");
+const { usernameSchema } = require("../validators/user");
 
 // ─────────────────────────────────────────────────────
 // Modelos utilizados para validação de ownership
@@ -170,6 +175,40 @@ router.delete(
  * @access Privado (JWT obrigatório)
  */
 router.get("/me/liked", getLikedMusic);
+
+/**
+ * @route GET /api/users/me/profile
+ * @desc Devolve perfil completo do utilizador (User + Artist)
+ * @access Privado (JWT obrigatório)
+ */
+router.get("/me/profile", getUserProfile);
+
+/**
+ * @route PATCH /api/users/:id
+ * @desc Atualiza o username do utilizador
+ * @access Privado (owner)
+ */
+router.patch(
+    "/:id/username",
+    validate(usernameSchema, "body"),
+    checkOwnership(User, "id", "_id"),
+    authorizeRole("user", "artist"),
+    updateUsername
+);
+
+/**
+ * @route GET /api/users/me/stats
+ * @desc Devolve estatísticas de uso do utilizador autenticado
+ * @access Privado (JWT obrigatório)
+ */
+router.get("/me/stats", getUserStats);
+
+/**
+ * @route GET /api/users/me/recent
+ * @desc Devolve as músicas recentemente ouvidas pelo utilizador
+ * @access Privado (JWT obrigatório)
+ */
+router.get("/me/recent", getRecentlyPlayed);
 
 // Exporta router para uso no app principal
 module.exports = router;

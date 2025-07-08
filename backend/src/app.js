@@ -24,6 +24,8 @@ const artistRoutes = require("./routes/artistRoutes");
 const onlineRoutes = require("./routes/onlineRoutes");
 const searchRoutes = require("./routes/searchRoutes");
 const recommendationRoutes = require("./routes/recommendationRoutes");
+const chatbotPlaylistRoutes = require("./routes/chatbotPlaylistRoutes");
+const chatbotArtistRoutes = require("./routes/chatbotArtistRoutes");
 
 const app = express();
 
@@ -129,6 +131,8 @@ app.use("/api", artistRoutes);
 app.use("/api/users", onlineRoutes);
 app.use("/api/search", searchRoutes);
 app.use("/api/recommendation", recommendationRoutes);
+app.use("/api/chatbot", chatbotPlaylistRoutes);
+app.use("/api/chatbot", chatbotArtistRoutes);
 
 // ─────────────────────────────────────────────────────
 // Middleware Global de Erros
