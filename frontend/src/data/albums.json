@@ -1,0 +1,191 @@
+[
+    {
+        "title": "Future Nostalgia",
+        "artistName": "Dua Lipa",
+        "coverUrl": "/public/uploads/covers/albums/Dua-Lipa-Levitating.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "After Hours",
+        "artistName": "The Weeknd",
+        "coverUrl": "/public/uploads/covers/albums/The-Weeknd-Blinding-Lights.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Nevermind",
+        "artistName": "Nirvana",
+        "coverUrl": "/public/uploads/covers/albums/Nirvana-Smells-Like-Teen-Spirit.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "A Night at the Opera",
+        "artistName": "Queen",
+        "coverUrl": "/public/uploads/covers/albums/Queen-Bohemian-Rhapsody.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "8 Mile",
+        "artistName": "Eminem",
+        "coverUrl": "/public/uploads/covers/albums/Eminem-Lose-Yourself.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Astroworld",
+        "artistName": "Travis Scott",
+        "coverUrl": "/public/uploads/covers/albums/Travis-Scott-SICKO-MODE.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Kind of Blue",
+        "artistName": "Miles Davis",
+        "coverUrl": "/public/uploads/covers/albums/Miles-Davis-So-What.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Time Out",
+        "artistName": "Dave Brubeck",
+        "coverUrl": "/public/uploads/covers/albums/Dave-Brubeck-Take-Five.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Baroque Favorites",
+        "artistName": "Pachelbel",
+        "coverUrl": "/public/uploads/covers/albums/Canon-in-D-Pachelbel.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Suite bergamasque",
+        "artistName": "Claude Debussy",
+        "coverUrl": "/public/uploads/covers/albums/Debussy-Clair-de-Lune.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Discovery",
+        "artistName": "Daft Punk",
+        "coverUrl": "/public/uploads/covers/albums/Daft-Punk-One-More-Time.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "For Lack of a Better Name",
+        "artistName": "deadmau5",
+        "coverUrl": "/public/uploads/covers/albums/deadmau5-Strobe.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Natty Dread",
+        "artistName": "Bob Marley",
+        "coverUrl": "/public/uploads/covers/albums/Bob-Marley-No-Woman-No-Cry.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Bad to the Bone",
+        "artistName": "Inner Circle",
+        "coverUrl": "/public/uploads/covers/albums/Inner-Circle-Bad-Boys.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Vida",
+        "artistName": "Luis Fonsi",
+        "coverUrl": "/public/uploads/covers/albums/Luis-Fonsi-Despacito.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Sex and Love",
+        "artistName": "Enrique Iglesias",
+        "coverUrl": "/public/uploads/covers/albums/Enrique-Iglesias-Bailando.jpg",
+        "releaseDate": "2020-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Fado em mim",
+        "artistName": "Mariza",
+        "coverUrl": "/public/uploads/covers/albums/Marisa-Fado-em-mim.jpg",
+        "releaseDate": "2001-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Gorilleyez",
+        "artistName": "Wet Bed Gang",
+        "coverUrl": "/public/uploads/covers/albums/Wet-Bed-Gang-Gorilleyez.jpg",
+        "releaseDate": "2023-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Circo de Feras",
+        "artistName": "Xutos & Pontapés",
+        "coverUrl": "/public/uploads/covers/albums/Xutos-Circo-de-Feras.jpg",
+        "releaseDate": "1987-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Casa Guilhermina",
+        "artistName": "Ana Moura",
+        "coverUrl": "/public/uploads/covers/albums/Ana-Moura-Casa-Guilhermina.jpg",
+        "releaseDate": "2022-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Re-Definições",
+        "artistName": "Da Weasel",
+        "coverUrl": "/public/uploads/covers/albums/Da-Wasel-Re-Def.jpg",
+        "releaseDate": "2004-01-01 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "25",
+        "artist": "Adele",
+        "coverUrl": "/public/uploads/covers/albums/Adele-25.jpg",
+        "releaseDate": "2015-11-20 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Continuum",
+        "artist": "John Mayer",
+        "coverUrl": "/public/uploads/covers/albums/John-Mayer-Continuum.jpg",
+        "releaseDate": "2006-09-12 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Happier Than Ever",
+        "artist": "Billie Eilish",
+        "coverUrl": "/public/uploads/covers/albums/Billie-Happier.jpg",
+        "releaseDate": "2021-07-30 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "True",
+        "artist": "Avicii",
+        "coverUrl": "/public/uploads/covers/albums/Avicii-True.jpg",
+        "releaseDate": "2013-09-13 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "Portuguesa",
+        "artist": "Carminho",
+        "coverUrl": "/public/uploads/covers/albums/Carminho-Portuguesa.jpg",
+        "releaseDate": "2023-03-10 00:00:00",
+        "musics": []
+    },
+    {
+        "title": "BPM",
+        "artist": "Salvador Sobral",
+        "coverUrl": "/public/uploads/covers/albums/Salvador-Sobral-BPM.jpg",
+        "releaseDate": "2021-05-28 00:00:00",
+        "musics": []
+    }
+]

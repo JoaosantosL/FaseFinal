@@ -1,0 +1,407 @@
+[
+    {
+        "name": "Dua Lipa",
+        "bio": "Dua Lipa é uma artista de destaque no género Pop.",
+        "imageUrl": "/public/uploads/covers/artists/dua-lipa.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Cantora britânica de ascendência albanesa, com formação em jazz e música contemporânea; três Grammys ganhos; colaboração com artistas como Calvin Harris, Silk City e Angèle.",
+        "influences": ["Pop", "Disco", "R&B"],
+        "facts": [
+            "Vencedora de 3 Grammys",
+            "Fez sold‑out no Wembley e Anfield na Radical Optimism Tour"
+        ],
+        "extraInfo": "Além da biografia pública, é adepta de ioga e treino físico intenso para preparação de palco, incluindo handstands e flexibilidade avançada (). Faz covers de músicas locais em cada concerto (ex: AC/DC em Melbourne, Nena em Hamburgo) ()."
+    },
+    {
+        "name": "The Weeknd",
+        "bio": "The Weeknd é um artista de destaque no género Pop.",
+        "imageUrl": "/public/uploads/covers/artists/the-weeknd.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Começou com mixtapes em 2011; múltiplos Grammys; álbuns de sucesso como ‘After Hours’ e ‘Dawn FM’.",
+        "influences": ["R&B", "Synth‑pop", "Hip‑Hop"],
+        "facts": [
+            "A sua digressão After Hours til Dawn é uma das mais rentáveis da história"
+        ],
+        "extraInfo": "Anunciou a digressão europeia e latino‑americana com datas em Manchester a partir de 6 de junho, Londres (18 agosto) e Portugal (Algés em 31 janeiro)  "
+    },
+
+    {
+        "name": "Nirvana",
+        "bio": "Nirvana é uma banda de destaque no género Rock.",
+        "imageUrl": "/public/uploads/covers/artists/nirvana.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Banda formada em 1987 por Kurt Cobain e Krist Novoselic, considerada uma das maiores responsáveis pelo sucesso do grunge nos anos 90. O álbum 'Nevermind' (1991) revolucionou o rock alternativo e tornou-se ícone cultural. A banda terminou após o falecimento de Kurt Cobain em 1994.",
+        "influences": ["Punk", "Hard Rock", "Grunge"],
+        "facts": [
+            "O álbum 'Nevermind' vendeu mais de 30 milhões de cópias",
+            "Smells Like Teen Spirit tornou-se hino de uma geração"
+        ],
+        "extraInfo": "Nirvana não realiza concertos atualmente, devido à morte do vocalista Kurt Cobain em 1994. No entanto, membros sobreviventes ocasionalmente juntam-se para atuações pontuais, como no Rock and Roll Hall of Fame de 2014. A banda continua a influenciar artistas de vários géneros e a ter uma legião de fãs pelo mundo."
+    },
+    {
+        "name": "Queen",
+        "bio": "Queen é uma banda de destaque no género Rock.",
+        "imageUrl": "/public/uploads/covers/artists/queen.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Formada em 1970, a banda Queen é conhecida pela sua versatilidade musical e atuações épicas. O vocalista Freddie Mercury tornou-se uma lenda da música. Após a sua morte em 1991, os restantes membros continuaram a atuar com outros vocalistas, como Paul Rodgers e Adam Lambert.",
+        "influences": ["Rock Clássico", "Ópera", "Glam Rock"],
+        "facts": [
+            "O concerto no Live Aid de 1985 é considerado um dos melhores de sempre",
+            "Bohemian Rhapsody foi a primeira canção sem refrão a ser um sucesso global"
+        ],
+        "extraInfo": "Apesar de Freddie Mercury ter falecido em 1991, a banda continua a atuar sob o nome Queen + Adam Lambert. Os concertos são feitos em homenagem à era original da banda. A formação original já não realiza concertos como Queen com Freddie Mercury, mas o legado permanece vivo através de gravações e tributos."
+    },
+    {
+        "name": "Eminem",
+        "bio": "Eminem é um artista de destaque no género Hip-Hop.",
+        "imageUrl": "/public/uploads/covers/artists/eminem.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Eminem, nome verdadeiro Marshall Bruce Mathers III, iniciou a sua carreira no final dos anos 90 e rapidamente se tornou um dos artistas de hip-hop mais reconhecidos do mundo. O seu álbum 'The Slim Shady LP' (1999) catapultou-o para a fama. É conhecido pela sua lírica afiada, crítica social e versatilidade.",
+        "influences": ["Rap", "Hip-Hop Clássico", "Rock Alternativo"],
+        "facts": [
+            "Vencedor de 15 Grammys",
+            "Protagonista do filme '8 Mile', inspirado na sua própria história"
+        ],
+        "extraInfo": "Eminem continua a ser uma das figuras mais influentes do rap moderno. Além da carreira musical, fundou a editora Shady Records. O seu flow rápido e agressivo é reconhecido mundialmente. \n\nPróximos concertos:\n- 10 de agosto de 2025 — Lollapalooza Chicago, EUA\n- 17 de agosto de 2025 — Rock en Seine, Paris, França"
+    },
+    {
+        "name": "Travis Scott",
+        "bio": "Travis Scott é um artista de destaque no género Hip-Hop.",
+        "imageUrl": "/public/uploads/covers/artists/travis-scott.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Travis Scott é um rapper, produtor e performer nascido em Houston, Texas. Ficou conhecido por álbuns como 'Rodeo', 'Astroworld' e 'Utopia'. A sua música mistura trap, psicadelismo e uma produção elaborada, com forte componente visual nos espetáculos ao vivo.",
+        "influences": ["Trap", "Hip-Hop Psicadélico", "Kanye West"],
+        "facts": [
+            "Astroworld Festival tornou-se evento de referência antes da pandemia",
+            "Já colaborou com artistas como Drake, Kid Cudi e Beyoncé"
+        ],
+        "extraInfo": "Conhecido pelos seus concertos altamente energéticos e cenografias imersivas. 'Astroworld' tornou-se um fenómeno cultural. Em 2025, regressa aos palcos com a digressão 'Utopia Tour'.\n\n📅 Próximos concertos:\n- 2 de setembro de 2025 — O2 Arena, Londres, Reino Unido\n- 7 de setembro de 2025 — WiZink Center, Madrid, Espanha"
+    },
+    {
+        "name": "Miles Davis",
+        "bio": "Miles Davis é um artista de destaque no género Jazz.",
+        "imageUrl": "/public/uploads/covers/artists/miles-davis.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Miles Davis foi um trompetista, compositor e bandleader norte-americano, amplamente considerado um dos músicos mais influentes do século XX. Começou nos anos 40 com o bebop, mas foi pioneiro em vários estilos: cool jazz, hard bop, jazz modal e jazz fusion. O seu álbum 'Kind of Blue' é um dos mais vendidos da história do jazz.",
+        "influences": ["Blues", "Bebop", "Jazz Modal", "Funk"],
+        "facts": [
+            "Álbum 'Kind of Blue' é considerado obrigatório na história do jazz",
+            "Entrou para o Rock and Roll Hall of Fame em 2006"
+        ],
+        "extraInfo": "Miles Davis nasceu em 1926 e faleceu em 1991. Deixou um legado vasto e diversificado, colaborando com nomes como John Coltrane, Herbie Hancock e Wayne Shorter. O seu som evoluiu ao longo das décadas, refletindo a constante busca por inovação. \n\n📌 Não realiza concertos, mas a sua obra é frequentemente homenageada em festivais de jazz por todo o mundo."
+    },
+    {
+        "name": "Dave Brubeck",
+        "bio": "Dave Brubeck é um artista de destaque no género Jazz.",
+        "imageUrl": "/public/uploads/covers/artists/dave-brubeck.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Dave Brubeck foi um pianista e compositor norte-americano, conhecido por quebrar convenções rítmicas no jazz. Fundador do Dave Brubeck Quartet, o seu tema 'Take Five', composto por Paul Desmond, tornou-se um clássico mundial. Destacou-se pelo uso criativo de compassos irregulares e harmonia sofisticada.",
+        "influences": ["Jazz Clássico", "Música Erudita", "Blues"],
+        "facts": [
+            "Considerado um dos maiores inovadores rítmicos do jazz",
+            "Recebeu a Medalha Nacional das Artes nos EUA"
+        ],
+        "extraInfo": "Dave Brubeck nasceu em 1920 e faleceu em 2012. A sua carreira abrangeu mais de seis décadas e o seu impacto na educação musical foi significativo. Era também conhecido pelo seu ativismo social e defesa dos direitos civis. \n\n📌 Apesar de falecido, a sua música é regularmente celebrada em concertos tributo e festivais dedicados ao jazz."
+    },
+    {
+        "name": "Pachelbel",
+        "bio": "Pachelbel é um artista de destaque no género Classical.",
+        "imageUrl": "/public/uploads/covers/artists/pachelbel.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Johann Pachelbel foi um compositor barroco alemão, organista e professor, ativo no final do século XVII. É mais conhecido pela sua obra 'Canon in D', frequentemente utilizada em casamentos e eventos solenes. Trabalhou em diversas igrejas alemãs e teve grande influência na música sacra protestante.",
+        "influences": ["Música Sacra", "Polifonia Alemã", "Barroco"],
+        "facts": [
+            "Compôs mais de 200 obras, incluindo corais, fugas e fantasias",
+            "Foi mentor da família Bach, incluindo o pai de Johann Sebastian Bach"
+        ],
+        "extraInfo": "Pachelbel viveu entre 1653 e 1706. Embora muito da sua obra tenha sido esquecida após a sua morte, o século XX trouxe um renovado interesse, especialmente pelo 'Canon in D'. A sua música continua a ser interpretada por orquestras clássicas em todo o mundo.\n\n📌 Como compositor histórico, não realiza concertos. A sua música é, no entanto, regularmente apresentada em recitais e cerimónias clássicas."
+    },
+    {
+        "name": "Claude Debussy",
+        "bio": "Claude Debussy é um artista de destaque no género Classical.",
+        "imageUrl": "/public/uploads/covers/artists/claude-debussy.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Claude Debussy foi um compositor francês associado ao impressionismo musical, embora ele próprio rejeitasse esse rótulo. A sua obra é marcada por harmonias inovadoras, uso de escalas modais e sonoridades etéreas. Entre as suas peças mais conhecidas estão 'Clair de Lune', 'Prélude à l'après-midi d'un faune' e 'La Mer'.",
+        "influences": ["Romantismo", "Música Oriental", "Impressionismo"],
+        "facts": [
+            "Foi considerado revolucionário na sua abordagem à harmonia",
+            "Recebeu o Grand Prix de Rome em 1884"
+        ],
+        "extraInfo": "Debussy nasceu em 1862 e faleceu em 1918. A sua influência estende-se muito além da música clássica, tendo inspirado compositores modernos e até músicos de jazz. A sua música é muitas vezes associada a paisagens sonoras visuais e emocionais.\n\n📌 A sua obra é frequentemente executada por pianistas e orquestras de renome em concertos de música clássica por todo o mundo."
+    },
+    {
+        "name": "Daft Punk",
+        "bio": "Daft Punk é um(a) artista de destaque no género Electronic.",
+        "imageUrl": "/public/uploads/covers/artists/daft-punk.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Daft Punk foi uma dupla francesa de música eletrónica formada por Guy-Manuel de Homem-Christo e Thomas Bangalter. Emergiram nos anos 90 com o álbum 'Homework' e tornaram-se ícones globais com sucessos como 'One More Time', 'Harder, Better, Faster, Stronger' e 'Get Lucky'. O grupo anunciou a sua separação em 2021.",
+        "influences": ["House", "Disco", "Rock progressivo", "Techno"],
+        "facts": [
+            "Vencedores de múltiplos Grammys, incluindo Álbum do Ano em 2014",
+            "Conhecidos pelo uso de capacetes e estética futurista",
+            "Colaboraram com Pharrell Williams, The Weeknd, Nile Rodgers"
+        ],
+        "extraInfo": "Daft Punk redefiniu a música eletrónica com uma fusão única de house francês, funk e pop moderno. Foram pioneiros em atuações ao vivo que integravam luz, som e espetáculo visual. A dupla separou-se oficialmente em fevereiro de 2021, deixando um legado imenso na música global.\n\n📌 Daft Punk já não realiza concertos desde a sua separação. No entanto, são alvo frequente de tributos, remisturas e homenagens em festivais eletrónicos."
+    },
+    {
+        "name": "deadmau5",
+        "bio": "deadmau5 é um(a) artista de destaque no género Electronic.",
+        "imageUrl": "/public/uploads/covers/artists/deadmau5.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Joel Zimmerman, conhecido como deadmau5, é um produtor e DJ canadiano que se destacou na cena eletrónica internacional com faixas como 'Strobe', 'Ghosts 'n' Stuff' e 'Raise Your Weapon'. Conhecido pelo seu capacete de rato ('mau5head') e espetáculos tecnológicos imersivos, deadmau5 é uma figura central na música eletrónica progressiva.",
+        "influences": ["Progressive House", "Trance", "Techno", "Electro"],
+        "facts": [
+            "Desenvolveu um software próprio para atuação ao vivo",
+            "É um dos DJs mais bem pagos do mundo",
+            "Manteve colaborações com artistas como Kaskade e Rob Swire"
+        ],
+        "extraInfo": "deadmau5 continua a lançar música inovadora e a atuar globalmente em festivais de grande dimensão como Ultra, Tomorrowland e EDC. Também investe em tecnologia musical e design de som para videojogos.\n\n🎟️ Próximos concertos:\n• 18 Julho 2025 — Tomorrowland, Bélgica\n• 10 Agosto 2025 — Creamfields, Reino Unido\n• 23 Setembro 2025 — Red Rocks Amphitheatre, EUA"
+    },
+    {
+        "name": "Bob Marley",
+        "bio": "Bob Marley é um(a) artista de destaque no género Reggae.",
+        "imageUrl": "/public/uploads/covers/artists/bob-marley.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Bob Marley foi um cantor, compositor e guitarrista jamaicano que se tornou o mais famoso embaixador do reggae no mundo. Fundador dos The Wailers, popularizou o movimento Rastafari e lançou álbuns icónicos como 'Exodus', 'Rastaman Vibration' e 'Legend'.",
+        "influences": [
+            "Ska",
+            "Rocksteady",
+            "Reggae",
+            "Espiritualidade Rastafari"
+        ],
+        "facts": [
+            "Falecido em 1981, continua a ser uma das figuras mais influentes da música",
+            "Vendeu mais de 75 milhões de discos em todo o mundo",
+            "A sua música promove paz, união e justiça social"
+        ],
+        "extraInfo": "Bob Marley foi um símbolo global de resistência, paz e unidade. Mesmo após a sua morte precoce, a sua música continua a inspirar milhões. O álbum póstumo 'Legend' é um dos mais vendidos de sempre.\n\n🎤 Bob Marley já não realiza concertos, mas a sua família mantém vivo o seu legado através de reedições, eventos tributo e a gestão da marca Marley."
+    },
+    {
+        "name": "Inner Circle",
+        "bio": "Inner Circle é um(a) artista de destaque no género Reggae.",
+        "imageUrl": "/public/uploads/covers/artists/inner-circle.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Inner Circle é uma banda jamaicana formada em 1968, conhecida mundialmente pelo hit 'Bad Boys'. Ao longo das décadas, mantiveram uma carreira ativa com atuações ao vivo, colaborações e constantes reinvenções dentro do reggae e do pop-reggae.",
+        "influences": ["Roots Reggae", "Dancehall", "Pop"],
+        "facts": [
+            "O tema 'Bad Boys' tornou-se o genérico da série COPS",
+            "Ainda em atividade com concertos regulares em todo o mundo",
+            "Apelidados de 'The Bad Boys of Reggae'"
+        ],
+        "extraInfo": "Inner Circle mantém-se ativo e é um dos poucos grupos de reggae com carreira contínua desde os anos 70. Misturam reggae com sonoridades pop e participam em festivais internacionais.\n\n🎟️ Próximos concertos:\n• 3 Agosto 2025 — Reggae Sunsplash, Jamaica\n• 20 Setembro 2025 — Summerjam Festival, Alemanha\n• 12 Outubro 2025 — Cali Roots, EUA"
+    },
+    {
+        "name": "Luis Fonsi",
+        "bio": "Luis Fonsi é um(a) artista de destaque no género Latin.",
+        "imageUrl": "/public/uploads/covers/artists/luis-fonsi.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Luis Fonsi é um cantor e compositor porto-riquenho que começou a sua carreira nos anos 90. Tornou-se um fenómeno global com o lançamento de 'Despacito' em 2017, batendo recordes de streaming e visualizações em plataformas digitais. A sua música mistura pop latino com reggaeton e baladas românticas.",
+        "influences": ["Pop Latino", "Reggaeton", "Baladas Românticas"],
+        "facts": [
+            "'Despacito' tornou-se o vídeo mais visto do YouTube por vários anos",
+            "Vencedor de prémios Billboard e Grammy Latino",
+            "Colaborou com artistas como Daddy Yankee, Demi Lovato e Juan Luis Guerra"
+        ],
+        "extraInfo": "Luis Fonsi é conhecido pela sua voz poderosa e baladas emocionantes. É um dos principais rostos da música latina contemporânea, com uma carreira sólida e presença regular em eventos internacionais.\n\n🎟️ Próximos concertos:\n• 10 Agosto 2025 — Festival Latino de Miami, EUA\n• 2 Setembro 2025 — Palácio de los Deportes, México\n• 27 Outubro 2025 — Coliseu de Lisboa, Portugal"
+    },
+    {
+        "name": "Enrique Iglesias",
+        "bio": "Enrique Iglesias é um(a) artista de destaque no género Latin.",
+        "imageUrl": "/public/uploads/covers/artists/enrique-iglesias.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Enrique Iglesias é um cantor, compositor e produtor espanhol, filho de Julio Iglesias. Tornou-se um dos artistas latinos mais bem-sucedidos de sempre, com dezenas de hits em espanhol e inglês. Mistura pop latino com eletrónica e reggaeton, com colaborações que marcaram várias gerações.",
+        "influences": ["Pop", "Reggaeton", "Eletrónica", "Balada Romântica"],
+        "facts": [
+            "Vendeu mais de 180 milhões de discos em todo o mundo",
+            "Recordista de nº 1 na Billboard Latin Songs",
+            "Parcerias famosas com Pitbull, Wisin & Yandel e Whitney Houston"
+        ],
+        "extraInfo": "Enrique Iglesias é conhecido pelo seu estilo carismático e atuações enérgicas. Continua ativo em tournées mundiais, muitas vezes em conjunto com Ricky Martin ou Pitbull.\n\n🎟️ Próximos concertos:\n• 5 Agosto 2025 — Movistar Arena, Chile\n• 18 Setembro 2025 — Altice Arena, Lisboa\n• 6 Novembro 2025 — WiZink Center, Madrid"
+    },
+    {
+        "name": "Mariza",
+        "bio": "Mariza é uma das maiores vozes do fado contemporâneo.",
+        "imageUrl": "/public/uploads/covers/artists/mariza.jpg",
+        "isPortuguese": true,
+        "isPublic": true,
+        "percurso": "Mariza nasceu em Moçambique e cresceu nos bairros tradicionais de Lisboa. Tornou-se uma embaixadora mundial do fado, cruzando a tradição com elementos modernos e influências africanas. Tem uma carreira internacional sólida, com apresentações nas maiores salas do mundo.",
+        "influences": ["Fado", "World Music", "Morna", "Música Africana"],
+        "facts": [
+            "Nomeada para os Grammy Latinos",
+            "Cantou no Carnegie Hall, Royal Albert Hall e Sydney Opera House",
+            "Foi distinguida com a Ordem do Infante D. Henrique"
+        ],
+        "extraInfo": "Mariza representa o fado moderno com alma e inovação, sendo uma figura respeitada tanto em Portugal como no estrangeiro. É reconhecida pela sua voz poderosa, presença em palco e abertura a novas sonoridades.\n\n🎟️ Próximos concertos:\n• 13 Julho 2025 — Festival Músicas do Mundo, Sines\n• 28 Setembro 2025 — Teatro Nacional de São Carlos, Lisboa\n• 9 Novembro 2025 — Olympia, Paris"
+    },
+    {
+        "name": "Wet Bed Gang",
+        "bio": "Wet Bed Gang é uma banda pop portuguesa com vários hits nacionais.",
+        "imageUrl": "/public/uploads/covers/artists/wet-bed-gang.jpg",
+        "isPortuguese": true,
+        "isPublic": true,
+        "percurso": "Wet Bed Gang é um grupo de rap formado na Vialonga, em Portugal. Tornaram-se conhecidos pelo seu estilo cru e direto, letras urbanas e beats marcantes. Rapidamente conquistaram o público jovem e tornaram-se um dos nomes mais relevantes do hip-hop português.",
+        "influences": ["Rap", "Trap", "Hip-Hop", "R&B"],
+        "facts": [
+            "Primeira banda de hip-hop portuguesa a esgotar o Altice Arena",
+            "Colaborações com artistas como ProfJam e Plutónio",
+            "Conhecidos pelo EP 'Filhos do Rossi' e pela faixa 'Devia Ir'"
+        ],
+        "extraInfo": "Wet Bed Gang simboliza a nova geração do hip-hop português, com atitude, autenticidade e milhões de visualizações no YouTube. A sua ligação com a comunidade é central na identidade do grupo.\n\n🎟️ Próximos concertos:\n• 20 Julho 2025 — Meo Marés Vivas, Vila Nova de Gaia\n• 14 Setembro 2025 — Altice Arena, Lisboa\n• 12 Outubro 2025 — Super Bock Arena, Porto"
+    },
+    {
+        "name": "Xutos & Pontapés",
+        "bio": "Xutos & Pontapés são uma das bandas de rock mais emblemáticas de Portugal.",
+        "imageUrl": "/public/uploads/covers/artists/xutos-e-pontapes.jpg",
+        "isPortuguese": true,
+        "isPublic": true,
+        "percurso": "Formados em 1978, os Xutos & Pontapés marcaram gerações com o seu rock cantado em português. Após a morte de Zé Pedro em 2017, a banda continuou a atuar em sua homenagem. Mantêm uma forte ligação ao público e são presença habitual nos maiores festivais nacionais.",
+        "influences": ["Rock", "Punk", "Música Portuguesa"],
+        "facts": [
+            "Considerados a maior banda de rock portuguesa",
+            "Música 'A minha casinha' tornou-se hino informal da Seleção Nacional",
+            "Têm mais de 40 anos de carreira ativa"
+        ],
+        "extraInfo": "Com uma carreira que atravessa décadas, Xutos & Pontapés continuam a ser referência no panorama musical português. A sua energia em palco e a ligação com os fãs tornaram-nos uma instituição da música nacional.\n\n🎟️ Próximos concertos:\n• 10 Agosto 2025 — Festival Sol da Caparica, Almada\n• 5 Outubro 2025 — Coliseu dos Recreios, Lisboa\n• 22 Novembro 2025 — Multiusos de Guimarães"
+    },
+    {
+        "name": "Ana Moura",
+        "bio": "Ana Moura é uma das vozes mais reconhecidas do fado moderno.",
+        "imageUrl": "/public/uploads/covers/artists/ana-moura.jpg",
+        "isPortuguese": true,
+        "isPublic": true,
+        "percurso": "Ana Moura começou no fado tradicional mas rapidamente se destacou pela sua voz única e por fundir o fado com estilos contemporâneos. Colaborou com Prince e os Rolling Stones, e levou o fado a palcos internacionais como o Carnegie Hall.",
+        "influences": ["Fado", "Pop", "Soul"],
+        "facts": [
+            "Colaborou com Prince e Rolling Stones",
+            "Foi distinguida com o Prémio Amália Rodrigues",
+            "Apresentou-se em festivais internacionais de renome"
+        ],
+        "extraInfo": "Ana Moura representa uma nova geração de fadistas, explorando o cruzamento entre tradição e modernidade. A sua imagem sofisticada e versatilidade vocal tornam-na uma das artistas mais completas da música portuguesa.\n\n🎟️ Próximos concertos:\n• 26 Julho 2025 — Festival F, Faro\n• 18 Outubro 2025 — Casa da Música, Porto\n• 6 Dezembro 2025 — Olympia, Paris"
+    },
+    {
+        "name": "Da Weasel",
+        "bio": "Da Weasel é uma banda portuguesa conhecida pelo seu estilo rap e urbano.",
+        "imageUrl": "/public/uploads/covers/artists/da-weasel.jpg",
+        "isPortuguese": true,
+        "isPublic": true,
+        "percurso": "Formados em 1993 em Almada, os Da Weasel foram pioneiros no hip hop português, misturando rap, rock, funk e soul. Após uma pausa em 2010, regressaram aos palcos com grande sucesso em 2022. São conhecidos pela energia ao vivo e pela crítica social nas letras.",
+        "influences": ["Hip Hop", "Rock", "Funk", "Música Alternativa"],
+        "facts": [
+            "Primeira banda portuguesa de hip hop a atingir sucesso mainstream",
+            "Reuniram-se em 2022 com um concerto esgotado no NOS Alive",
+            "Canções como 'Re-Tratamento' e 'Tás na Boa' tornaram-se hinos de geração"
+        ],
+        "extraInfo": "Da Weasel marcaram uma geração com o seu estilo único, letras interventivas e mistura de géneros. O regresso em 2022 foi um dos momentos musicais mais celebrados do ano em Portugal, demonstrando a força e legado da banda.\n\n🎟️ Próximos concertos:\n• 14 Setembro 2025 — MEO Kalorama, Lisboa\n• 12 Outubro 2025 — Altice Forum Braga\n• 9 Novembro 2025 — Pavilhão Rosa Mota, Porto"
+    },
+    {
+        "name": "Adele",
+        "bio": "Adele é uma das maiores vozes da música pop e soul contemporânea.",
+        "imageUrl": "/public/uploads/covers/artists/adele.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Adele Laurie Blue Adkins, conhecida apenas como Adele, tornou-se mundialmente conhecida com o álbum '19' e consagrou-se com '21', '25' e '30'. Os seus temas abordam frequentemente amor, perda e crescimento pessoal.",
+        "influences": ["Soul", "Pop", "Blues", "Amy Winehouse"],
+        "facts": [
+            "Ganhou mais de 15 Grammy Awards",
+            "Primeira mulher a ter três álbuns no top 10 da Billboard simultaneamente",
+            "Residência de sucesso em Las Vegas"
+        ],
+        "extraInfo": "Adele é conhecida pelo seu timbre único, poderosa interpretação vocal e letras emotivas. Os seus concertos são muito aguardados pela intensidade emocional e autenticidade.\n\n🎟️ Próximos concertos:\n• 20 Setembro 2025 — Las Vegas, The Colosseum\n• 28 Setembro 2025 — Londres, Hyde Park\n• 5 Outubro 2025 — Paris, Accor Arena"
+    },
+    {
+        "name": "John Mayer",
+        "bio": "John Mayer é conhecido pelo seu talento como guitarrista, compositor e cantor de pop-rock e blues.",
+        "imageUrl": "/public/uploads/covers/artists/john-mayer.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Começou a carreira com o álbum 'Room for Squares' e evoluiu do pop acústico para o blues e rock com influências profundas de Eric Clapton. Lidera também o projeto John Mayer Trio.",
+        "influences": ["Blues", "Folk", "Rock", "Eric Clapton"],
+        "facts": [
+            "Ganhou 7 Grammy Awards",
+            "Tocou com B.B. King e Eric Clapton",
+            "Reconhecido pelas suas baladas melódicas e solos complexos"
+        ],
+        "extraInfo": "John Mayer é também um letrista introspectivo, equilibrando técnica musical com emoção crua. Lançou recentemente o álbum 'Sob Rock', com influências retro.\n\n🎟️ Próximos concertos:\n• 14 Setembro 2025 — Chicago, United Center\n• 22 Setembro 2025 — Berlim, Mercedes-Benz Arena\n• 29 Setembro 2025 — Amesterdão, Ziggo Dome"
+    },
+    {
+        "name": "Billie Eilish",
+        "bio": "Billie Eilish revolucionou o pop alternativo com o seu estilo sombrio e inovador.",
+        "imageUrl": "/public/uploads/covers/artists/billie-eilish.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "Explodiu com a faixa 'Ocean Eyes' e tornou-se uma voz da geração Z com álbuns como 'When We All Fall Asleep, Where Do We Go?'. Produz as suas músicas com o irmão Finneas.",
+        "influences": [
+            "Pop Alternativo",
+            "Electropop",
+            "Indie",
+            "Lana Del Rey"
+        ],
+        "facts": [
+            "Venceu o Grammy de Álbum do Ano com apenas 18 anos",
+            "Primeira artista nascida nos anos 2000 a atingir #1 na Billboard",
+            "Interpretou a música-tema do filme James Bond 'No Time To Die'"
+        ],
+        "extraInfo": "O visual excêntrico e sonoridade minimalista de Billie Eilish criaram uma nova estética no pop moderno, abordando temas como ansiedade, identidade e solidão.\n\n🎟️ Próximos concertos:\n• 1 Outubro 2025 — Los Angeles, Kia Forum\n• 10 Outubro 2025 — Madrid, WiZink Center\n• 18 Outubro 2025 — Oslo, Telenor Arena"
+    },
+    {
+        "name": "Avicii",
+        "bio": "Avicii foi um dos DJs e produtores mais influentes da música eletrónica moderna.",
+        "imageUrl": "/public/uploads/covers/artists/avicii.jpg",
+        "isPortuguese": false,
+        "isPublic": true,
+        "percurso": "O sueco Tim Bergling, conhecido como Avicii, atingiu o estrelato com êxitos como 'Levels', 'Wake Me Up' e 'Hey Brother'. Misturava EDM com elementos de folk e soul.",
+        "influences": ["House Progressivo", "Folk Eletrónico", "EDM"],
+        "facts": [
+            "Responsável por tornar o EDM mainstream",
+            "Colaborou com Aloe Blacc e Rita Ora",
+            "Faleceu tragicamente em 2018 aos 28 anos"
+        ],
+        "extraInfo": "O legado de Avicii permanece vivo através das suas músicas e do álbum póstumo 'TIM'. A sua sonoridade uniu géneros e gerações, deixando uma marca profunda na cultura musical.\n\nℹ️ Não realiza concertos (falecido em 2018)"
+    },
+    {
+        "name": "Carminho",
+        "bio": "Carminho é uma das vozes mais respeitadas do fado contemporâneo, conhecida pela sua sensibilidade e respeito pelas raízes do género.",
+        "imageUrl": "/public/uploads/covers/artists/carminho.jpg",
+        "isPortuguese": true,
+        "isPublic": true,
+        "percurso": "Filha da fadista Teresa Siqueira, Carminho cresceu rodeada pela tradição do fado. Lançou o primeiro álbum 'Fado' em 2009, seguindo-se 'Alma', 'Canto', e mais recentemente 'Portuguesa'. Tem colaborações com Milton Nascimento e Pablo Alborán.",
+        "influences": ["Fado", "Bossa Nova", "Jazz"],
+        "facts": [
+            "Considerada sucessora de Amália Rodrigues",
+            "Estudou Marketing antes de se dedicar à música",
+            "Gravou um disco com músicas de Tom Jobim"
+        ],
+        "extraInfo": "Carminho é conhecida pela forma como equilibra tradição e inovação no fado. A sua voz expressiva e domínio técnico fazem dela uma das artistas mais completas do panorama musical português.\n\n🎟️ Próximos concertos:\n• 12 Outubro 2025 — Coliseu do Porto\n• 26 Outubro 2025 — Centro Cultural de Belém, Lisboa"
+    },
+    {
+        "name": "Salvador Sobral",
+        "bio": "Salvador Sobral é um cantor e compositor português que ficou conhecido internacionalmente ao vencer a Eurovisão em 2017.",
+        "imageUrl": "/public/uploads/covers/artists/salvador-sobral.jpg",
+        "isPortuguese": true,
+        "isPublic": true,
+        "percurso": "Após estudar jazz em Espanha e nos EUA, Salvador iniciou carreira com 'Excuse Me'. Tornou-se uma figura de culto após ganhar a Eurovisão com 'Amar pelos Dois', escrita pela irmã Luísa Sobral. Lançou vários álbuns aclamados como 'Paris, Lisboa' e 'BPM'.",
+        "influences": ["Jazz", "MPB", "Indie", "Fado"],
+        "facts": [
+            "Vencedor do Festival Eurovisão da Canção 2017",
+            "Recebeu um transplante de coração em 2017",
+            "Defensor ativo de causas ambientais e sociais"
+        ],
+        "extraInfo": "Salvador é conhecido pela sua autenticidade, improvisação e fusão de estilos musicais. Prefere pequenas salas e concertos intimistas, onde privilegia a comunicação com o público.\n\n🎟️ Próximos concertos:\n• 8 Novembro 2025 — Casa da Música, Porto\n• 16 Novembro 2025 — Teatro Municipal de Faro"
+    }
+]

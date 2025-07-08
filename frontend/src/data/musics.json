@@ -1,0 +1,332 @@
+[
+    {
+        "title": "Levitating",
+        "artistName": "Dua Lipa",
+        "albumTitle": "Future Nostalgia",
+        "duration": 230,
+        "coverUrl": "/public/uploads/covers/musics/Dua-Lipa-Levitating.jpg",
+        "audioUrl": "/public/uploads/audio/Dua-Lipa-Levitating.mp3",
+        "plays": 14,
+        "reactions": []
+    },
+    {
+        "title": "Blinding Lights",
+        "artistName": "The Weeknd",
+        "albumTitle": "After Hours",
+        "duration": 203,
+        "coverUrl": "/public/uploads/covers/musics/The-Weeknd-Blinding-Lights.jpg",
+        "audioUrl": "/public/uploads/audio/The-Weeknd-Blinding-Lights.mp3",
+        "plays": 5,
+        "reactions": []
+    },
+    {
+        "title": "Smells Like Teen Spirit",
+        "artistName": "Nirvana",
+        "albumTitle": "Nevermind",
+        "duration": 278,
+        "coverUrl": "/public/uploads/covers/musics/Nirvana-Smells-Like-Teen-Spirit.jpg",
+        "audioUrl": "/public/uploads/audio/Nirvana-Smells-Like-Teen-Spirit.mp3",
+        "plays": 13,
+        "reactions": []
+    },
+    {
+        "title": "Bohemian Rhapsody",
+        "artistName": "Queen",
+        "albumTitle": "A Night at the Opera",
+        "duration": 360,
+        "coverUrl": "/public/uploads/covers/musics/Queen-Bohemian-Rhapsody.jpg",
+        "audioUrl": "/public/uploads/audio/Queen-Bohemian-Rhapsody.mp3",
+        "plays": 15,
+        "reactions": []
+    },
+    {
+        "title": "Lose Yourself",
+        "artistName": "Eminem",
+        "albumTitle": "8 Mile",
+        "duration": 328,
+        "coverUrl": "/public/uploads/covers/musics/Eminem-Lose-Yourself.jpg",
+        "audioUrl": "/public/uploads/audio/Eminem-Lose-Yourself.mp3",
+        "plays": 14,
+        "reactions": []
+    },
+    {
+        "title": "SICKO MODE",
+        "artistName": "Travis Scott",
+        "albumTitle": "Astroworld",
+        "duration": 323,
+        "coverUrl": "/public/uploads/covers/musics/Travis-Scott-SICKO-MODE.jpg",
+        "audioUrl": "/public/uploads/audio/Travis-Scott-SICKO-MODE.mp3",
+        "plays": 10,
+        "reactions": []
+    },
+    {
+        "title": "So What",
+        "artistName": "Miles Davis",
+        "albumTitle": "Kind of Blue",
+        "duration": 564,
+        "coverUrl": "/public/uploads/covers/musics/Miles-Davis-So-What.jpg",
+        "audioUrl": "/public/uploads/audio/Miles-Davis-So-What.mp3",
+        "plays": 3,
+        "reactions": []
+    },
+    {
+        "title": "Take Five",
+        "artistName": "Dave Brubeck",
+        "albumTitle": "Time Out",
+        "duration": 330,
+        "coverUrl": "/public/uploads/covers/musics/Dave-Brubeck-Take-Five.jpg",
+        "audioUrl": "/public/uploads/audio/Dave-Brubeck-Take-Five.mp3",
+        "plays": 3,
+        "reactions": []
+    },
+    {
+        "title": "Canon in D",
+        "artistName": "Pachelbel",
+        "albumTitle": "Baroque Favorites",
+        "duration": 171,
+        "coverUrl": "/public/uploads/covers/musics/Canon-in-D-Pachelbel.jpg",
+        "audioUrl": "/public/uploads/audio/Canon-in-D-Pachelbel.mp3",
+        "plays": 5,
+        "reactions": []
+    },
+    {
+        "title": "Clair de Lune",
+        "artistName": "Claude Debussy",
+        "albumTitle": "Suite bergamasque",
+        "duration": 314,
+        "coverUrl": "/public/uploads/covers/musics/Debussy-Clair-de-Lune.jpg",
+        "audioUrl": "/public/uploads/audio/Debussy-Clair-de-Lune.mp3",
+        "plays": 11,
+        "reactions": []
+    },
+    {
+        "title": "One More Time",
+        "artistName": "Daft Punk",
+        "albumTitle": "Discovery",
+        "duration": 321,
+        "coverUrl": "/public/uploads/covers/musics/Daft-Punk-One-More-Time.jpg",
+        "audioUrl": "/public/uploads/audio/Daft-Punk-One-More-Time.mp3",
+        "plays": 10,
+        "reactions": []
+    },
+    {
+        "title": "Strobe",
+        "artistName": "deadmau5",
+        "albumTitle": "For Lack of a Better Name",
+        "duration": 637,
+        "coverUrl": "/public/uploads/covers/musics/deadmau5-Strobe.jpg",
+        "audioUrl": "/public/uploads/audio/deadmau5-Strobe.mp3",
+        "plays": 9,
+        "reactions": []
+    },
+    {
+        "title": "No Woman, No Cry",
+        "artistName": "Bob Marley",
+        "albumTitle": "Natty Dread",
+        "duration": 431,
+        "coverUrl": "/public/uploads/covers/musics/Bob-Marley-No-Woman-No-Cry.jpg",
+        "audioUrl": "/public/uploads/audio/Bob-Marley-No-Woman-No-Cry.mp3",
+        "plays": 10,
+        "reactions": []
+    },
+    {
+        "title": "Bad Boys",
+        "artistName": "Inner Circle",
+        "albumTitle": "Bad to the Bone",
+        "duration": 271,
+        "coverUrl": "/public/uploads/covers/musics/Inner-Circle-Bad-Boys.jpg",
+        "audioUrl": "/public/uploads/audio/Inner-Circle-Bad-Boys.mp3",
+        "plays": 5,
+        "reactions": []
+    },
+    {
+        "title": "Despacito",
+        "artistName": "Luis Fonsi",
+        "albumTitle": "Vida",
+        "duration": 282,
+        "coverUrl": "/public/uploads/covers/musics/Luis-Fonsi-Despacito.jpg",
+        "audioUrl": "/public/uploads/audio/Luis-Fonsi-Despacito.mp3",
+        "plays": 4,
+        "reactions": []
+    },
+    {
+        "title": "Bailando",
+        "artistName": "Enrique Iglesias",
+        "albumTitle": "Sex and Love",
+        "duration": 287,
+        "coverUrl": "/public/uploads/covers/musics/Enrique-Iglesias-Bailando.jpg",
+        "audioUrl": "/public/uploads/audio/Enrique-Iglesias-Bailando.mp3",
+        "plays": 2,
+        "reactions": []
+    },
+    {
+        "title": "Chuva",
+        "artistName": "Mariza",
+        "albumTitle": "Fado em mim",
+        "duration": 302,
+        "coverUrl": "/public/uploads/covers/musics/Marisa-Fado-em-mim.jpg",
+        "audioUrl": "/public/uploads/audio/Mariza-Chuva.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Visão Noturna",
+        "artistName": "Wet Bed Gang",
+        "albumTitle": "Gorilleyez",
+        "duration": 289,
+        "coverUrl": "/public/uploads/covers/musics/Wet-Bed-Gang-Gorilleyez.jpg",
+        "audioUrl": "/public/uploads/audio/Wet-Bed-Gang-Visao-Noturna.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Contentores",
+        "artistName": "Xutos & Pontapés",
+        "albumTitle": "Circo de Feras",
+        "duration": 235,
+        "coverUrl": "/public/uploads/covers/musics/Xutos-Circo-de-Feras.jpg",
+        "audioUrl": "/public/uploads/audio/Xutos-Contentores.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Andorinhas",
+        "artistName": "Ana Moura",
+        "albumTitle": "Casa Guilhermina",
+        "duration": 198,
+        "coverUrl": "/public/uploads/covers/musics/Ana-Moura-Casa-Guilhermina.jpg",
+        "audioUrl": "/public/uploads/audio/Ana-Moura-Andorinhas.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Re-Tratamento",
+        "artistName": "Da Weasel",
+        "albumTitle": "Re-Definições",
+        "duration": 209,
+        "coverUrl": "/public/uploads/covers/musics/Da-Wasel-Re-Def.jpg",
+        "audioUrl": "/public/uploads/audio/Da-Weasel-Re-Tratamento.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Hello",
+        "artistName": "Adele",
+        "albumTitle": "25",
+        "duration": 295,
+        "coverUrl": "/public/uploads/covers/albums/Adele-25.jpg",
+        "audioUrl": "/public/uploads/audio/Adele-Hello.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "When We Were Young",
+        "artistName": "Adele",
+        "albumTitle": "25",
+        "duration": 342,
+        "coverUrl": "/public/uploads/covers/albums/Adele-25.jpg",
+        "audioUrl": "/public/uploads/audio/Adele-When-We-Were-Young.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Gravity",
+        "artistName": "John Mayer",
+        "albumTitle": "Continuum",
+        "duration": 239,
+        "coverUrl": "/public/uploads/covers/albums/John-Mayer-Continuum.jpg",
+        "audioUrl": "/public/uploads/audio/John-Mayer-Gravity.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Slow Dancing in a Burning Room",
+        "artistName": "John Mayer",
+        "albumTitle": "Continuum",
+        "duration": 240,
+        "coverUrl": "/public/uploads/covers/albums/John-Mayer-Continuum.jpg",
+        "audioUrl": "/public/uploads/audio/John-Mayer-Slow-Dancing.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Happier Than Ever",
+        "artistName": "Billie Eilish",
+        "albumTitle": "Happier Than Ever",
+        "duration": 315,
+        "coverUrl": "/public/uploads/covers/albums/Billie-Happier.jpg",
+        "audioUrl": "/public/uploads/audio/Billie-Eilish-Happier-Than-Ever.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "NDA",
+        "artistName": "Billie Eilish",
+        "albumTitle": "Happier Than Ever",
+        "duration": 216,
+        "coverUrl": "/public/uploads/covers/albums/Billie-Happier.jpg",
+        "audioUrl": "/public/uploads/audio/Billie-Eilish-NDA.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Wake Me Up",
+        "artistName": "Avicii",
+        "albumTitle": "True",
+        "duration": 272,
+        "coverUrl": "/public/uploads/covers/albums/Avicii-True.jpg",
+        "audioUrl": "/public/uploads/audio/Avicii-Wake-Me-Up.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Hey Brother",
+        "artistName": "Avicii",
+        "albumTitle": "True",
+        "duration": 263,
+        "coverUrl": "/public/uploads/covers/albums/Avicii-True.jpg",
+        "audioUrl": "/public/uploads/audio/Avicii-Hey-Brother.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "O Quarto (fado)",
+        "artistName": "Carminho",
+        "albumTitle": "Portuguesa",
+        "duration": 200,
+        "coverUrl": "/public/uploads/covers/albums/Carminho-Portuguesa.jpg",
+        "audioUrl": "/public/uploads/audio/CARMINHO-O-quarto.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "A Mulher Vento",
+        "artistName": "Carminho",
+        "albumTitle": "Portuguesa",
+        "duration": 208,
+        "coverUrl": "/public/uploads/covers/albums/Carminho-Portuguesa.jpg",
+        "audioUrl": "/public/uploads/audio/Carminho-A-Mulher-Vento.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Sangue do Meu Sangue",
+        "artistName": "Salvador Sobral",
+        "albumTitle": "BPM",
+        "duration": 263,
+        "coverUrl": "/public/uploads/covers/albums/Salvador-Sobral-BPM.jpg",
+        "audioUrl": "/public/uploads/audio/Salvador-Sobral-Sangue-Do-Meu-sangue.mp3",
+        "plays": 0,
+        "reactions": []
+    },
+    {
+        "title": "Fui Ver Meu Amor",
+        "artistName": "Salvador Sobral",
+        "albumTitle": "BPM",
+        "duration": 270,
+        "coverUrl": "/public/uploads/covers/albums/Salvador-Sobral-BPM.jpg",
+        "audioUrl": "/public/uploads/audio/Salvador-Sobral-Fui-Ver-Meu-Amor.mp3",
+        "plays": 0,
+        "reactions": []
+    }
+]
