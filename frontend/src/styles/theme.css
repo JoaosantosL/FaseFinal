@@ -288,7 +288,7 @@ textarea:focus {
 }
 
 /*───────────────────────
-  TOOLTIPS
+  TOOLTIPS (versão com fundo azul)
 ───────────────────────*/
 .tooltip-container {
     position: relative;
@@ -297,25 +297,35 @@ textarea:focus {
 
 .tooltip-text {
     visibility: hidden;
-    background-color: #333;
-    color: #fff;
+    background-color: var(--accent); /* Usando o azul do accent (00ffffd2) */
+    color: #333; /* Texto escuro para contrastar com o fundo azul */
     text-align: center;
     font-size: 12px;
     border-radius: 6px;
-    padding: 4px 8px;
+    padding: 6px 12px;
     position: absolute;
-    z-index: 10;
+    z-index: 1000;
     bottom: 125%;
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.2s;
+    min-width: max-content; /* Garante que o fundo cubra todo o conteúdo */
+    font-weight: 500; /* Texto um pouco mais forte */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra sutil */
 }
 
 .tooltip-container:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
+}
+
+/* Versão para tooltips multi-linha */
+.tooltip-text.multiline {
+    white-space: normal;
+    width: 200px;
+    word-wrap: break-word;
 }
 
 /*───────────────────────
